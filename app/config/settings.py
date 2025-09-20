@@ -1,21 +1,18 @@
-import os 
-from dotenv import load_dotenv
-from pydantic import BaseModel,Field, ConfigDict, ValidationError
-from pydantic_settings import BaseSettings, SettingsConfigDict
+# C:\Users\Raghu\Downloads\Elisia_Decision_Tree\ADE\backend\app\config\settings.py
 
-load_dotenv()
-
+import os,sys
 import multiprocessing
-from typing import Literal, Optional, Dict, Any, Type
-from urllib.parse import urlparse
 from pathlib import Path
+from typing import Literal, Optional
+from urllib.parse import urlparse
 
-from dotenv import load_dotenv
+# Use pydantic's dotenv functionality directly, no need for separate load_dotenv
 from pydantic import Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from langchain_core.language_models import BaseChatModel
+
 from langchain_openai import ChatOpenAI
+from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 from langchain_ollama import ChatOllama
@@ -23,204 +20,180 @@ from langchain_community.chat_models import ChatLlamaCpp
 from langchain_cerebras import ChatCerebras
 from langchain_sambanova import ChatSambaNovaCloud
 
+from dotenv import load_dotenv 
+
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+sys.path.append(str(ROOT_DIR))
 
 load_dotenv()
+DOTENV_PATH = Path(__file__).resolve().parents[2] / ".env"
+
+base_urls = [
+    "https://api.mistral.ai/v1/",
+    "https://api.cerebras.ai/v1/",
+    "https://openrouter.ai/api/v1",
+    "https://api.groq.com/openai/v1",
+    "https://api.sambanova.ai/v1",
+    "https://api.together.xyz/v1",
+    "http://localhost:11434/v1/",
+    "http://localhost:8080/v1/",
+    "https://integrate.api.nvidia.com/v1",
+]
 
 Provider = Literal[
     "openai", "google", "groq", "ollama", "mistral", "together",
-    "openrouter", "nvidia", "cerebras", "sambanova", "llama_cpp"
+    "openrouter", "nvidia", "cerebras", "sambanova", "llama_cpp",
+    "custom_local"
 ]
-
-DOTENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 
 class AgentSettings(BaseSettings):
     """
     A Pydantic settings model to hold the configuration for an AI agent.
-    It is designed to be LLM-agnostic and can be instantiated from environment
-    variables, .env files, or directly from a dictionary (e.g., frontend JSON).
     """
     # --- Model Configuration ---
-    model_name: str = Field(
-        ...,
-        description="The name of the model to use (e.g., 'gpt-4o-mini', 'gemini-1.5-pro')."
-    )
-    api_key: Optional[SecretStr] = Field(
-        default=None,
-        description="The API key for the selected LLM provider."
-    )
-    base_url: Optional[str] = Field(
-        default=None,
-        description="The base URL for the API, required for custom/OpenAI-compatible endpoints."
-    )
+    model_name: str = Field(..., description="The name of the model to use.")
+    api_key: Optional[SecretStr] = Field(None, description="The API key for the selected LLM provider.")
+    base_url: Optional[str] = Field(None, description="The base URL for the API endpoint.")
     temperature: float = Field(default=0.7, ge=0.0, le=2.0)
     top_p: float = Field(default=1.0, ge=0.0, le=1.0)
     top_k: Optional[int] = Field(default=None, ge=0)
-    max_tokens: Optional[int] = Field(
-        default=512,
-        description="Maximum number of tokens to generate."
-    )
-    system_prompt: str = Field(
-        default="You are a helpful AI assistant.",
-        description="The system prompt to guide the agent's behavior."
-    )
+    max_tokens: Optional[int] = Field(default=512, description="Maximum number of tokens to generate.")
+    system_prompt: str = Field(default="You are a helpful AI assistant.", description="The system prompt.")
     
-    model_path: Optional[str] = Field(
-        default=None,
-        description="The local path to the model file (for LlamaCpp)."
-    )
+
+    model_path: Optional[str] = Field(None, description="The local path to the model file (for LlamaCpp).")
     n_gpu_layers: int = Field(default=8, description="Number of GPU layers for LlamaCpp.")
     n_batch: int = Field(default=300, description="Batch size for LlamaCpp.")
     n_ctx: int = Field(default=10000, description="Context size for LlamaCpp.")
 
-    # --- Internal Fields ---
-    # This field is not set by the user but determined by the logic below.
     provider: Optional[Provider] = Field(default=None, exclude=True)
 
-    # Use the dot-env file if available
-    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-utf8', extra='ignore')
+
+    model_config = SettingsConfigDict(env_file=DOTENV_PATH, env_file_encoding='utf-8', extra='ignore')
 
     @model_validator(mode='after')
     def determine_provider(self) -> 'AgentSettings':
-        """
-        Dynamically determine the provider based on model_name or base_url.
-        This is the core of the agnostic logic.
-        """
-        if self.provider:
-            return self
-
-        # Rule 1: Local LlamaCpp model path has highest priority
-        if self.model_path:
-            self.provider = "llama_cpp"
-            return self
-
-        # Rule 2: Google models are identified by name
-        if self.model_name.lower().startswith('gemini'):
-            self.provider = "google"
-            return self
-            
-        # Rule 3: Use base_url to identify other providers
+        if self.provider: return self
+        if self.model_path: self.provider = "llama_cpp"; return self
+        if self.model_name.lower().startswith('gemini'): self.provider = "google"; return self
         if self.base_url:
             hostname = urlparse(self.base_url).hostname
             if hostname:
-                if "groq" in hostname:
-                    self.provider = "groq"
-                elif "mistral" in hostname:
-                    self.provider = "mistral"
-                elif "together" in hostname:
-                    self.provider = "together"
-                elif "openrouter" in hostname:
-                    self.provider = "openrouter"
-                elif "nvidia" in hostname:
-                    self.provider = "nvidia"
-                elif "cerebras" in hostname:
-                    self.provider = "cerebras"
-                elif "sambanova" in hostname:
-                    self.provider = "sambanova"
-                elif "localhost" in hostname or "127.0.0.1" in hostname:
-                    self.provider = "ollama" # Default for local
-                else:
-                    self.provider = "openai" # Fallback for other OpenAI-compatible APIs
-            return self
-
-        # Rule 4: Default to OpenAI if no other rules match
+                if "groq" in hostname: self.provider = "groq"; return self
+                if "mistral" in hostname: self.provider = "mistral"; return self
+                if "together" in hostname: self.provider = "together"; return self
+                if "openrouter" in hostname: self.provider = "openrouter"; return self
+                if "nvidia" in hostname: self.provider = "nvidia"; return self
+                if "cerebras" in hostname: self.provider = "cerebras"; return self
+                if "sambanova" in hostname: self.provider = "sambanova"; return self
+                if "localhost" in hostname or "127.0.0.1" in hostname: self.provider = "ollama"; return self
         self.provider = "openai"
         return self
 
-# --- The Agnostic Factory Function ---
-
 def get_chat_model(settings: AgentSettings) -> BaseChatModel:
-    """
-    Factory function that takes AgentSettings and returns an initialized
-    LangChain BaseChatModel instance.
-
-    This is the central point of the LLM-agnostic architecture.
-    """
+    """Factory function to get an initialized LangChain ChatModel instance."""
     if not settings.provider:
         raise ValueError("Provider could not be determined. Please check settings.")
 
     provider = settings.provider
     api_key = settings.api_key.get_secret_value() if settings.api_key else None
 
-    # Common parameters for most models
     init_params = {
         "model": settings.model_name,
         "temperature": settings.temperature,
         "max_tokens": settings.max_tokens,
-        "model_kwargs": {
-            "top_p": settings.top_p,
-            "top_k": settings.top_k,
-        }
+        "top_p": settings.top_p, 
     }
     
-    # Provider-specific logic
     if provider == "google":
-        os.environ["GOOGLE_API_KEY"] = api_key or os.environ.get("GOOGLE_API_KEY", "")
-        return ChatGoogleGenerativeAI(**init_params)
-
+        if provider == "google":
+            return ChatGoogleGenerativeAI(
+            google_api_key=api_key,
+            model=settings.model_name,
+            temperature=settings.temperature,
+            max_output_tokens=settings.max_tokens,
+            top_p=settings.top_p,
+            top_k=settings.top_k
+        )
     elif provider == "groq":
         return ChatGroq(groq_api_key=api_key, **init_params)
-        
     elif provider == "ollama":
-        # Ollama doesn't use an API key
         return ChatOllama(base_url=settings.base_url, **init_params)
-        
     elif provider == "llama_cpp":
-        if not settings.model_path:
-            raise ValueError("model_path is required for LlamaCpp provider.")
+        if not settings.model_path: raise ValueError("model_path is required for LlamaCpp provider.")
         return ChatLlamaCpp(
-            model_path=settings.model_path,
-            temperature=settings.temperature,
-            max_tokens=settings.max_tokens,
-            top_p=settings.top_p,
-            top_k=settings.top_k,
-            n_gpu_layers=settings.n_gpu_layers,
-            n_batch=settings.n_batch,
-            n_ctx=settings.n_ctx,
-            n_threads=multiprocessing.cpu_count() - 1,
+            model_path=settings.model_path, temperature=settings.temperature, max_tokens=settings.max_tokens,
+            top_p=settings.top_p, top_k=settings.top_k, n_gpu_layers=settings.n_gpu_layers,
+            n_batch=settings.n_batch, n_ctx=settings.n_ctx, n_threads=multiprocessing.cpu_count() - 1,
             verbose=False,
         )
-    
     elif provider == "cerebras":
         return ChatCerebras(cerebras_api_key=api_key, **init_params)
-
     elif provider == "sambanova":
-        return ChatSambaNova(sambanova_api_key=api_key, **init_params)
-    else:
-        init_params["api_key"] = api_key
-        if settings.base_url:
-            init_params["base_url"] = settings.base_url
-        return ChatOpenAI(**init_params)
+        return ChatSambaNovaCloud(sambanova_api_key=api_key, **init_params)
+    else:  
+        return ChatOpenAI(api_key=api_key, base_url=settings.base_url, **init_params)
 
 
 if __name__ == "__main__":
     print("--- Testing LLM-Agnostic Module ---")
 
+    # Check if the .env file exists at the expected path
+    if not DOTENV_PATH.exists():
+        print(f"--- WARNING: .env file not found at {DOTENV_PATH} ---")
+        print("Please ensure it exists and contains your API keys (e.g., GROQ_API_KEY=...).")
+    else:
+        print(f"Successfully located .env file at: {DOTENV_PATH}")
+
     # 1. Test with Groq configuration
     print("\n[1] Testing Groq...")
-    groq_config_data = {
-        "model_name": "qwen/qwen3-32b",
-        "api_key": os.getenv("GROQ_API_KEY"),
-        "base_url": "https://api.groq.com/openai/v1"
-    }
-    groq_settings = AgentSettings.model_validate(groq_config_data)
-    groq_llm = get_chat_model(groq_settings)
-    print(f"  -> Determined Provider: {groq_settings.provider}")
-    print(f"  -> Initialized Model: {type(groq_llm).__name__}")
-    assert isinstance(groq_llm, ChatGroq), "Check your groq api key"
+    groq_api_key = os.getenv("GROQ_API_KEY")
+    if groq_api_key:
+        groq_config_data = {
+            "model_name": "openai/gpt-oss-20b", 
+            "api_key": groq_api_key,
+            "base_url": "https://api.groq.com/openai/v1"
+        }
+        groq_settings = AgentSettings.model_validate(groq_config_data)
+        groq_llm = get_chat_model(groq_settings)
+        # response = groq_llm.invoke("Hey what is up?")
+        # print(response.content)
+        print(f"  -> Determined Provider: {groq_settings.provider}")
+        print(f"  -> Initialized Model: {type(groq_llm).__name__}")
+        assert isinstance(groq_llm, ChatGroq), "Model should be ChatGroq"
+    else:
+        print("  -> SKIPPED: GROQ_API_KEY not found in environment/.env file.")
 
+    print("\n[2] Testing Google Gemini...")
+    google_api_key = os.getenv("GOOGLE_API_KEY")
+    if google_api_key:
+        google_config_data = {
+            "model_name": "gemini-2.5-flash", 
+            "api_key": google_api_key,
+        }
+        google_settings = AgentSettings.model_validate(google_config_data)
+        google_llm = get_chat_model(google_settings)
+        response = google_llm.invoke("Hey what is up?")
+        print(response.content)
+        print()
+        print(f"  -> Determined Provider: {google_settings.provider}")
+        print(f"  -> Initialized Model: {type(google_llm).__name__}")
+        assert isinstance(google_llm, ChatGoogleGenerativeAI), "Model should be ChatGoogleGenerativeAI"
+    else:
+        print("  -> SKIPPED: GOOGLE_API_KEY not found in environment/.env file.")
 
+    print("\n Testing Sambanova cloud ")
+    sambanova_api_key = os.getenv("SAMBANOVA_API_KEY")
+    if sambanova_api_key:
+        sambanova_config_data = {
+            "model_name": "Llama-4-Maverick-17B-128E-Instruct", 
+            "api_key": sambanova_api_key,
+            "base_url": "https://api.sambanova.ai/v1"
+        }
+    sambanova_settings = AgentSettings.model_validate(sambanova_config_data)
+    llm = get_chat_model(sambanova_settings)
+    print(llm.invoke("Hey what is up man").content)
 
-    # 3. Test with Google Gemini
-    print("\n[3] Testing Google Gemini...")
-    google_config_data = {
-        "model_name": "gemini-2.5-flash",
-        "api_key": os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_KEY"),
-    }
-    google_settings = AgentSettings.model_validate(google_config_data)
-    google_llm = get_chat_model(google_settings)
-    print(f"  -> Determined Provider: {google_settings.provider}")
-    print(f"  -> Initialized Model: {type(google_llm).__name__}")
-    assert isinstance(google_llm, ChatGoogleGenerativeAI)
-
-
-    print("\n--- All tests passed! ---")
+    print("\n--- Test execution finished. ---")

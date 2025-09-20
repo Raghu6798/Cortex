@@ -2,4 +2,5 @@ fastmcp
 httpx
 litellm
 python-dotenv
+langchain==1.0.0a6
 e2b-code-interpreter
