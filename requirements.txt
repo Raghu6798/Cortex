@@ -12,4 +12,4 @@ langchain-groq
 langchain-ollama
 langchain-community 
 llama-cpp-python
-
+langchain-cerebras
