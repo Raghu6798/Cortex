@@ -65,6 +65,7 @@ base_urls = [
 ]
 
 
+
 class AgentConfigSchema(BaseModel):
     base_url: Optional[str] = Field(default="https://api.mistral.ai/v1/")
     api_key: str
@@ -143,3 +144,4 @@ async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
         raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
 
 app.include_router(router)
+
