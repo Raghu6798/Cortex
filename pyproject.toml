@@ -1,0 +1,23 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "clerk-backend-api>=3.3.0",
+    "e2b-code-interpreter>=2.0.0",
+    "fastapi>=0.116.2",
+    "fastmcp>=2.12.3",
+    "httpx>=0.28.1",
+    "langchain-cerebras>=0.5.0",
+    "langchain-community>=0.3.29",
+    "langchain-ollama>=0.3.8",
+    "langchain-openai>=0.3.33",
+    "langchain-sambanova>=0.1.6",
+    "langgraph>=0.6.7",
+    "litellm>=1.77.1",
+    "llama-cpp-python>=0.3.16",
+    "localstack>=4.8.0",
+    "python-dotenv>=1.1.1",
+]

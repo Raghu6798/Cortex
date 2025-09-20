@@ -1,0 +1,5 @@
+fastmcp
+httpx
+litellm
+python-dotenv
+e2b-code-interpreter
