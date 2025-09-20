@@ -1,6 +1,11 @@
-fastmcp
-httpx
-litellm
 python-dotenv
 langchain==1.0.0a6
-e2b-code-interpreter
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+loguru
+clerk-backend-api
+langchain-openai
+langchain-google-genai
+langchain-groq
