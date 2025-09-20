@@ -70,7 +70,7 @@ from langchain_groq import ChatGroq
 from langchain_ollama import ChatOllama
 from langchain_community.chat_models import ChatLlamaCpp
 from langchain_cerebras import ChatCerebras
-from langchain_sambanova import ChatSambaNovaCloud
+
 
 from dotenv import load_dotenv 
 
@@ -87,7 +87,7 @@ base_urls = [
     "https://api.cerebras.ai/v1/",
     "https://openrouter.ai/api/v1",
     "https://api.groq.com/openai/v1",
-    "https://api.sambanova.ai/v1",
+    # "https://api.sambanova.ai/v1",
     "https://api.together.xyz/v1",
     "http://localhost:11434/v1/",
     "http://localhost:8080/v1/",
@@ -139,7 +139,6 @@ class AgentSettings(BaseSettings):
                 if "openrouter" in hostname: self.provider = "openrouter"; return self
                 if "nvidia" in hostname: self.provider = "nvidia"; return self
                 if "cerebras" in hostname: self.provider = "cerebras"; return self
-                if "sambanova" in hostname: self.provider = "sambanova"; return self
                 if "localhost" in hostname or "127.0.0.1" in hostname: self.provider = "ollama"; return self
         self.provider = "openai"
         return self
@@ -183,23 +182,8 @@ def get_chat_model(settings: AgentSettings) -> BaseChatModel:
         )
     elif provider == "cerebras":
         return ChatCerebras(cerebras_api_key=api_key, **init_params)
-    elif provider == "sambanova":
-        return ChatSambaNovaCloud(sambanova_api_key=api_key, **init_params)
     else:  
         return ChatOpenAI(api_key=api_key, base_url=settings.base_url, **init_params)
-
-base_urls = [
-    "https://api.mistral.ai/v1/",
-    "https://api.cerebras.ai/v1/",
-    "https://openrouter.ai/api/v1",
-    "https://api.groq.com/openai/v1",
-    "https://api.sambanova.ai/v1",
-    "https://api.together.xyz/v1",
-    "http://localhost:11434/v1/",
-    "http://localhost:8080/v1/",
-    "https://integrate.api.nvidia.com/v1",
-]
-
 
 
 class AgentConfigSchema(BaseModel):
@@ -280,5 +264,6 @@ async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
         raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
 
 app.include_router(router)
+
 
 
