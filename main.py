@@ -1,4 +1,3 @@
-
 import sys
 from pathlib import Path
 
@@ -30,3 +29,4 @@ app.include_router(agent_route.router)
 def read_root():
     """A simple root endpoint to confirm the server is running."""
     return {"message": "Welcome to the Agenta ADE Backend"}
+
