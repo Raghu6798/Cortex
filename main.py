@@ -111,7 +111,7 @@ class AgentSettings(BaseSettings):
     temperature: float = Field(default=0.7, ge=0.0, le=2.0)
     top_p: float = Field(default=1.0, ge=0.0, le=1.0)
     top_k: Optional[int] = Field(default=None, ge=0)
-    max_tokens: Optional[int] = Field(default=512, description="Maximum number of tokens to generate.")
+    max_tokens: Optional[int] = Field(default=1024, description="Maximum number of tokens to generate.")
     system_prompt: str = Field(default="You are a helpful AI assistant.", description="The system prompt.")
     
 
@@ -155,7 +155,7 @@ def get_chat_model(settings: AgentSettings) -> BaseChatModel:
         "model": settings.model_name,
         "temperature": settings.temperature,
         "max_tokens": settings.max_tokens,
-        "top_p": settings.top_p, 
+        "top_p": settings.top_p
     }
     
     if provider == "google":
@@ -264,6 +264,7 @@ async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
         raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
 
 app.include_router(router)
+
 
 
 
