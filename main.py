@@ -44,7 +44,7 @@ app = FastAPI(title="Secure Agenta ADE Backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://fronted-projec.netlify.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -264,6 +264,7 @@ async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
         raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
 
 app.include_router(router)
+
 
 
 
