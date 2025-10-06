@@ -1,41 +1,36 @@
+import os
 import sys
-from pathlib import Path
 from uuid import uuid4
-import multiprocessing
+import httpx
+from pydantic import BaseModel, Field
 import traceback
-from typing import Optional, Literal
+from typing import Optional,AsyncIterator
+from functools import lru_cache
 
-from fastapi import FastAPI, APIRouter, Depends, HTTPException, Request
-from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, SecretStr
-from dotenv import load_dotenv
-from loguru import logger
-
-# LangChain imports (adjust based on your actual installed packages)
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langchain_core.language_models.chat_models import BaseChatModel
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_groq import ChatGroq
-from langchain_ollama import ChatOllama
-from langchain_community.chat_models import ChatLlamaCpp
-from langchain_cerebras import ChatCerebras
+from langchain_core.messages import AIMessageChunk
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 
-# Clerk Auth
-from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer, HTTPAuthorizationCredentials
 
-from app.api.v1.sessions import router as sessions_router
-from app.api.v1.frameworks import router as frameworks_router
+from fastapi import FastAPI, APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
 
+from clerk_backend_api import Clerk
+from clerk_backend_api.security import authenticate_request
+from clerk_backend_api.security.types import AuthenticateRequestOptions
 
-# -------------------- Logging Setup --------------------
+from loguru import logger
+
 logger.remove()
+
+
 logger.add(
-    sys.stderr,
-    level="INFO",
+    sys.stderr,  
+    level="INFO", 
     format=(
         "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
         "<level>{level: <8}</level> | "
@@ -45,66 +40,169 @@ logger.add(
     colorize=True
 )
 log = logger
-
-# -------------------- Environment --------------------
-ROOT_DIR = Path(__file__).resolve().parents[2]
-sys.path.append(str(ROOT_DIR))
-load_dotenv(ROOT_DIR / ".env")
-
-# -------------------- Clerk Auth Setup --------------------
-clerk_config = ClerkConfig(
-    jwks_url="https://supreme-caribou-95.clerk.accounts.dev/.well-known/jwks.json",
-    auto_error=True
-)
-clerk_auth_guard = ClerkHTTPBearer(config=clerk_config, add_state=True)
-
-# Optional role-based access
-def admin_required(credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)):
-    roles = credentials.decoded.get("roles", [])
-    if "admin" not in roles:
-        raise HTTPException(status_code=403, detail="Admin permission required")
-    return credentials
-
-# -------------------- FastAPI App --------------------
 app = FastAPI(title="Secure Agenta ADE Backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[""],
+    allow_origins=["https://fronted-projec.netlify.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# -------------------- Pydantic Models --------------------
+# C:\Users\Raghu\Downloads\Elisia_Decision_Tree\ADE\backend\app\config\settings.py
+
+import os,sys
+import multiprocessing
+from pathlib import Path
+from typing import Literal, Optional
+from urllib.parse import urlparse
+
+# Use pydantic's dotenv functionality directly, no need for separate load_dotenv
+from pydantic import Field, SecretStr, model_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+from langchain_openai import ChatOpenAI
+from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
+from langchain_ollama import ChatOllama
+from langchain_community.chat_models import ChatLlamaCpp
+from langchain_cerebras import ChatCerebras
+
+
+from dotenv import load_dotenv 
+
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+sys.path.append(str(ROOT_DIR))
+
+load_dotenv()
+DOTENV_PATH = Path(__file__).resolve().parents[2] / ".env"
+
+base_urls = [
+    "https://api.mistral.ai/v1/",
+    "https://api.cerebras.ai/v1/",
+    "https://openrouter.ai/api/v1",
+    "https://api.groq.com/openai/v1",
+    # "https://api.sambanova.ai/v1",
+    "https://api.together.xyz/v1",
+    "http://localhost:11434/v1/",
+    "http://localhost:8080/v1/",
+    "https://integrate.api.nvidia.com/v1",
+]
+
 Provider = Literal[
     "openai", "google", "groq", "ollama", "mistral", "together",
     "openrouter", "nvidia", "cerebras", "sambanova", "llama_cpp",
     "custom_local"
 ]
 
-class AgentSettings(BaseModel):
-    model_name: str
-    api_key: Optional[SecretStr] = None
-    base_url: Optional[str] = None
+class AgentSettings(BaseSettings):
+    """
+    A Pydantic settings model to hold the configuration for an AI agent.
+    """
+    # --- Model Configuration ---
+    model_name: str = Field(..., description="The name of the model to use.")
+    api_key: Optional[SecretStr] = Field(None, description="The API key for the selected LLM provider.")
+    base_url: Optional[str] = Field(None, description="The base URL for the API endpoint.")
+    temperature: float = Field(default=0.7, ge=0.0, le=2.0)
+    top_p: float = Field(default=1.0, ge=0.0, le=1.0)
+    top_k: Optional[int] = Field(default=None, ge=0)
+    max_tokens: Optional[int] = Field(default=1024, description="Maximum number of tokens to generate.")
+    system_prompt: str = Field(default="You are a helpful AI assistant.", description="The system prompt.")
+    
+
+    model_path: Optional[str] = Field(None, description="The local path to the model file (for LlamaCpp).")
+    n_gpu_layers: int = Field(default=8, description="Number of GPU layers for LlamaCpp.")
+    n_batch: int = Field(default=300, description="Batch size for LlamaCpp.")
+    n_ctx: int = Field(default=10000, description="Context size for LlamaCpp.")
+
+    provider: Optional[Provider] = Field(default=None, exclude=True)
+
+
+    model_config = SettingsConfigDict(env_file=DOTENV_PATH, env_file_encoding='utf-8', extra='ignore')
+
+    @model_validator(mode='after')
+    def determine_provider(self) -> 'AgentSettings':
+        if self.provider: return self
+        if self.model_path: self.provider = "llama_cpp"; return self
+        if self.model_name.lower().startswith('gemini'): self.provider = "google"; return self
+        if self.base_url:
+            hostname = urlparse(self.base_url).hostname
+            if hostname:
+                if "groq" in hostname: self.provider = "groq"; return self
+                if "mistral" in hostname: self.provider = "mistral"; return self
+                if "together" in hostname: self.provider = "together"; return self
+                if "openrouter" in hostname: self.provider = "openrouter"; return self
+                if "nvidia" in hostname: self.provider = "nvidia"; return self
+                if "cerebras" in hostname: self.provider = "cerebras"; return self
+                if "localhost" in hostname or "127.0.0.1" in hostname: self.provider = "ollama"; return self
+        self.provider = "openai"
+        return self
+
+def get_chat_model(settings: AgentSettings) -> BaseChatModel:
+    """Factory function to get an initialized LangChain ChatModel instance."""
+    if not settings.provider:
+        raise ValueError("Provider could not be determined. Please check settings.")
+
+    provider = settings.provider
+    api_key = settings.api_key.get_secret_value() if settings.api_key else None
+
+    init_params = {
+        "model": settings.model_name,
+        "temperature": settings.temperature,
+        "max_tokens": settings.max_tokens,
+        "top_p": settings.top_p
+    }
+    
+    if provider == "google":
+        if provider == "google":
+            return ChatGoogleGenerativeAI(
+            google_api_key=api_key,
+            model=settings.model_name,
+            temperature=settings.temperature,
+            max_output_tokens=settings.max_tokens,
+            top_p=settings.top_p,
+            top_k=settings.top_k
+        )
+    elif provider == "groq":
+        return ChatGroq(groq_api_key=api_key, **init_params)
+    elif provider == "ollama":
+        return ChatOllama(base_url=settings.base_url, **init_params)
+    elif provider == "llama_cpp":
+        if not settings.model_path: raise ValueError("model_path is required for LlamaCpp provider.")
+        return ChatLlamaCpp(
+            model_path=settings.model_path, temperature=settings.temperature, max_tokens=settings.max_tokens,
+            top_p=settings.top_p, top_k=settings.top_k, n_gpu_layers=settings.n_gpu_layers,
+            n_batch=settings.n_batch, n_ctx=settings.n_ctx, n_threads=multiprocessing.cpu_count() - 1,
+            verbose=False,
+        )
+    elif provider == "cerebras":
+        return ChatCerebras(cerebras_api_key=api_key, **init_params)
+    else:  
+        return ChatOpenAI(api_key=api_key, base_url=settings.base_url, **init_params)
+
+
+class AgentConfigSchema(BaseModel):
+    base_url: Optional[str] = Field(default="https://api.mistral.ai/v1/")
+    api_key: str
+    model_name: str = "mistral-small-2506"
     temperature: float = 0.7
-    top_p: float = 1.0
-    top_k: Optional[int] = None
-    max_tokens: Optional[int] = 512
+    top_p: float = 0.9
+    top_k: int = 5
     system_prompt: str = "You are a helpful AI assistant."
-    model_path: Optional[str] = None
-    n_gpu_layers: int = 8
-    n_batch: int = 300
-    n_ctx: int = 10000
-    provider: Optional[Provider] = None
+
 
 class InvokeRequestSchema(AgentSettings):
     message: str
 
+
 class CortexResponseFormat(BaseModel):
     response: str
 
-# -------------------- LangChain Tools --------------------
 @tool
 def search(query: str) -> str:
     """Search for information on a given topic."""
@@ -123,84 +221,39 @@ def calculate(expression: str) -> str:
         log.error(f"Failed to evaluate expression '{expression}': {e}")
         return f"Failed to evaluate expression. Error: {e}"
 
+tools = [search,calculate]
 
-tools = [search, calculate]
-
-# -------------------- Chat Model Factory --------------------
-def get_chat_model(settings: AgentSettings) -> BaseChatModel:
-    provider = settings.provider or "openai"
-    api_key = settings.api_key.get_secret_value() if settings.api_key else None
-    init_params = {
-        "model": settings.model_name,
-        "temperature": settings.temperature,
-        "max_tokens": settings.max_tokens,
-        "top_p": settings.top_p,
-    }
-    if provider == "google":
-        return ChatGoogleGenerativeAI(
-            google_api_key=api_key,
-            model=settings.model_name,
-            temperature=settings.temperature,
-            max_output_tokens=settings.max_tokens,
-            top_p=settings.top_p,
-            top_k=settings.top_k
-        )
-    elif provider == "groq":
-        return ChatGroq(groq_api_key=api_key, **init_params)
-    elif provider == "ollama":
-        return ChatOllama(base_url=settings.base_url, **init_params)
-    elif provider == "llama_cpp":
-        return ChatLlamaCpp(
-            model_path=settings.model_path,
-            temperature=settings.temperature,
-            max_tokens=settings.max_tokens,
-            top_p=settings.top_p,
-            top_k=settings.top_k,
-            n_gpu_layers=settings.n_gpu_layers,
-            n_batch=settings.n_batch,
-            n_ctx=settings.n_ctx,
-            n_threads=multiprocessing.cpu_count() - 1,
-            verbose=False,
-        )
-    elif provider == "cerebras":
-        return ChatCerebras(cerebras_api_key=api_key, **init_params)
-    else:
-        return ChatOpenAI(api_key=api_key, base_url=settings.base_url, **init_params)
-
-# -------------------- API Router --------------------
 router = APIRouter(prefix="/chat", tags=["chat"])
-
 @router.post("/invoke", response_model=CortexResponseFormat)
-async def invoke_agent_sync(
-    request: InvokeRequestSchema,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
-) -> CortexResponseFormat:
+async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
     """
     Receives agent config and a message, runs the agent to completion,
     and returns a single, final response.
     """
-    user_id = credentials.decoded.get("sub")
-    log.info(f"Request by user: {user_id}")
-
+    log.info(f"Received non-streaming request for model '{request.model_name}'")
     try:
-        llm = get_chat_model(request)
+        agent_settings = request
+        llm = get_chat_model(agent_settings)
+        
         agent = create_agent(
-            model=llm,
-            tools=tools,
+            model=llm, 
+            tools=tools, 
             prompt=request.system_prompt,
             checkpointer=InMemorySaver(),
         )
 
+        log.info(f"Invoking agent with input: '{request.message}'")
         thread_id = str(uuid4())
         response_data = await agent.ainvoke(
-            {"messages": [{"role": "user", "content": request.message}]},
-            {"configurable": {"thread_id": thread_id}}
+            {"messages": [{"role": "user", "content": request.message}]}, {"configurable": {"thread_id": thread_id}}
         )
+        
+        log.debug(f"Full agent response object: {response_data}")
 
         final_output = "Agent did not return a final message."
         if response_data and "messages" in response_data and response_data["messages"]:
             last_message = response_data["messages"][-1]
-            if hasattr(last_message, "content"):
+            if hasattr(last_message,"content"):
                 final_output = last_message.content
 
         log.success("Agent invocation finished successfully.")
@@ -208,14 +261,11 @@ async def invoke_agent_sync(
 
     except Exception:
         log.exception("An error occurred during agent invocation.")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
 
-# -------------------- Include Routers --------------------
 app.include_router(router)
-app.include_router(sessions_router, prefix="/chat")
-app.include_router(frameworks_router, prefix="/chat")
 
-# -------------------- Root Endpoint --------------------
-@app.get("/")
-async def read_root():
-    return {"message": "Welcome to the Agenta ADE Backend"}
+
+
+
+
