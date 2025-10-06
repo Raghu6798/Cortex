@@ -18,7 +18,7 @@ from langchain_groq import ChatGroq
 from langchain_ollama import ChatOllama
 from langchain_community.chat_models import ChatLlamaCpp
 from langchain_cerebras import ChatCerebras
-from langchain_sambanova import ChatSambaNovaCloud
+
 
 from dotenv import load_dotenv 
 
@@ -35,7 +35,7 @@ base_urls = [
     "https://api.cerebras.ai/v1/",
     "https://openrouter.ai/api/v1",
     "https://api.groq.com/openai/v1",
-    "https://api.sambanova.ai/v1",
+    # "https://api.sambanova.ai/v1",
     "https://api.together.xyz/v1",
     "http://localhost:11434/v1/",
     "http://localhost:8080/v1/",
@@ -47,6 +47,19 @@ Provider = Literal[
     "openrouter", "nvidia", "cerebras", "sambanova", "llama_cpp",
     "custom_local"
 ]
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file='.env', 
+        env_file_encoding='utf-8',
+        extra='ignore' 
+    )
+    GROQ_API_KEY:str
+    CEREBRAS_API_KEY:str
+    MISTRAL_API_KEY:str
+    SAMBANOVA_API_KEY:str
+    GOOGLE_API_KEY:str
+
 
 class AgentSettings(BaseSettings):
     """
@@ -87,7 +100,6 @@ class AgentSettings(BaseSettings):
                 if "openrouter" in hostname: self.provider = "openrouter"; return self
                 if "nvidia" in hostname: self.provider = "nvidia"; return self
                 if "cerebras" in hostname: self.provider = "cerebras"; return self
-                if "sambanova" in hostname: self.provider = "sambanova"; return self
                 if "localhost" in hostname or "127.0.0.1" in hostname: self.provider = "ollama"; return self
         self.provider = "openai"
         return self
@@ -131,12 +143,11 @@ def get_chat_model(settings: AgentSettings) -> BaseChatModel:
         )
     elif provider == "cerebras":
         return ChatCerebras(cerebras_api_key=api_key, **init_params)
-    elif provider == "sambanova":
-        return ChatSambaNovaCloud(sambanova_api_key=api_key, **init_params)
     else:  
         return ChatOpenAI(api_key=api_key, base_url=settings.base_url, **init_params)
 
 
+settings = Settings()
 if __name__ == "__main__":
     print("--- Testing LLM-Agnostic Module ---")
 
@@ -184,16 +195,5 @@ if __name__ == "__main__":
     else:
         print("  -> SKIPPED: GOOGLE_API_KEY not found in environment/.env file.")
 
-    print("\n Testing Sambanova cloud ")
-    sambanova_api_key = os.getenv("SAMBANOVA_API_KEY")
-    if sambanova_api_key:
-        sambanova_config_data = {
-            "model_name": "Llama-4-Maverick-17B-128E-Instruct", 
-            "api_key": sambanova_api_key,
-            "base_url": "https://api.sambanova.ai/v1"
-        }
-    sambanova_settings = AgentSettings.model_validate(sambanova_config_data)
-    llm = get_chat_model(sambanova_settings)
-    print(llm.invoke("Hey what is up man").content)
 
     print("\n--- Test execution finished. ---")

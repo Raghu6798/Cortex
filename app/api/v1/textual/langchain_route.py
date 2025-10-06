@@ -1,5 +1,6 @@
 import os
 import sys
+from uuid import uuid4
 import httpx
 from pydantic import BaseModel, Field
 import traceback
@@ -8,7 +9,9 @@ from functools import lru_cache
 
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
+from langchain_core.messages import AIMessageChunk
 from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver
 
 
 from fastapi import FastAPI, APIRouter, Depends, HTTPException
@@ -100,64 +103,43 @@ def calculate(expression: str) -> str:
 tools = [search,calculate]
 
 router = APIRouter(prefix="/chat", tags=["chat"])
-@router.post("/invoke")
-async def invoke_agent_streaming(request: InvokeRequestSchema):
+@router.post("/invoke", response_model=CortexResponseFormat)
+async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
     """
-    Streams the agent's response, now robustly handling both direct answers
-    and tool-based outputs from the LangChain v1.0 agent.
+    Receives agent config and a message, runs the agent to completion,
+    and returns a single, final response.
     """
-    log.info(f"Received streaming request for model '{request.model_name}'")
-    
-    async def stream_generator() -> AsyncIterator[str]:
-        # Keep track of the last content streamed to avoid sending duplicates
-        last_streamed_content = ""
-        # Keep track if we have streamed any content at all
-        has_streamed_content = False
-        try:
-            agent_settings = request
-            llm = get_chat_model(agent_settings)
-            
-            agent = create_agent(
-                model=llm, 
-                tools=tools, 
-                prompt=request.system_prompt
-            )
+    log.info(f"Received non-streaming request for model '{request.model_name}'")
+    try:
+        agent_settings = request
+        llm = get_chat_model(agent_settings)
+        
+        agent = create_agent(
+            model=llm, 
+            tools=tools, 
+            prompt=request.system_prompt,
+            checkpointer=InMemorySaver(),
+        )
 
-            log.info(f"Invoking agent with input: '{request.message}'")
+        log.info(f"Invoking agent with input: '{request.message}'")
+        thread_id = str(uuid4())
+        response_data = await agent.ainvoke(
+            {"messages": [{"role": "user", "content": request.message}]}, {"configurable": {"thread_id": thread_id}}
+        )
+        
+        log.debug(f"Full agent response object: {response_data}")
 
-            async for chunk in agent.astream(
-                {"messages": [{"role": "user", "content": request.message}]}
-            ):
-                log.debug(f"Agent Stream Chunk: {chunk}")
+        final_output = "Agent did not return a final message."
+        if response_data and "messages" in response_data and response_data["messages"]:
+            last_message = response_data["messages"][-1]
+            if hasattr(last_message,"content"):
+                final_output = last_message.content
 
+        log.success("Agent invocation finished successfully.")
+        return CortexResponseFormat(response=final_output)
 
-                if "messages" in chunk and chunk["messages"]:
-                    latest_message = chunk["messages"][-1]
-                    if latest_message.type == "ai" and latest_message.content:
-                        new_content = latest_message.content[len(last_streamed_content):]
-                        if new_content:
-                            has_streamed_content = True
-                            yield new_content
-                            last_streamed_content = latest_message.content
-                if "output" in chunk and chunk["output"]:
-                    final_output = chunk["output"]
-                    if final_output != last_streamed_content:
-                
-                        new_content = final_output[len(last_streamed_content):]
-                        if new_content:
-                            has_streamed_content = True
-                            yield new_content
-
-            if has_streamed_content:
-                log.success("Agent stream finished successfully.")
-            else:
-                log.warning("Agent stream finished, but no streamable content or final output was found.")
-                yield "Agent did not produce a streamable response."
-
-        except Exception:
-            log.exception("An error occurred during the agent stream.")
-            yield f"An error occurred on the server."
-
-    return StreamingResponse(stream_generator(), media_type="text/plain")
+    except Exception:
+        log.exception("An error occurred during agent invocation.")
+        raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
 
 app.include_router(router)

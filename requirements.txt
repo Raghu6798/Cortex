@@ -1,6 +1,31 @@
-fastmcp
-httpx
-litellm
-python-dotenv
-langchain==1.0.0a6
-e2b-code-interpreter
+# Core FastAPI dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Authentication
+fastapi-clerk-auth==0.2.1
+
+# LangChain and AI dependencies
+langchain==0.1.0
+langchain-openai==0.0.2
+langchain-google-genai==1.0.1
+langchain-groq==0.0.1
+langchain-ollama==0.1.0
+langchain-community==0.0.10
+langchain-cerebras==0.0.1
+langgraph==0.0.26
+
+# LlamaIndex
+llama-index==0.9.15
+llama-index-llms-openai==0.1.6
+
+# Data handling
+pydantic==2.5.0
+python-dotenv==1.0.0
+
+# Utilities
+loguru==0.7.2
+httpx==0.25.2

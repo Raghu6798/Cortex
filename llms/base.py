@@ -6,6 +6,23 @@ from langchain_core.tools import BaseTool, tool
 from langchain_core.utils.function_calling import convert_to_openai_tool
 from langchain_core.language_models import BaseChatModel
 
+from llama_index.llms.openai import OpenAI
+from llama_index.llms.groq import Groq
+from llama_index.llms.mistralai import MistralAI
+
+from backend.app.config.settings import settings
+
+GROQ_MODELS = Groq(
+    model="openai/gpt-oss-20b",
+    api_base="https://api.groq.com/openai/v1",
+    api_key = settings.GROQ_API_KEY
+)
+
+MISTRAL_LLM = MistralAI(
+    model="mistral-small-latest",
+    api_base="https://api.mistral.ai/v1/"
+    api_key=settings.MISTRAL_API_KEY,
+)
 
 class ChatBaseOpenAI(BaseChatModel):
     """LangChain wrapper for a local OpenAI-compatible server with full tool support."""
@@ -50,3 +67,7 @@ class ChatBaseOpenAI(BaseChatModel):
     def _agenerate(self, messages: List[BaseMessage], stop: Optional[List[str]] = None, **kwargs: Any):
         raise NotImplementedError("Async generation not implemented for local model.")
 
+
+if __name__=="__main__":
+    result = llm.complete("HEY WHAT IS UP")
+    print(result)
