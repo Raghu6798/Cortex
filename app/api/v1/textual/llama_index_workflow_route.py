@@ -1,38 +1,97 @@
-# from pathlib import Path
+# REVISED FILE: app/api/v1/textual/llama_index_workflow_route.py
 
-# from workflows.events import StartEvent
-# from llama_index.indices.managed.llama_cloud import LlamaCloudIndex
-# from pathlib import Path
+import asyncio
+import aiohttp
+import urllib.parse
+from typing import Dict, Any
 
-# from workflows.events import StartEvent
-# from pathlib import Path
-# from typing import AsyncIterator, Any, List
+from llama_index.core.agent.workflow import ReActAgent
+from llama_index.core.workflow import Context
+from llama_index.llms.groq import Groq
+from llama_index.core.tools import FunctionTool
 
-# from fastapi import APIRouter, HTTPException
-# from fastapi.responses import StreamingResponse
-# from pydantic import BaseModel
+from fastapi import FastAPI, APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
 
-# from llama_index.core.agent.workflow import ReActAgent,CodeActAgent
-# from llama_index.core.llms.llm import LLM
-# from llama_index.core.workflow import Context
-# from llama_index.llms.groq import Groq
-
-# from app.schemas.llamaindex_schema import PrepEvent, InputEvent, StreamEvent, ToolCallEvent
-# from app.config.settings import Settings
+from app.config.settings import settings
 
 
-# settings = Settings()
+# --- Generic Async API Executor ---
+async def execute_api_call(
+    method: str,
+    url: str,
+    params: Dict[str, Any] = None,
+    headers: Dict[str, Any] = None,
+    json_body: Dict[str, Any] = None,
+) -> Dict[str, Any]:
+    """
+    Generic async function to make an HTTP request to any API.
+    """
+    request_kwargs = {}
+    if headers:
+        request_kwargs["headers"] = headers
+    if json_body:
+        request_kwargs["json"] = json_body
 
-# llm = Groq(model="llama-3.3-70b-versatile", api_key=settings.GROQ_API_KEY)
+    final_url = url
+    if params:
+        final_url += "?" + urllib.parse.urlencode(params)
+
+    print(f"▶️  Executing API Call: {method} {final_url}")
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.request(method, final_url, **request_kwargs) as response:
+                try:
+                    response_data = await response.json()
+                except aiohttp.ContentTypeError:
+                    response_data = await response.text()
+
+                if response.status >= 400:
+                    return {"error": "API request failed", "status": response.status, "details": response_data}
+                
+                print(f"✅ API Call Successful. Status: {response.status}")
+                return {"result": response_data}
+
+    except Exception as e:
+        return {"error": f"An unexpected error occurred: {e}"}
 
 
-# def add(x: int, y: int) -> int:
-#     """Useful function to add two numbers."""
-#     return x + y
+# --- Tool Definition ---
+def get_math_result(expression: str) -> Dict[str, Any]:
+    """
+    Calculates a mathematical expression using the math.js API.
+    """
+    return asyncio.run(execute_api_call(
+        method="GET",
+        url="http://api.mathjs.org/v4/",
+        params={"expr": expression}  # only single encode!
+    ))
 
-# def multiply(x: int, y: int) -> int:
-#     """Useful function to multiply two numbers."""
-#     return x * y
 
-# handler = llm.complete("Hello")
-# print(handler)
+print("--- Setting up LlamaIndex ReActAgent with a custom API tool ---")
+
+# 1. Initialize the LLM
+llm = Groq(model="meta-llama/llama-4-maverick-17b-128e-instruct", api_key=settings.GROQ_API_KEY)
+
+# 2. Wrap math function as a proper LlamaIndex tool
+math_tool = FunctionTool.from_defaults(fn=get_math_result, name="MathTool", description="Evaluate math expressions.")
+
+# 3. Set up the agent
+agent = ReActAgent(tools=[math_tool], llm=llm, verbose=True)
+
+# 4. Run the agent
+ctx = Context(agent)
+query = "What is 20 + (2 * 4)?"
+print(f"\n--- Running agent with query: '{query}' ---")
+async def main():
+    print(f"\n--- Running agent with query: '{query}' ---")
+    handler = await agent.run(query, ctx=ctx)
+    print(handler)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+
+router = APIRouter(prefix="/chat", tags=["chat"])
