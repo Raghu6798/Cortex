@@ -19,8 +19,7 @@ from app.schemas.api_schemas import InvokeRequestSchema, CortexResponseFormat
 log = logger
 router = APIRouter()
 
-# --- Generic API Tool Executor ---
-# This is the powerful, reusable function that all dynamic tools will call.
+
 @tool
 async def execute_api_call(input_params: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -38,8 +37,6 @@ async def execute_api_call(input_params: Dict[str, Any]) -> Dict[str, Any]:
 
     request_kwargs = {}
     try:
-        # NOTE: A 'resolve_value' function would be needed here to handle dynamic values
-        # For now, we'll assume direct values.
         final_url = base_url
         query_params = {param["key"]: param["value"] for param in query_params_def}
         if query_params:
