@@ -1,0 +1,18 @@
+# In docker/docker-compose.yaml
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres       # <-- Change this
+      POSTGRES_PASSWORD: postgres   # <-- Change this
+      POSTGRES_DB: postgres         # <-- Change this
+    ports:
+      - "5442:5432"                 # <-- Change the host port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

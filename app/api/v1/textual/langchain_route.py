@@ -1,6 +1,7 @@
 import os
 import sys
 from uuid import uuid4
+import asyncio
 import httpx
 from pydantic import BaseModel, Field
 import traceback
@@ -40,106 +41,116 @@ logger.add(
     colorize=True
 )
 log = logger
-from app.config.settings import AgentSettings, get_chat_model
-app = FastAPI(title="Secure Agenta ADE Backend")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-base_urls = [
-    "https://api.mistral.ai/v1/",
-    "https://api.cerebras.ai/v1/",
-    "https://openrouter.ai/api/v1",
-    "https://api.groq.com/openai/v1",
-    "https://api.sambanova.ai/v1",
-    "https://api.together.xyz/v1",
-    "http://localhost:11434/v1/",
-    "http://localhost:8080/v1/",
-    "https://integrate.api.nvidia.com/v1",
-]
-
-
-class AgentConfigSchema(BaseModel):
-    base_url: Optional[str] = Field(default="https://api.mistral.ai/v1/")
-    api_key: str
-    model_name: str = "mistral-small-2506"
-    temperature: float = 0.7
-    top_p: float = 0.9
-    top_k: int = 5
-    system_prompt: str = "You are a helpful AI assistant."
-
-
-class InvokeRequestSchema(AgentSettings):
-    message: str
-
-
-class CortexResponseFormat(BaseModel):
-    response: str
 
 @tool
-def search(query: str) -> str:
-    """Search for information on a given topic."""
-    log.info(f"Tool 'search' called with query: '{query}'")
-    return f"You searched for: {query}. The answer is always 42."
+async def execute_api_call(input_params: Dict[str, Any]):
+    """
+    Dynamically executes any HTTP request (GET, POST, PUT, DELETE, etc.) based on a
+    structured API definition.
 
-@tool
-def calculate(expression: str) -> str:
-    """Perform a mathematical calculation from an expression string."""
-    log.info(f"Tool 'calculate' called with expression: '{expression}'")
+    This function is designed to be method-agnostic. It constructs the URL, headers,
+    and request body based entirely on the provided input parameters, allowing it to
+    handle any type of HTTP request.
+
+    Args:
+        input_params: A dictionary containing the API call definition and runtime values
+                      sourced from the LLM or system variables.
+
+    Returns:
+        A dictionary with the JSON response from the API or a detailed error message.
+    """
+    # 1. Extract essential API information from the input
+    method = input_params.get("api_method", "GET").upper()
+    base_url = input_params.get("api_url")
+    path_params_def = input_params.get("api_path_params", [])
+    query_params_def = input_params.get("api_query_params", [])
+    headers_def = input_params.get("api_headers", [])
+    body_def = input_params.get("api_body", []) # Key for generic body handling
+    dynamic_variables = input_params.get("dynamic_variables", {})
+
+    if not base_url:
+        print("[function_handler] Error: 'api_url' not specified in input.")
+        return {"error": "API URL (api_url) was not specified."}
+
+    # Dictionary to hold keyword arguments for the aiohttp request
+    request_kwargs = {}
+
     try:
-        result = eval(expression, {"__builtins__": {}}, {})
-        log.success(f"Calculation successful: {expression} = {result}")
-        return f"The result of '{expression}' is {result}"
-    except Exception as e:
-        log.error(f"Failed to evaluate expression '{expression}': {e}")
-        return f"Failed to evaluate expression. Error: {e}"
+        # 2. Construct URL with Path and Query Parameters (Method-Agnostic)
+        for param in path_params_def:
+            param_name = param["name"]
+            param_value = resolve_value(param)
+            if param_value is not None:
+                base_url = base_url.replace(f"{{{param_name}}}", urllib.parse.quote(str(param_value)))
 
-tools = [search,calculate]
+        query_params = {}
+        for param in query_params_def:
+            param_name = param["name"]
+            param_value = resolve_value(param)
+            if param_value is not None:
+                query_params[param_name] = param_value
+        
+        final_url = base_url
+        if query_params:
+            final_url += "?" + urllib.parse.urlencode(query_params)
+
+        # 3. Construct Headers (Method-Agnostic)
+        headers = {}
+        for header in headers_def:
+            header_name = header["name"]
+            header_value = resolve_value(header)
+            if header_value is not None:
+                headers[header_name] = str(header_value)
+        if headers:
+            request_kwargs["headers"] = headers
+
+        # 4. Construct Request Body (Method-Agnostic)
+        # This block runs if 'api_body' is defined, regardless of the HTTP method.
+        if body_def:
+            payload = {}
+        
+            if payload:
+                request_kwargs["json"] = payload
+                print(f"[function_handler] Constructed request payload: {payload}")
+
+    except ValueError as e:
+        # Catches missing required parameter errors from resolve_value
+        print(f"[function_handler] Validation Error: {e}")
+        return {"error": str(e)}
+
+    # 5. Execute the HTTP Request
+    print(f"[function_handler] Executing API call: {method} {final_url}")
+    try:
+        async with aiohttp.ClientSession() as session:
+            # The 'method' variable determines the type of HTTP request dynamically.
+            async with session.request(method, final_url, **request_kwargs) as response:
+                response_data = None
+                # Gracefully handle non-JSON responses
+                try:
+                    response_data = await response.json()
+                except (aiohttp.ContentTypeError, aiohttp.client_exceptions.ContentTypeError):
+                    response_data = await response.text()
+
+                if response.status >= 400:
+                    print(f"[function_handler] API call failed with status {response.status}: {response_data}")
+                    return {
+                        "error": "API request failed.",
+                        "status_code": response.status,
+                        "details": response_data,
+                    }
+
+                print(f"[function_handler] API call successful. Status: {response.status}")
+                return response_data
+
+    except aiohttp.ClientConnectorError as e:
+        print(f"[function_handler] Connection Error: {e}")
+        return {"error": f"Could not connect to the server at {final_url}."}
+    except Exception as e:
+        print(f"[function_handler] An unexpected error occurred: {e}")
+        return {"error": f"An unexpected error occurred: {str(e)}"}
+
+
+tools = [execute_api_call]
 
 router = APIRouter(prefix="/chat", tags=["chat"])
-@router.post("/invoke", response_model=CortexResponseFormat)
-async def invoke_agent_sync(request: InvokeRequestSchema)->CortexResponseFormat:
-    """
-    Receives agent config and a message, runs the agent to completion,
-    and returns a single, final response.
-    """
-    log.info(f"Received non-streaming request for model '{request.model_name}'")
-    try:
-        agent_settings = request
-        llm = get_chat_model(agent_settings)
-        
-        agent = create_agent(
-            model=llm, 
-            tools=tools, 
-            prompt=request.system_prompt,
-            checkpointer=InMemorySaver(),
-        )
-
-        log.info(f"Invoking agent with input: '{request.message}'")
-        thread_id = str(uuid4())
-        response_data = await agent.ainvoke(
-            {"messages": [{"role": "user", "content": request.message}]}, {"configurable": {"thread_id": thread_id}}
-        )
-        
-        log.debug(f"Full agent response object: {response_data}")
-
-        final_output = "Agent did not return a final message."
-        if response_data and "messages" in response_data and response_data["messages"]:
-            last_message = response_data["messages"][-1]
-            if hasattr(last_message,"content"):
-                final_output = last_message.content
-
-        log.success("Agent invocation finished successfully.")
-        return CortexResponseFormat(response=final_output)
-
-    except Exception:
-        log.exception("An error occurred during agent invocation.")
-        raise HTTPException(status_code=500, detail={"error": "An error occurred on the server."})
-
-app.include_router(router)
