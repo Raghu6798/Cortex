@@ -11,7 +11,8 @@ from app.models.session import (
 )
 from app.services.session_service import session_service
 from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer
-
+from sqlalchemy.orm import Session
+from app.db.database import get_db
 # -------------------- Clerk Auth Setup --------------------
 clerk_config = ClerkConfig(
     jwks_url="https://supreme-caribou-95.clerk.accounts.dev/.well-known/jwks.json",
@@ -21,29 +22,31 @@ clerk_auth_guard = ClerkHTTPBearer(config=clerk_config, add_state=True)
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
-@router.get("/", response_model=SessionsListResponse)
+@router.get("/", response_model=List[ChatSession])
 async def get_user_sessions(
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+    db: Session = Depends(get_db)
 ):
     """Get all chat sessions for the authenticated user."""
     user_id = credentials.decoded.get("sub")
     if not user_id:
         raise HTTPException(status_code=401, detail="Invalid user credentials")
     
-    sessions = session_service.get_user_sessions(user_id)
+    sessions = session_service.get_user_sessions(db = db,user_id = user_id)
     return SessionsListResponse(sessions=sessions, total=len(sessions))
 
 @router.get("/{session_id}", response_model=ChatSession)
 async def get_session(
     session_id: str,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+   Session = Depends(get_db)
 ):
     """Get a specific chat session by ID."""
     user_id = credentials.decoded.get("sub")
     if not user_id:
         raise HTTPException(status_code=401, detail="Invalid user credentials")
     
-    session = session_service.get_session(user_id, session_id)
+    session = session_service.get_session(db = db , user_id = user_id,session_id =  session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -52,7 +55,8 @@ async def get_session(
 @router.post("/", response_model=ChatSession)
 async def create_session(
     request: SessionCreateRequest,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+    db: Session = Depends(get_db)
 ):
     """Create a new chat session."""
     user_id = credentials.decoded.get("sub")
@@ -60,9 +64,10 @@ async def create_session(
         raise HTTPException(status_code=401, detail="Invalid user credentials")
     
     session = session_service.create_session(
+        db=db,
         user_id=user_id,
         framework=request.framework,
-        title=request.title
+        title=request.title,
     )
     
     return session
@@ -71,7 +76,8 @@ async def create_session(
 async def update_session(
     session_id: str,
     request: SessionUpdateRequest,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+    Session = Depends(get_db)
 ):
     """Update an existing chat session."""
     user_id = credentials.decoded.get("sub")
@@ -90,7 +96,7 @@ async def update_session(
     if not update_data:
         raise HTTPException(status_code=400, detail="No update data provided")
     
-    session = session_service.update_session(user_id, session_id, **update_data)
+    session = session_service.update_session(db=db,user_id = user_id,session_id = session_id, **update_data)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -100,14 +106,15 @@ async def update_session(
 async def add_message_to_session(
     session_id: str,
     message: Message,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+    Session = Depends(get_db)
 ):
     """Add a message to a chat session."""
     user_id = credentials.decoded.get("sub")
     if not user_id:
         raise HTTPException(status_code=401, detail="Invalid user credentials")
     
-    session = session_service.add_message_to_session(user_id, session_id, message)
+    session = session_service.add_message_to_session(db=db,user_id = user_id,session_id = session_id,message =  message)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -116,14 +123,15 @@ async def add_message_to_session(
 @router.delete("/{session_id}")
 async def delete_session(
     session_id: str,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+    Session = Depends(get_db)
 ):
     """Delete a chat session."""
     user_id = credentials.decoded.get("sub")
     if not user_id:
         raise HTTPException(status_code=401, detail="Invalid user credentials")
     
-    success = session_service.delete_session(user_id, session_id)
+    success = session_service.delete_session(db=db,user_id = user_id,session_id = session_id)
     if not success:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -131,14 +139,15 @@ async def delete_session(
 
 @router.get("/user/stats")
 async def get_user_stats(
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
+    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
+    db: Session = Depends(get_db)
 ):
     """Get statistics for the authenticated user."""
     user_id = credentials.decoded.get("sub")
     if not user_id:
         raise HTTPException(status_code=401, detail="Invalid user credentials")
     
-    sessions = session_service.get_user_sessions(user_id)
+    sessions = session_service.get_user_sessions(db=db,user_id=user_id)
     total_sessions = len(sessions)
     total_messages = sum(len(session.messages) for session in sessions)
     

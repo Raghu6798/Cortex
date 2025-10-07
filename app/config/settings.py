@@ -8,6 +8,7 @@ from urllib.parse import urlparse
 
 # Use pydantic's dotenv functionality directly, no need for separate load_dotenv
 from pydantic import Field, SecretStr, model_validator
+from pydantic.networks import PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -55,10 +56,18 @@ class Settings(BaseSettings):
         extra='ignore' 
     )
     GROQ_API_KEY:str
+    DB_URI: PostgresDsn
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
+
+    @property
+    def DATABASE_URL(self) -> PostgresDsn:
+        return (
+            f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
+            f"@{self.POSTGRES_SERVER}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
+        )
 
 
 class AgentSettings(BaseSettings):
@@ -66,7 +75,7 @@ class AgentSettings(BaseSettings):
     A Pydantic settings model to hold the configuration for an AI agent.
     """
     # --- Model Configuration ---
-    model_name: str = Field(..., description="The name of the model to use.")
+    model_name: str = Field("meta-llama/llama-4-maverick-17b-128e-instruct", description="The name of the model to use.")
     api_key: Optional[SecretStr] = Field(None, description="The API key for the selected LLM provider.")
     base_url: Optional[str] = Field(None, description="The base URL for the API endpoint.")
     temperature: float = Field(default=0.7, ge=0.0, le=2.0)
@@ -148,6 +157,7 @@ def get_chat_model(settings: AgentSettings) -> BaseChatModel:
 
 
 settings = Settings()
+agent_settings = AgentSettings()
 if __name__ == "__main__":
     print("--- Testing LLM-Agnostic Module ---")
 
