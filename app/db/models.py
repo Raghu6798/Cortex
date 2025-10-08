@@ -16,7 +16,7 @@ class ChatSessionDB(Base):
     
     memory_usage = Column(Float, default=0.0)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     is_active = Column(Boolean, default=True)
 
     # Establish the one-to-many relationship to messages

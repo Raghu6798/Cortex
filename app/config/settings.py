@@ -59,6 +59,7 @@ class Settings(BaseSettings):
     DB_URI: PostgresDsn
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
+    CLERK_SECRET_KEY:str
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
 

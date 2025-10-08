@@ -1,71 +1,80 @@
-# FILE: test_api.py
+# REVISED and CORRECTED FILE: test_auth_dependency.py
 
-import requests
-import json
+import uvicorn
+import os
+from fastapi import FastAPI, Depends, HTTPException, Request # <-- Import Request
+from clerk_backend_api import Clerk
+from clerk_backend_api.security import authenticate_request
+from clerk_backend_api.security.types import AuthenticateRequestOptions
+from dotenv import load_dotenv
 
-# --- CONFIGURATION ---
-# The URL of your running backend server
-BASE_URL = "http://127.0.0.1:8000"
+# --- 1. SETUP: Load Environment Variables ---
+load_dotenv()
+print("Attempting to load environment variables from .env file...")
 
-# The endpoint we want to test
-ENDPOINT = "/sessions/"
+# --- 2. The CORRECT Authentication Logic ---
 
-# ==============================================================================
-# IMPORTANT: PASTE YOUR FRESH TOKEN HERE
-# Follow the "Logout and Refresh" steps to get a new token from your browser's
-# Network Tab and paste it between the quotes.
-# ==============================================================================
-TOKEN = "eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDEiLCJleHAiOjE3NTk4NjA0MzksImZ2YSI6WzIsLTFdLCJpYXQiOjE3NTk4NjAzNzksImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc1OTg2MDM2OSwic2lkIjoic2Vzc18zM2tUanl2bWlHeFlldTR4Zm54TUVFTjRLUkUiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.0Jjlva1h_b5fZCKb7YpvZzEkev2wsm708CBJmL2Cy3kV0iC0Rl3Vy5gpACEULVsrUeuHtWSlpr2JGiV5BRTLIRpYc0CugnUCuaw-M9ipvCIMRu4KXSITTxPlRC652MiP5_k5oR5H3EB11T4muKNLLbzH3PXlucrcyj758SSzqYoMPbyLwOXlgCX1byC2dsbhQPWWEJBy8nQxwzSJFbd4CrfDxvvrd0_hR_oJfPFPuhsNCbkuLQHGP4c95pupK3K4qn3_2PswYQ7kzZ9T2ebr0N_qzWSPg4bk-w5dhi3U8tKE3dzXONOMd-dlAgo2YVv21glvCgLYw1BiSjgc0ILmNw"  # <--- PASTE YOUR TOKEN HERE
+CLERK_SECRET_KEY = os.getenv("CLERK_SECRET_KEY")
+if not CLERK_SECRET_KEY:
+    raise ValueError("CRITICAL: CLERK_SECRET_KEY not set.")
 
-# --- SCRIPT LOGIC ---
+print("CLERK_SECRET_KEY loaded successfully.")
 
-def test_create_session():
+# Initialize the Clerk SDK
+clerk_sdk = Clerk(bearer_auth=CLERK_SECRET_KEY)
+
+# The Main Authentication Dependency that we are testing
+async def get_current_user(request: Request) -> dict:
     """
-    Sends an authenticated POST request to create a new chat session.
+    A FastAPI dependency that authenticates a user using the official
+    `authenticate_request` method and returns the token payload.
     """
-    if TOKEN == "ey...":
-        print("❌ ERROR: Please paste your actual authentication token into the TOKEN variable.")
-        return
-
-    full_url = f"{BASE_URL}{ENDPOINT}"
-    
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {TOKEN}"
-    }
-    
-    payload = {
-        "framework": "langchain"
-    }
-
-    print(f"▶️  Sending POST request to: {full_url}")
-    
     try:
-        response = requests.post(full_url, headers=headers, json=payload)
-
-        # Print the results
-        print(f"\n--- RESULTS ---")
-        print(f"Status Code: {response.status_code}")
+        # The official method to authenticate a request from a web framework.
+        # It automatically finds the token in headers or cookies.
+        request_state = clerk_sdk.authenticate_request(
+            request=request,
+            options=AuthenticateRequestOptions()
+        )
         
-        print("\nResponse Body:")
-        try:
-            # Try to print formatted JSON
-            print(json.dumps(response.json(), indent=2))
-        except json.JSONDecodeError:
-            # If response is not JSON, print as text
-            print(response.text)
+        # Check if the user is signed in
+        if not request_state.is_signed_in:
+            raise HTTPException(status_code=401, detail=f"Not authenticated: {request_state.reason}")
 
-        if response.status_code == 200:
-            print("\n✅ SUCCESS: The API call was successful and the session was created.")
-        else:
-            print("\n❌ FAILED: The API call failed. Check the status code and response body for details.")
+        # The token data is stored in the .payload attribute. THIS IS THE KEY.
+        if not request_state.payload:
+            raise HTTPException(status_code=403, detail="Invalid token: no payload.")
+        
+        # Return the dictionary of claims
+        return request_state.payload
 
-    except requests.exceptions.ConnectionError as e:
-        print(f"\n❌ CONNECTION ERROR: Could not connect to the server at {BASE_URL}.")
-        print("   Is your Uvicorn server running?")
+    except ClerkAPIException as e:
+        raise HTTPException(status_code=401, detail=f"Invalid authentication credentials: {e}")
     except Exception as e:
-        print(f"\n❌ UNEXPECTED ERROR: {e}")
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
+app = FastAPI()
+
+@app.get("/test-auth")
+async def protected_route_test(session_claims: dict = Depends(get_current_user)):
+    """
+    A test endpoint protected by our dependency.
+    """
+    print("--- Inside protected_route_test ---")
+    user_id = session_claims.get("sub")
+    session_id = session_claims.get("sid")
+    print(f"Successfully retrieved user ID from token claims: {user_id}")
+    
+    return {
+        "message": "Authentication successful!",
+        "authenticated_user_id": user_id,
+        "session_id": session_id
+    }
+
+# --- 4. A Main Block to Run This Test Server ---
 
 if __name__ == "__main__":
-    test_create_session()
+    print("\n--- Starting Standalone Authentication Test Server ---")
+    print("Use Postman or a script to send a GET request to http://127.0.0.1:8001/test-auth")
+    
+    uvicorn.run(app, host="127.0.0.1", port=8001)
