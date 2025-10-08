@@ -1,67 +1,63 @@
 """
-API routes for session management.
+API routes for session management, protected by a custom Clerk JWT dependency.
 """
-from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi_clerk_auth import HTTPAuthorizationCredentials
+from typing import List, Dict
+from fastapi import APIRouter, Depends, HTTPException
+
+from sqlalchemy.orm import Session
+from app.db.database import get_db
 
 from app.models.session import (
     ChatSession, AgentFramework, SessionCreateRequest, 
     SessionUpdateRequest, SessionsListResponse, Message
 )
 from app.services.session_service import session_service
-from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer
-from sqlalchemy.orm import Session
-from app.db.database import get_db
-# -------------------- Clerk Auth Setup --------------------
-clerk_config = ClerkConfig(
-    jwks_url="https://supreme-caribou-95.clerk.accounts.dev/.well-known/jwks.json",
-    auto_error=True
-)
-clerk_auth_guard = ClerkHTTPBearer(config=clerk_config, add_state=True)
 
-router = APIRouter(prefix="/sessions", tags=["sessions"])
+# --- Import our verified custom dependency ---
+from app.auth.clerk_auth import get_current_user
 
-@router.get("/", response_model=List[ChatSession])
+router = APIRouter(prefix="/sessions", tags=["Sessions"])
+
+@router.get("/", response_model=SessionsListResponse)
 async def get_user_sessions(
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
     """Get all chat sessions for the authenticated user."""
-    user_id = credentials.decoded.get("sub")
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
-    sessions = session_service.get_user_sessions(db = db,user_id = user_id)
+    sessions = session_service.get_user_sessions(db=db, user_id=user_id)
     return SessionsListResponse(sessions=sessions, total=len(sessions))
 
 @router.get("/{session_id}", response_model=ChatSession)
 async def get_session(
     session_id: str,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-   Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
-    """Get a specific chat session by ID."""
-    user_id = credentials.decoded.get("sub")
+    """Get a specific chat session by ID, ensuring it belongs to the authenticated user."""
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
-    session = session_service.get_session(db = db , user_id = user_id,session_id =  session_id)
+    session = session_service.get_session(db=db, user_id=user_id, session_id=session_id)
     if not session:
-        raise HTTPException(status_code=404, detail="Session not found")
+        raise HTTPException(status_code=404, detail="Session not found or you do not have permission to access it.")
     
     return session
 
 @router.post("/", response_model=ChatSession)
 async def create_session(
     request: SessionCreateRequest,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
-    """Create a new chat session."""
-    user_id = credentials.decoded.get("sub")
+    """Create a new chat session for the authenticated user."""
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
     session = session_service.create_session(
         db=db,
@@ -69,36 +65,27 @@ async def create_session(
         framework=request.framework,
         title=request.title,
     )
-    
     return session
 
 @router.put("/{session_id}", response_model=ChatSession)
 async def update_session(
     session_id: str,
     request: SessionUpdateRequest,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-    Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
-    """Update an existing chat session."""
-    user_id = credentials.decoded.get("sub")
+    """Update an existing chat session, ensuring it belongs to the authenticated user."""
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
-    # Prepare update data
-    update_data = {}
-    if request.title is not None:
-        update_data["title"] = request.title
-    if request.agent_config is not None:
-        update_data["agent_config"] = request.agent_config
-    if request.messages is not None:
-        update_data["messages"] = request.messages
-    
+    update_data = request.model_dump(exclude_unset=True)
     if not update_data:
-        raise HTTPException(status_code=400, detail="No update data provided")
+        raise HTTPException(status_code=400, detail="No update data provided.")
     
-    session = session_service.update_session(db=db,user_id = user_id,session_id = session_id, **update_data)
+    session = session_service.update_session(db=db, user_id=user_id, session_id=session_id, **update_data)
     if not session:
-        raise HTTPException(status_code=404, detail="Session not found")
+        raise HTTPException(status_code=404, detail="Session not found or you do not have permission to modify it.")
     
     return session
 
@@ -106,56 +93,57 @@ async def update_session(
 async def add_message_to_session(
     session_id: str,
     message: Message,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-    Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
-    """Add a message to a chat session."""
-    user_id = credentials.decoded.get("sub")
+    """Add a message to a chat session, ensuring it belongs to the authenticated user."""
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
-    session = session_service.add_message_to_session(db=db,user_id = user_id,session_id = session_id,message =  message)
-    if not session:
-        raise HTTPException(status_code=404, detail="Session not found")
-    
-    return session
+    # First, verify the user has access to this session
+    session_check = session_service.get_session(db=db, user_id=user_id, session_id=session_id)
+    if not session_check:
+        raise HTTPException(status_code=404, detail="Session not found or you do not have permission to add messages to it.")
 
-@router.delete("/{session_id}")
+    updated_session = session_service.add_message_to_session(db=db, user_id=user_id, session_id=session_id, message=message)
+    return updated_session
+
+@router.delete("/{session_id}", response_model=Dict)
 async def delete_session(
     session_id: str,
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-    Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
-    """Delete a chat session."""
-    user_id = credentials.decoded.get("sub")
+    """Delete a chat session, ensuring it belongs to the authenticated user."""
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
-    success = session_service.delete_session(db=db,user_id = user_id,session_id = session_id)
+    success = session_service.delete_session(db=db, user_id=user_id, session_id=session_id)
     if not success:
-        raise HTTPException(status_code=404, detail="Session not found")
+        raise HTTPException(status_code=404, detail="Session not found or you do not have permission to delete it.")
     
     return {"message": "Session deleted successfully"}
 
-@router.get("/user/stats")
+@router.get("/user/stats", response_model=Dict)
 async def get_user_stats(
-    credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    token_payload: dict = Depends(get_current_user)
 ):
-    """Get statistics for the authenticated user."""
-    user_id = credentials.decoded.get("sub")
+    """Get session statistics for the authenticated user."""
+    user_id = token_payload.get("sub")
     if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid user credentials")
+        raise HTTPException(status_code=403, detail="User ID not found in token.")
     
-    sessions = session_service.get_user_sessions(db=db,user_id=user_id)
+    sessions = session_service.get_user_sessions(db=db, user_id=user_id)
     total_sessions = len(sessions)
-    total_messages = sum(len(session.messages) for session in sessions)
+    total_messages = sum(len(s.messages) for s in sessions)
     
-    # Count by framework
     framework_counts = {}
     for session in sessions:
-        framework = session.framework.value
-        framework_counts[framework] = framework_counts.get(framework, 0) + 1
+        framework_val = session.framework.value if isinstance(session.framework, AgentFramework) else session.framework
+        framework_counts[framework_val] = framework_counts.get(framework_val, 0) + 1
     
     return {
         "total_sessions": total_sessions,
