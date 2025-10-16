@@ -15,47 +15,116 @@ from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.config.settings import settings
+from backend.app.config.settings import settings
 
 
-# --- Generic Async API Executor ---
-async def execute_api_call(
-    method: str,
-    url: str,
-    params: Dict[str, Any] = None,
-    headers: Dict[str, Any] = None,
-    json_body: Dict[str, Any] = None,
-) -> Dict[str, Any]:
+@tool
+async def execute_api_call(input_params: Dict[str, Any]):
     """
-    Generic async function to make an HTTP request to any API.
+    Dynamically executes any HTTP request (GET, POST, PUT, DELETE, etc.) based on a
+    structured API definition.
+
+    This function is designed to be method-agnostic. It constructs the URL, headers,
+    and request body based entirely on the provided input parameters, allowing it to
+    handle any type of HTTP request.
+
+    Args:
+        input_params: A dictionary containing the API call definition and runtime values
+                      sourced from the LLM or system variables.
+
+    Returns:
+        A dictionary with the JSON response from the API or a detailed error message.
     """
+    # 1. Extract essential API information from the input
+    method = input_params.get("api_method", "GET").upper()
+    base_url = input_params.get("api_url")
+    path_params_def = input_params.get("api_path_params", {})
+    query_params_def = input_params.get("api_query_params", {})
+    headers_def = input_params.get("api_headers", {})
+    body_def = input_params.get("api_body", {}) 
+    dynamic_variables = input_params.get("dynamic_variables",{})
+    logger.info(f"{method},{base_url},{path_params_def},{query_params_def},{headers_def},{body_def},{dynamic_variables}")
+    if not base_url:
+        print("[function_handler] Error: 'api_url' not specified in input.")
+        return {"error": "API URL (api_url) was not specified."}
+
     request_kwargs = {}
-    if headers:
-        request_kwargs["headers"] = headers
-    if json_body:
-        request_kwargs["json"] = json_body
 
-    final_url = url
-    if params:
-        final_url += "?" + urllib.parse.urlencode(params)
+    try:
+        # 2. Construct URL with Path and Query Parameters (Method-Agnostic)
+        for param,value in path_params_def.items():
+            logger.info(f"{param}---->{value}")
+            if value is not None:
+                base_url = base_url.replace(f"{{{param}}}", str(value))
 
-    print(f"▶️  Executing API Call: {method} {final_url}")
+        query_params = {}
+        for query,value in query_params_def.items():
+            logger.info(f"{query}---->{value}")
+            if value is not None:
+                query_params[query] = value
+        
+        final_url = base_url
+        if query_params:
+            final_url += "?" + urllib.parse.urlencode(query_params)
+        print(final_url)
+
+        # 3. Construct Headers (Method-Agnostic)
+        headers = {}
+        for header,value in headers_def.items():
+            logger.info(f"{header}----->{value}")
+            if value is not None:
+                headers[header] = str(value)
+        if headers:
+            request_kwargs["headers"] = headers
+
+        # 4. Construct Request Body (Method-Agnostic)
+        # This block runs if 'api_body' is defined, regardless of the HTTP method.
+        if body_def:
+            payload = {}
+            for prop,value in body_def.items():
+                logger.info(f"{prop} ---> {value}")
+                if prop:
+                    payload[prop] = value
+            if payload:
+                logger.info(payload)
+                request_kwargs["json"] = payload
+                logger.info(f"[function_handler] Constructed request payload: {payload}")
+
+    except ValueError as e:
+        # Catches missing required parameter errors from resolve_value
+        logger.error(f"[function_handler] Validation Error: {e}")
+        return {"error": str(e)}
+
+    # 5. Execute the HTTP Request
+    logger.debug(f"[function_handler] Executing API call: {method} {final_url}")
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.request(method, final_url, **request_kwargs) as response:
+            # The 'method' variable determines the type of HTTP request dynamically.
+            async with session.request(method, final_url,**request_kwargs) as response:
+                response_data = None
+                # Gracefully handle non-JSON responses
                 try:
                     response_data = await response.json()
-                except aiohttp.ContentTypeError:
+                except (aiohttp.ContentTypeError, aiohttp.client_exceptions.ContentTypeError):
                     response_data = await response.text()
 
                 if response.status >= 400:
-                    return {"error": "API request failed", "status": response.status, "details": response_data}
-                
-                print(f"✅ API Call Successful. Status: {response.status}")
-                return {"result": response_data}
+                    print(f"[function_handler] API call failed with status {response.status}: {response_data}")
+                    return {
+                        "error": "API request failed.",
+                        "status_code": response.status,
+                        "details": response_data,
+                    }
 
+                logger.success(f"[function_handler] API call successful. Status: {response_data}")
+                return response_data
+
+    except aiohttp.ClientConnectorError as e:
+        logger.error(f"[function_handler] Connection Error: {e}")
+        return {"error": f"Could not connect to the server at {final_url}."}
     except Exception as e:
-        return {"error": f"An unexpected error occurred: {e}"}
+        logger.error(f"[function_handler] An unexpected error occurred: {e}")
+        return {"error": f"An unexpected error occurred: {str(e)}"}
 
 
 # --- Tool Definition ---

@@ -5,16 +5,16 @@ from typing import List, Dict
 from fastapi import APIRouter, Depends, HTTPException
 
 from sqlalchemy.orm import Session
-from app.db.database import get_db
+from backend.app.db.database import get_db
 
-from app.models.session import (
+from backend.app.models.session import (
     ChatSession, AgentFramework, SessionCreateRequest, 
     SessionUpdateRequest, SessionsListResponse, Message
 )
-from app.services.session_service import session_service
+from backend.app.services.session_service import session_service
 
 # --- Import our verified custom dependency ---
-from app.auth.clerk_auth import get_current_user
+from backend.app.auth.clerk_auth import get_current_user
 
 router = APIRouter(prefix="/sessions", tags=["Sessions"])
 

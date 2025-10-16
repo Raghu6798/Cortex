@@ -31,18 +31,6 @@ sys.path.append(str(ROOT_DIR))
 load_dotenv()
 DOTENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 
-base_urls = [
-    "https://api.mistral.ai/v1/",
-    "https://api.cerebras.ai/v1/",
-    "https://openrouter.ai/api/v1",
-    "https://api.groq.com/openai/v1",
-    # "https://api.sambanova.ai/v1",
-    "https://api.together.xyz/v1",
-    "http://localhost:11434/v1/",
-    "http://localhost:8080/v1/",
-    "https://integrate.api.nvidia.com/v1",
-]
-
 Provider = Literal[
     "openai", "google", "groq", "ollama", "mistral", "together",
     "openrouter", "nvidia", "cerebras", "sambanova", "llama_cpp",
@@ -55,6 +43,7 @@ class Settings(BaseSettings):
         env_file_encoding='utf-8',
         extra='ignore' 
     )
+    PORTKEY_API_KEY:str
     GROQ_API_KEY:str
     DB_URI: PostgresDsn
     CEREBRAS_API_KEY:str
@@ -160,51 +149,5 @@ def get_chat_model(settings: AgentSettings) -> BaseChatModel:
 settings = Settings()
 agent_settings = AgentSettings()
 if __name__ == "__main__":
-    print("--- Testing LLM-Agnostic Module ---")
-
-    # Check if the .env file exists at the expected path
-    if not DOTENV_PATH.exists():
-        print(f"--- WARNING: .env file not found at {DOTENV_PATH} ---")
-        print("Please ensure it exists and contains your API keys (e.g., GROQ_API_KEY=...).")
-    else:
-        print(f"Successfully located .env file at: {DOTENV_PATH}")
-
-    # 1. Test with Groq configuration
-    print("\n[1] Testing Groq...")
-    groq_api_key = os.getenv("GROQ_API_KEY")
-    if groq_api_key:
-        groq_config_data = {
-            "model_name": "openai/gpt-oss-20b", 
-            "api_key": groq_api_key,
-            "base_url": "https://api.groq.com/openai/v1"
-        }
-        groq_settings = AgentSettings.model_validate(groq_config_data)
-        groq_llm = get_chat_model(groq_settings)
-        # response = groq_llm.invoke("Hey what is up?")
-        # print(response.content)
-        print(f"  -> Determined Provider: {groq_settings.provider}")
-        print(f"  -> Initialized Model: {type(groq_llm).__name__}")
-        assert isinstance(groq_llm, ChatGroq), "Model should be ChatGroq"
-    else:
-        print("  -> SKIPPED: GROQ_API_KEY not found in environment/.env file.")
-
-    print("\n[2] Testing Google Gemini...")
-    google_api_key = os.getenv("GOOGLE_API_KEY")
-    if google_api_key:
-        google_config_data = {
-            "model_name": "gemini-2.5-flash", 
-            "api_key": google_api_key,
-        }
-        google_settings = AgentSettings.model_validate(google_config_data)
-        google_llm = get_chat_model(google_settings)
-        response = google_llm.invoke("Hey what is up?")
-        print(response.content)
-        print()
-        print(f"  -> Determined Provider: {google_settings.provider}")
-        print(f"  -> Initialized Model: {type(google_llm).__name__}")
-        assert isinstance(google_llm, ChatGoogleGenerativeAI), "Model should be ChatGoogleGenerativeAI"
-    else:
-        print("  -> SKIPPED: GOOGLE_API_KEY not found in environment/.env file.")
-
-
-    print("\n--- Test execution finished. ---")
+    print(settings.CEREBRAS_API_KEY)
+    print(settings.DB_URI)

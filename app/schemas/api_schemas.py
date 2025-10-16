@@ -16,9 +16,11 @@ class ToolConfigSchema(BaseModel):
     api_headers: List[Dict[str, str]] = []
     api_query_params: List[Dict[str, str]] = []
 
-class InvokeRequestSchema(AgentSettings):
+class CortexInvokeRequestSchema(AgentSettings):
     message: str
     tools: List[ToolConfigSchema] = []
+    provider_id: Optional[str] = "openai"  # Provider ID from dropdown
+    model_id: Optional[str] = None  # Model ID from dropdown
 
 class CortexResponseFormat(BaseModel):
     response: str

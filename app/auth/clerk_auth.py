@@ -31,3 +31,5 @@ async def get_current_user(request: Request) -> dict:
         return request_state.payload
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
+
+

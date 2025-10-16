@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "agno>=2.0.8",
+    "aiohttp>=3.12.15",
     "alembic>=1.16.5",
     "clerk-backend-api>=3.3.0",
     "e2b-code-interpreter>=2.0.0",

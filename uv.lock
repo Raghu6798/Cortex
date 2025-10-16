@@ -223,6 +223,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "agno" },
+    { name = "aiohttp" },
     { name = "alembic" },
     { name = "clerk-backend-api" },
     { name = "e2b-code-interpreter" },
@@ -261,6 +262,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "agno", specifier = ">=2.0.8" },
+    { name = "aiohttp", specifier = ">=3.12.15" },
     { name = "alembic", specifier = ">=1.16.5" },
     { name = "clerk-backend-api", specifier = ">=3.3.0" },
     { name = "e2b-code-interpreter", specifier = ">=2.0.0" },
