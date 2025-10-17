@@ -8,8 +8,15 @@ import traceback
 from typing import Optional,AsyncIterator,Dict,Any
 from functools import lru_cache
 
-from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
+from langchain_cerebras import ChatCerebras
+from langchain_mistralai import ChatMistralAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
+
+from langchain_core.tools import tool
+from langchain_sambanova import ChatSambaNovaCloud
 from langchain_core.messages import AIMessageChunk
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
@@ -25,12 +32,12 @@ from clerk_backend_api import Clerk
 from clerk_backend_api.security import authenticate_request
 from clerk_backend_api.security.types import AuthenticateRequestOptions
 
-from backend.app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
-from backend.app.utils.logger import logger
-from backend.app.auth.clerk_auth import get_current_user
-from backend.app.integrations.llm_router import llm_router
-from backend.app.db.database import get_db
-from backend.app.db.models import ChatSessionDB
+from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
+from app.utils.logger import logger
+from app.auth.clerk_auth import get_current_user
+from app.integrations.llm_router import llm_router
+from app.db.database import get_db
+from app.db.models import ChatSessionDB, LLMProviderDB, LLMModelDB, ChatMetricsDB
 
 
 @tool
@@ -143,8 +150,9 @@ async def execute_api_call(input_params: Dict[str, Any]):
 
 router = APIRouter(prefix="/api/v1", tags=["textual"])
 
-@router.post("/chat/invoke", response_model=CortexResponseFormat, tags=["Chat"])
-async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> CortexResponseFormat:
+@router.post("/chat/invoke",response_model=CortexResponseFormat,tags=["Chat"])
+async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> CortexResponseFormat:
+
     """
     Invokes a ReAct agent with the given request.
     """
@@ -155,22 +163,73 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
     session = db.query(ChatSessionDB).filter(ChatSessionDB.user_id == user_id).first()
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
+    logger.info(f"request payload : {request}")
+    provider_id = request.provider_id
+    model_id = request.model_id
     
-    # Get the provider configuration from the request
-    provider_id = getattr(request, 'provider_id', 'openai')  # Default to openai
-    model_id = getattr(request, 'model_id', request.model_name)
+    logger.info(f"Request provider_id: {provider_id}")
+    logger.info(f"Request model_id: {model_id}")
     
     # Get provider info from llm_router
     provider = await llm_router.get_provider(provider_id)
     if not provider:
         raise HTTPException(status_code=400, detail=f"Provider {provider_id} not found")
+
+    api_key = request.api_key.get_secret_value() if request.api_key else provider.api_key
     
-    # Initialize ChatOpenAI with provider configuration
-    llm = ChatOpenAI(
-        base_url=provider.provider_info.base_url,
-        api_key=provider.api_key,
-        model=model_id
-    )
+    logger.info(f"Provider ID: {provider_id} and {provider.provider_info}")
+    logger.info(f"Base URL: {request.base_url or provider.provider_info.base_url}")
+    logger.info(f"The temperature is: {request.temperature}")
+    logger.info(f"The max tokens is: {request.max_tokens}")
+    
+    if not api_key:
+        raise HTTPException(status_code=400, detail="API key is required for this provider. Please configure your API key in the agent settings.")
+    
+    # Dynamic LLM initialization based on provider
+    if provider_id == "sambanova":
+        llm = ChatSambaNovaCloud(
+            api_key=api_key,
+            model=model_id,
+            temperature=request.temperature
+        )
+    elif provider_id == "cerebras":
+        llm = ChatBaseOpenAI(
+            base_url=provider.provider_info.base_url,
+            model=model_id,
+            temperature=request.temperature,
+            api_key=SecretStr(api_key),
+        )
+    elif provider_id == "groq":
+        llm = ChatGroq(
+            api_key=api_key,
+            model=model_id,
+            temperature=request.temperature
+        )
+    elif provider_id == "google":
+        llm = ChatGoogleGenerativeAI(
+            api_key=api_key,
+            model=model_id,
+            temperature=request.temperature
+        )
+    elif provider_id == "mistral":
+        llm = ChatMistralAI(
+            api_key=api_key,
+            model=model_id,
+            temperature=request.temperature
+        )
+    elif provider_id == "nvidia":
+    
+        llm = ChatNVIDIA(
+            api_key=api_key,
+            model=model_id,
+            temperature=request.temperature
+        )
+    else:
+        llm = ChatOpenAI(
+            api_key=api_key,
+            model=model_id,
+            temperature=request.temperature
+        )
     tools = [execute_api_call]
     agent = create_agent(
         model=llm,
@@ -179,7 +238,83 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
         checkpointer=InMemorySaver(),
     )
     
-    response = await agent.ainvoke({"messages": [{"role": "user", "content": request.message}]}, config={"configurable": {"session_id": session.id}})
-    return CortexResponseFormat(response=response["messages"][-1].content)
-
+    try:
+        response_raw = await agent.ainvoke(
+            {"messages": [{"role": "user", "content": request.message}]},
+            config={"configurable": {"thread_id": session.id}}
+        )
+        logger.info(f"Response type: {type(response_raw)}")
+        logger.info(f"Response content: {response_raw}")
+        
+        # Extract the AI message content for frontend display
+        ai_message = None
+        if isinstance(response_raw, dict) and "messages" in response_raw:
+            for message in response_raw["messages"]:
+                if message.type == "ai":
+                    ai_message = message.content
+                    break
+        
+        if not ai_message:
+            raise HTTPException(status_code=500, detail="No AI response generated")
+        
+        # Store the full response object in database for metrics tracking
+        try:
+            # Extract metrics from the response
+            if isinstance(response_raw, dict) and "messages" in response_raw:
+                ai_message_obj = None
+                for message in response_raw["messages"]:
+                    if message.type == "ai":
+                        ai_message_obj = message
+                        break
+                
+                if ai_message_obj and hasattr(ai_message_obj, 'response_metadata') and ai_message_obj.response_metadata:
+                    metadata = ai_message_obj.response_metadata
+                    token_usage = metadata.get("token_usage", {})
+                    usage_metadata = getattr(ai_message_obj, 'usage_metadata', {})
+                    
+                    # Create metrics record
+                    metrics = ChatMetricsDB(
+                        id=str(uuid4()),
+                        session_id=session.id,
+                        user_id=user_id,
+                        provider_id=provider_id,
+                        model_id=model_id,
+                        input_tokens=usage_metadata.get("input_tokens") or token_usage.get("prompt_tokens"),
+                        output_tokens=usage_metadata.get("output_tokens") or token_usage.get("completion_tokens"),
+                        total_tokens=usage_metadata.get("total_tokens") or token_usage.get("total_tokens"),
+                        completion_time=token_usage.get("completion_time"),
+                        prompt_time=token_usage.get("prompt_time"),
+                        queue_time=token_usage.get("queue_time"),
+                        total_time=token_usage.get("total_time"),
+                        model_name=metadata.get("model_name"),
+                        system_fingerprint=metadata.get("system_fingerprint"),
+                        service_tier=metadata.get("service_tier"),
+                        finish_reason=metadata.get("finish_reason"),
+                        response_metadata=metadata
+                    )
+                    
+                    db.add(metrics)
+                    db.commit()
+                    
+                    total_tokens = usage_metadata.get("total_tokens") or token_usage.get("total_tokens")
+                    total_time = token_usage.get("total_time")
+                    logger.info(f"Stored metrics for session {session.id}: {total_tokens} tokens, {total_time}s")
+                else:
+                    logger.warning("No response metadata found for metrics tracking")
+                    
+        except Exception as e:
+            logger.error(f"Failed to store metrics: {str(e)}")
+            # Don't fail the request if metrics storage fails
+        
+        # Return only the AI message content to frontend
+        return CortexResponseFormat(response=ai_message)
+        
+    except Exception as e:
+        logger.error(f"Error during agent invocation: {str(e)}")
+        if "invalid_api_key" in str(e).lower() or "authentication" in str(e).lower():
+            raise HTTPException(status_code=401, detail=f"Invalid API key for {provider_id}. Please check your API key in the agent settings. Error: {str(e)}")
+        elif "rate_limit" in str(e).lower():
+            raise HTTPException(status_code=429, detail="Rate limit exceeded. Please try again later.")
+        else:
+            raise HTTPException(status_code=500, detail=f"Error processing request: {str(e)}")
  

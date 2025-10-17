@@ -1,3 +1,4 @@
+# app/db/models.py
 from sqlalchemy import Column, String, DateTime, ForeignKey, Float, JSON, Boolean, Text, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func 
@@ -49,7 +50,6 @@ class LLMProviderDB(Base):
     base_url = Column(String, nullable=False)
     logo_url = Column(String, nullable=True)
     description = Column(Text, nullable=True)
-    is_active = Column(Boolean, default=True)
     requires_api_key = Column(Boolean, default=True)
     supports_streaming = Column(Boolean, default=True)
     supports_tools = Column(Boolean, default=True)
@@ -71,11 +71,44 @@ class LLMModelDB(Base):
     display_name = Column(String, nullable=False)
     description = Column(Text, nullable=True)
     context_length = Column(Integer, default=4096)
-    input_cost_per_token = Column(Float, default=0.0)
-    output_cost_per_token = Column(Float, default=0.0)
-    is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     # Relationship back to provider
     provider = relationship("LLMProviderDB", back_populates="models")
+
+class ChatMetricsDB(Base):
+    __tablename__ = "chat_metrics"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String, primary_key=True, index=True)
+    session_id = Column(String, ForeignKey("chat_sessions.id"), nullable=False)
+    user_id = Column(String, nullable=False, index=True)
+    provider_id = Column(String, nullable=False)
+    model_id = Column(String, nullable=False)
+    
+    # Token usage metrics
+    input_tokens = Column(Integer, nullable=True)
+    output_tokens = Column(Integer, nullable=True)
+    total_tokens = Column(Integer, nullable=True)
+    
+    # Timing metrics
+    completion_time = Column(Float, nullable=True)
+    prompt_time = Column(Float, nullable=True)
+    queue_time = Column(Float, nullable=True)
+    total_time = Column(Float, nullable=True)
+    
+    # Model and service info
+    model_name = Column(String, nullable=True)
+    system_fingerprint = Column(String, nullable=True)
+    service_tier = Column(String, nullable=True)
+    finish_reason = Column(String, nullable=True)
+    
+    # Full response metadata as JSON for detailed tracking
+    response_metadata = Column(JSON, nullable=True)
+    
+    # Timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    
+    # Relationship to session
+    session = relationship("ChatSessionDB")

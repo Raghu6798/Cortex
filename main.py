@@ -1,33 +1,29 @@
+# main.py
 import sys
 import uvicorn
-from loguru import logger
+import os
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.db.database import engine
-from backend.app.db import models
-from backend.app.schemas.api_schemas import HealthStatus
-
-from backend.app.db.database import engine, Base
-from backend.app.api.v1.textual.langchain_route import router as langchain_router
-from backend.app.api.v1.sessions import router as sessions_router
-from backend.app.api.v1.frameworks import router as frameworks_router
-from backend.app.api.v1.providers import router as providers_router
-
-logger.remove()
-logger.add(sys.stderr, level="INFO", format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}:{function}:{line}</cyan> - <level>{message}</level>", colorize=True)
-log = logger
+from app.db.database import engine, Base
+from app.db import models
+from app.schemas.api_schemas import HealthStatus
+from app.api.v1.textual.langchain_route import router as langchain_router
+from app.api.v1.sessions import router as sessions_router
+from app.api.v1.frameworks import router as frameworks_router
+from app.api.v1.providers import router as providers_router
+from app.utils.logger import logger 
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    log.info("Application starting up...")
-    log.info("Setting up database schema...")
+    logger.info("Application starting up...")
+    logger.info("Setting up database schema...")
     
     try:
         # Use Alembic for database migrations instead of manual table creation
-        log.info("Running database migrations with Alembic...")
+        logger.info("Running database migrations with Alembic...")
         
         import subprocess
         import sys
@@ -38,27 +34,27 @@ async def lifespan(app: FastAPI):
         ], cwd=".", capture_output=True, text=True)
         
         if result.returncode == 0:
-            log.success("Database migrations completed successfully!")
+            logger.success("Database migrations completed successfully!")
         else:
-            log.error(f"Alembic migration failed: {result.stderr}")
+            logger.error(f"Alembic migration failed: {result.stderr}")
             # Fallback to manual creation if migrations fail
-            log.warning("Falling back to manual table creation...")
+            logger.warning("Falling back to manual table creation...")
             Base.metadata.create_all(bind=engine, checkfirst=True)
-            log.success("Database schema ready with fallback!")
+            logger.success("Database schema ready with fallback!")
         
     except Exception as e:
-        log.error(f"Database setup failed: {e}")
+        logger.error(f"Database setup failed: {e}")
         # Final fallback - try manual creation
         try:
-            log.warning("Attempting final fallback...")
+            logger.warning("Attempting final fallback...")
             Base.metadata.create_all(bind=engine, checkfirst=True)
-            log.success("Database schema ready with final fallback!")
+            logger.success("Database schema ready with final fallback!")
         except Exception as e2:
-            log.error(f"Could not create database: {e2}")
+            logger.error(f"Could not create database: {e2}")
             raise e2
     
     yield
-    log.info("Application shutting down...")
+    logger.info("Application shutting down...")
 
 
 app = FastAPI(lifespan=lifespan)
@@ -66,7 +62,7 @@ app = FastAPI(lifespan=lifespan)
 # --- Middleware ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], 
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -81,11 +77,11 @@ async def greet():
 async def health_check():
     return {"status": "ok", "message": "Service is healthy"}
 
-log.info("Including API routers...")
+logger.info("Including API routers...")
 app.include_router(sessions_router, prefix="/api/v1")
-app.include_router(frameworks_router, prefix="/api/v1")
-app.include_router(langchain_router, prefix="/api/v1")
-app.include_router(providers_router, prefix="/api/v1")
+app.include_router(frameworks_router)
+app.include_router(langchain_router)
+app.include_router(providers_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

@@ -18,6 +18,9 @@ langchain-community
 langchain-cerebras
 langgraph
 
+# Cerebras Cloud SDK
+cerebras-cloud-sdk
+
 # LlamaIndex
 llama-index
 llama-index-llms-openai

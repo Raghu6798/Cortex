@@ -1,15 +1,21 @@
-#!/usr/bin/env python3
+#app/scripts/check_tables.py
 """
 Script to check database tables.
 """
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import transformers
+transformers.logging.set_verbosity_error()
 
 from sqlalchemy import text
-from backend.app.db.database import engine
-from backend.app.utils.logger import logger as log
+from app.db.database import engine
+from app.utils.logger import logger as log
+
+os.environ['TRANSFORMERS_NO_ADVISORY_WARNINGS'] = '1'
+os.environ['PYTORCH_NO_WARN_DEPRECATED_API'] = '1'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 def check_tables():
     """Check what tables exist in the database."""

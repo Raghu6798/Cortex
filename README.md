@@ -1,0 +1,1 @@
+Always move to /backend and then run the just commands 

@@ -10,10 +10,10 @@ from enum import Enum
 from sqlalchemy.orm import Session
 from sqlalchemy import and_
 
-from backend.app.config.settings import settings
-from backend.app.db.models import LLMProviderDB, LLMModelDB
-from backend.app.db.database import get_db
-from backend.app.schemas.provider_schemas import ProviderInfo, ModelInfo
+from app.config.settings import settings
+from app.db.models import LLMProviderDB, LLMModelDB
+from app.db.database import get_db
+from app.schemas.provider_schemas import ProviderInfo, ModelInfo
 
 class BaseLLMProvider(ABC):
     """Base class for all LLM providers"""
@@ -440,13 +440,7 @@ class LLMProviderRouter:
         
         return await provider.chat_completion(messages, model, **kwargs)
     
-    async def stream_chat(
-        self, 
-        provider_id: str, 
-        model: str, 
-        messages: List[Dict[str, str]], 
-        **kwargs
-    ) -> AsyncIterator[Dict[str, Any]]:
+    async def stream_chat(self, provider_id: str, model: str, messages: List[Dict[str, str]], **kwargs) -> AsyncIterator[Dict[str, Any]]:
         """Stream chat completion"""
         provider = await self.get_provider(provider_id)
         if not provider:
@@ -499,9 +493,7 @@ class LLMProviderRouter:
                             model_id=model_info.id,
                             display_name=model_info.name,
                             description=model_info.description,
-                            context_length=model_info.context_length,
-                            input_cost_per_token=model_info.input_cost,
-                            output_cost_per_token=model_info.output_cost
+                            context_length=model_info.context_length
                         )
                         db.add(model_db)
             except Exception as e:
@@ -523,4 +515,3 @@ if __name__ == "__main__":
     print(sambanova_models[0])
     cerebras_models = asyncio.run(llm_router.get_models_for_provider("cerebras"))
     print(cerebras_models[0])
-

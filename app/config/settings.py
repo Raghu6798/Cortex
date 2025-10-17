@@ -16,7 +16,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
-from langchain_ollama import ChatOllama
+# from langchain_ollama import ChatOllama  # Import only when needed to avoid startup issues
 from langchain_community.chat_models import ChatLlamaCpp
 from langchain_cerebras import ChatCerebras
 
@@ -49,6 +49,7 @@ class Settings(BaseSettings):
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
     CLERK_SECRET_KEY:str
+    TRANSFORMERS_NO_ADVISORY_WARNINGS:str
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
 
@@ -131,6 +132,7 @@ def get_chat_model(settings: AgentSettings) -> BaseChatModel:
     elif provider == "groq":
         return ChatGroq(groq_api_key=api_key, **init_params)
     elif provider == "ollama":
+        from langchain_ollama import ChatOllama
         return ChatOllama(base_url=settings.base_url, **init_params)
     elif provider == "llama_cpp":
         if not settings.model_path: raise ValueError("model_path is required for LlamaCpp provider.")
@@ -150,4 +152,5 @@ settings = Settings()
 agent_settings = AgentSettings()
 if __name__ == "__main__":
     print(settings.CEREBRAS_API_KEY)
+    print(settings.TRANSFORMERS_NO_ADVISORY_WARNINGS)
     print(settings.DB_URI)

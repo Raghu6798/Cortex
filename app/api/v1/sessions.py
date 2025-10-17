@@ -5,16 +5,16 @@ from typing import List, Dict
 from fastapi import APIRouter, Depends, HTTPException
 
 from sqlalchemy.orm import Session
-from backend.app.db.database import get_db
+from app.db.database import get_db
 
-from backend.app.models.session import (
+from app.models.session import (
     ChatSession, AgentFramework, SessionCreateRequest, 
     SessionUpdateRequest, SessionsListResponse, Message
 )
-from backend.app.services.session_service import session_service
+from app.services.session_service import session_service
 
 # --- Import our verified custom dependency ---
-from backend.app.auth.clerk_auth import get_current_user
+from app.auth.clerk_auth import get_current_user
 
 router = APIRouter(prefix="/sessions", tags=["Sessions"])
 
@@ -64,6 +64,7 @@ async def create_session(
         user_id=user_id,
         framework=request.framework,
         title=request.title,
+        agent_config=request.agent_config,
     )
     return session
 

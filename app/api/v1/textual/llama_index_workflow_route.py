@@ -15,7 +15,7 @@ from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.config.settings import settings
+from app.config.settings import settings
 
 
 @tool

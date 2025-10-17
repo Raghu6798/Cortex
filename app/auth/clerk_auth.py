@@ -7,6 +7,7 @@ from clerk_backend_api.security import authenticate_request
 from clerk_backend_api.security.types import AuthenticateRequestOptions
 
 from app.config.settings import settings
+from app.utils.logger import logger
 
 if not settings.CLERK_SECRET_KEY:
     raise ValueError("CLERK_SECRET_KEY environment variable not set.")
@@ -20,6 +21,8 @@ async def get_current_user(request: Request) -> dict:
     `authenticate_request` method and returns the token payload.
     """
     try:
+        auth_header = request.headers.get('Authorization')
+        logger.info(f"BACKEND DEBUG: Authorization header received: {auth_header}")
         request_state = clerk_sdk.authenticate_request(
             request=request,
             options=AuthenticateRequestOptions()
@@ -30,6 +33,8 @@ async def get_current_user(request: Request) -> dict:
 
         return request_state.payload
     except Exception as e:
+        print("--- CRITICAL ERROR IN CLERK AUTH ---")
+        logger.exception(e)
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
 

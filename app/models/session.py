@@ -51,6 +51,7 @@ class SessionCreateRequest(BaseModel):
     """Request model for creating a new session."""
     framework: AgentFramework
     title: Optional[str] = None
+    agent_config: Optional[AgentConfig] = None
 
 class SessionUpdateRequest(BaseModel):
     """Request model for updating a session."""

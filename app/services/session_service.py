@@ -13,21 +13,22 @@ class SessionService:
     """Service for managing chat sessions with a PostgreSQL database."""
 
     def create_session(
-        self, db: Session, user_id: str, framework: AgentFramework, title: Optional[str] = None
+        self, db: Session, user_id: str, framework: AgentFramework, title: Optional[str] = None, agent_config: Optional[AgentConfig] = None
     ) -> ChatSession:
         session_id = f"session-{uuid4()}"
         
         if not title:
             title = f"New {framework.value.replace('_', ' ').title()} Chat"
 
-        default_config = AgentConfig(api_key="", model_name="gpt-4o-mini")
+        # Use provided agent config or default
+        config_to_store = agent_config if agent_config else AgentConfig(api_key="", model_name="gpt-4o-mini")
         current_utc_time = datetime.now(timezone.utc)
         db_session = ChatSessionDB(
             id=session_id,
             user_id=user_id,
             title=title,
             framework=framework.value,
-            agent_config=default_config.model_dump(),
+            agent_config=config_to_store.model_dump(),
             created_at=current_utc_time, 
             updated_at=current_utc_time  
         )

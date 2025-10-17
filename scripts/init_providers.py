@@ -7,28 +7,33 @@ import asyncio
 import sys
 from pathlib import Path
 
-from backend.app.db.database import SessionLocal
-from backend.app.integrations.llm_router import llm_router
-from backend.app.db.models import LLMProviderDB, LLMModelDB
+# Add the backend directory to Python path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from app.db.database import SessionLocal
+from app.integrations.llm_router import llm_router
+from app.db.models import LLMProviderDB, LLMModelDB
+from app.utils.logger import logger 
 
 async def init_providers():
     """Initialize providers and models in the database"""
     db = SessionLocal()
     try:
-        print("Syncing providers and models to database...")
+        logger.info("Syncing providers and models to database...")
         await llm_router.sync_providers_to_db(db)
-        print("Providers and models synced successfully!")
+        logger.info("Providers and models synced successfully!")
         
         # Print summary
         providers_count = db.query(LLMProviderDB).count()
         models_count = db.query(LLMModelDB).count()
-        print(f"Database now contains {providers_count} providers and {models_count} models")
+        logger.info(f"Database now contains {providers_count} providers and {models_count} models")
         
     except Exception as e:
-        print(f"Error syncing providers: {e}")
+        logger.error(f"Error syncing providers: {e}")
         raise
     finally:
         db.close()
 
 if __name__ == "__main__":
+    logger.info("Initializing providers and models...")
     asyncio.run(init_providers())
