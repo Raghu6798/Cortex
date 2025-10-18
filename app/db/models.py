@@ -12,6 +12,7 @@ class ChatSessionDB(Base):
     user_id = Column(String, nullable=False, index=True)
     title = Column(String, nullable=False)
     framework = Column(String, nullable=False)
+    agent_id = Column(String, ForeignKey("agents.AgentId"), nullable=True)
     
     # Store the complex AgentConfig Pydantic model as JSON
     agent_config = Column(JSON, nullable=False)
@@ -23,6 +24,9 @@ class ChatSessionDB(Base):
 
     # Establish the one-to-many relationship to messages
     messages = relationship("MessageDB", back_populates="session", cascade="all, delete-orphan")
+    
+    # Relationship to agent
+    agent = relationship("AgentDB", back_populates="sessions")
 
 class MessageDB(Base):
     __tablename__ = "messages"
@@ -112,3 +116,31 @@ class ChatMetricsDB(Base):
     
     # Relationship to session
     session = relationship("ChatSessionDB")
+
+class AgentDB(Base):
+    __tablename__ = "agents"
+    __table_args__ = {'extend_existing': True}
+
+    AgentId = Column(String, primary_key=True, index=True)
+    user_id = Column(String, nullable=False, index=True)
+    name = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    
+    # Agent configuration stored as JSON
+    architecture = Column(String, nullable=False)  # 'mono' or 'multi'
+    framework = Column(String, nullable=False)      # 'langchain', 'crewai', etc.
+    settings = Column(JSON, nullable=False)         # LLM configuration
+    tools = Column(JSON, nullable=True)             # Tool configurations
+    
+    # Metadata
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    
+    # Relationship to chat sessions
+    sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
+
+# Update ChatSessionDB to include agent relationship
+# Add this to the existing ChatSessionDB class
+# agent_id = Column(String, ForeignKey("agents.id"), nullable=True)
+# agent = relationship("AgentDB", back_populates="sessions")

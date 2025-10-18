@@ -64,6 +64,9 @@ install:
 start-db:
     docker run --name cortex-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=cortex -p 5433:5432 -d postgres:15
 
+query-db:
+    docker exec -it cortex-postgres psql -U postgres -d cortex
+
 # Stop PostgreSQL database container
 stop-db:
     docker stop cortex-postgres
@@ -134,4 +137,5 @@ help:
     @echo "  lint                     - Lint code"
     @echo "  clean                    - Clean Python cache files"
     @echo "  db-info                  - Show database connection info"
+    @echo "  create-agents-table      - Create agents table manually"
     @echo "  help                     - Show this help message"

@@ -2,6 +2,7 @@ import os
 import sys
 from uuid import uuid4
 import asyncio
+import aiohttp
 import httpx
 from pydantic import BaseModel, Field
 import traceback
