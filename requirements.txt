@@ -7,15 +7,19 @@ passlib[bcrypt]
 
 # Authentication
 fastapi-clerk-auth
+clerk-backend-api
 
 # LangChain and AI dependencies
-langchain
+langchain==1.0.0a6
 langchain-openai
 langchain-google-genai
 langchain-groq
+langchain-mistralai
+langchain-nvidia-ai-endpoints
 langchain-ollama
 langchain-community
 langchain-cerebras
+langchain-sambanova
 langgraph
 
 # Cerebras Cloud SDK
@@ -24,14 +28,36 @@ cerebras-cloud-sdk
 # LlamaIndex
 llama-index
 llama-index-llms-openai
+llama-index-llms-groq
+
+# AI/ML Libraries
+agno
+litellm
+llama-cpp-python
+
+# LiveKit dependencies
+livekit-agents[cartesia,deepgram,openai,silero,turn-detector]
+livekit-plugins-noise-cancellation
+
+# MCP and Code Interpreter
+fastmcp
+e2b-code-interpreter
 
 # Data handling
 pydantic
 python-dotenv
 
+# Database
+psycopg2
+psycopg2-binary
+sqlalchemy
+alembic
+asyncpg
+
+# HTTP and networking
+httpx
+aiohttp
+requests
+
 # Utilities
 loguru
-httpx
-psycopg2
-sqlalchemy 
-alembic
