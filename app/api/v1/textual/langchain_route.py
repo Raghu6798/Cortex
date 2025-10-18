@@ -194,7 +194,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
             temperature=request.temperature
         )
     elif provider_id == "cerebras":
-        llm = ChatBaseOpenAI(
+        llm = ChatCerebras(
             base_url=provider.provider_info.base_url,
             model=model_id,
             temperature=request.temperature,
@@ -250,13 +250,24 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
         # Extract the AI message content for frontend display
         ai_message = None
         if isinstance(response_raw, dict) and "messages" in response_raw:
-            for message in response_raw["messages"]:
-                if message.type == "ai":
+            logger.info(f"Processing {len(response_raw['messages'])} messages")
+            for i, message in enumerate(response_raw["messages"]):
+                logger.info(f"Message {i}: type={message.type}, content_length={len(str(message.content)) if hasattr(message, 'content') else 0}")
+                if message.type == "ai" or message.type == "AIMessage":
                     ai_message = message.content
+                    logger.info(f"Found AI message: {ai_message[:100]}...")
                     break
         
         if not ai_message:
-            raise HTTPException(status_code=500, detail="No AI response generated")
+            # Try to get the last message if no AI message found
+            if isinstance(response_raw, dict) and "messages" in response_raw and response_raw["messages"]:
+                last_message = response_raw["messages"][-1]
+                if hasattr(last_message, 'content') and last_message.content:
+                    ai_message = last_message.content
+                else:
+                    raise HTTPException(status_code=500, detail="No AI response generated")
+            else:
+                raise HTTPException(status_code=500, detail="No AI response generated")
         
         # Store the full response object in database for metrics tracking
         try:

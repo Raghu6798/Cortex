@@ -59,17 +59,32 @@ async def create_agent(agent_data: AgentCreate,token_payload: str = Depends(get_
         raise HTTPException(status_code=500, detail=f"Failed to create agent: {str(e)}")
 
 @router.get("/", response_model=List[AgentResponse])
-async def get_user_agents(token_payload: str = Depends(get_current_user),db: Session = Depends(get_db)):
-    """Get all agents for a user"""
+async def get_user_agents(
+    token_payload: str = Depends(get_current_user),
+    db: Session = Depends(get_db),
+    page: int = 1,
+    limit: int = 10
+):
+    """Get all agents for a user with pagination"""
     try:
         user_id = token_payload.get("sub")
         if not user_id:
             raise HTTPException(status_code=403, detail="User ID not found in token.")
         
+        # Calculate offset for pagination
+        offset = (page - 1) * limit
+        
+        # Get total count for pagination info
+        total_count = db.query(AgentDB).filter(
+            AgentDB.user_id == user_id,
+            AgentDB.is_active == True
+        ).count()
+        
+        # Get paginated agents
         agents = db.query(AgentDB).filter(
             AgentDB.user_id == user_id,
             AgentDB.is_active == True
-        ).all()
+        ).offset(offset).limit(limit).all()
         
         result = []
         for agent in agents:

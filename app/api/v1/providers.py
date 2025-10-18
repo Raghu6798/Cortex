@@ -2,35 +2,15 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List, Dict, Any
-from pydantic import BaseModel
 
 from app.db.database import get_db
 from app.db.models import LLMProviderDB, LLMModelDB
 from app.integrations.llm_router import llm_router
 from app.auth.clerk_auth import get_current_user
+from app.schemas.provider_schemas import ProviderResponse, ModelResponse
 
 router = APIRouter(prefix="/api/v1/providers", tags=["providers"])
 
-class ProviderResponse(BaseModel):
-    id: str
-    name: str
-    display_name: str
-    base_url: str
-    logo_url: str | None
-    description: str | None
-    requires_api_key: bool
-    supports_streaming: bool
-    supports_tools: bool
-    supports_embeddings: bool
-    max_tokens: int
-    models: List[Dict[str, Any]] = []
-
-class ModelResponse(BaseModel):
-    id: str
-    model_id: str
-    display_name: str
-    description: str | None
-    context_length: int
     
 
 @router.get("/", response_model=List[ProviderResponse])
