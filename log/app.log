@@ -1,0 +1,560 @@
+2025-10-19 03:16:03.995 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:16:03.995 | INFO     | __main__:<module>:38 - Initializing providers and models...
+2025-10-19 03:16:04.001 | INFO     | __main__:init_providers:22 - Syncing providers and models to database...
+2025-10-19 03:16:09.362 | INFO     | __main__:init_providers:24 - Providers and models synced successfully!
+2025-10-19 03:16:09.377 | INFO     | __main__:init_providers:29 - Database now contains 6 providers and 274 models
+2025-10-19 03:16:50.857 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:16:52.426 | INFO     | __main__:<module>:81 - Including API routers...
+2025-10-19 03:17:00.994 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:17:02.274 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:17:02.412 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:17:02.422 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:17:02.423 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:17:02.423 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:17:14.038 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:19:29.626 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:19:51.575 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:19:52.836 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:19:52.889 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:19:52.906 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:19:52.906 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:19:52.906 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:20:03.779 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:21:46.758 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:21:57.983 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:21:59.391 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:21:59.454 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:21:59.468 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:21:59.468 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:21:59.468 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:22:10.068 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:22:12.584 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:22:20.859 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:22:22.163 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:22:22.223 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:22:22.233 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:22:22.233 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:22:22.233 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:22:33.273 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:22:37.635 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:22:45.579 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:22:46.883 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:22:46.943 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:22:46.954 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:22:46.955 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:22:46.955 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:22:57.539 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:24:53.664 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:25:01.724 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:25:02.975 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:25:03.042 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:25:03.072 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:25:03.074 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:25:03.074 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:25:13.945 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:25:17.835 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:25:51.779 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:26:00.124 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:26:01.410 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:26:01.467 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:26:01.477 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:26:01.477 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:26:01.477 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:26:10.275 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
+    main(prog="alembic")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1022, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1012, in main
+    self.run_cmd(cfg, options)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 946, in run_cmd
+    fn(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\command.py", line 483, in upgrade
+    script.run_env()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\script\base.py", line 549, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
+    run_migrations_online()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 66, in run_migrations_online
+    with connectable.connect() as connection:
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 306, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 913, in __connect
+    )._exec_w_sync_on_first_run(self.dbapi_connection, self)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 483, in _exec_w_sync_on_first_run
+    self(*args, **kw)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1997, in go
+    return once_fn(*arg, **kw)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 767, in first_connect
+    dialect.initialize(c)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\psycopg2.py", line 683, in initialize
+    super().initialize(connection)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 3260, in initialize
+    super().initialize(connection)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 533, in initialize
+    self.default_schema_name = self._get_default_schema_name(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 3437, in _get_default_schema_name
+    return connection.exec_driver_sql("select current_schema()").scalar()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1779, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2358, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\encodings\utf_8.py", line 15, in decode
+    def decode(input, errors='strict'):
+    
+KeyboardInterrupt
+
+2025-10-19 03:26:10.276 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
+2025-10-19 03:26:10.335 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
+2025-10-19 03:26:26.758 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:26:28.070 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:26:28.132 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:26:28.143 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:26:28.144 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:26:28.144 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:26:38.739 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:26:45.487 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:27:34.226 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:27:35.525 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:27:35.591 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:27:35.598 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:27:35.598 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:27:35.598 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:27:45.459 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
+    main(prog="alembic")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1022, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1012, in main
+    self.run_cmd(cfg, options)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 946, in run_cmd
+    fn(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\command.py", line 483, in upgrade
+    script.run_env()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\script\base.py", line 549, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
+    run_migrations_online()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 66, in run_migrations_online
+    with connectable.connect() as connection:
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 306, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 913, in __connect
+    )._exec_w_sync_on_first_run(self.dbapi_connection, self)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 483, in _exec_w_sync_on_first_run
+    self(*args, **kw)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1997, in go
+    return once_fn(*arg, **kw)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 767, in first_connect
+    dialect.initialize(c)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\psycopg2.py", line 683, in initialize
+    super().initialize(connection)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 3265, in initialize
+    self._set_backslash_escapes(connection)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 5223, in _set_backslash_escapes
+    std_string = connection.exec_driver_sql(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1779, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2358, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\encodings\utf_8.py", line 15, in decode
+    def decode(input, errors='strict'):
+    
+KeyboardInterrupt
+
+2025-10-19 03:27:45.460 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
+2025-10-19 03:27:45.518 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
+2025-10-19 03:27:58.070 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:27:59.383 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:27:59.454 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:27:59.466 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:27:59.466 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:27:59.467 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:28:10.604 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:29:05.875 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:29:12.942 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:29:21.800 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:29:21.836 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:29:23.236 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:29:23.307 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:29:23.319 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:29:23.319 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:29:23.319 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:29:34.479 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:29:45.325 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:29:53.367 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:29:54.686 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:29:54.747 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:29:54.759 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:29:54.760 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:29:54.760 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:30:05.498 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:32:07.363 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:32:16.043 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:32:17.427 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:32:17.491 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:32:17.501 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:32:17.501 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:32:17.501 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:32:21.531 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
+    main(prog="alembic")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1022, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1012, in main
+    self.run_cmd(cfg, options)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 946, in run_cmd
+    fn(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\command.py", line 483, in upgrade
+    script.run_env()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\script\base.py", line 549, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 19, in <module>
+    from app.db.database import Base
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\db\database.py", line 4, in <module>
+    from app.config.settings import settings
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\config\settings.py", line 15, in <module>
+    from langchain_openai import ChatOpenAI
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\__init__.py", line 1, in <module>
+    from langchain_openai.chat_models import AzureChatOpenAI, ChatOpenAI
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\__init__.py", line 1, in <module>
+    from langchain_openai.chat_models.azure import AzureChatOpenAI
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\azure.py", line 11, in <module>
+    from langchain_core.language_models import LanguageModelInput
+  File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\language_models\__init__.py", line 112, in __getattr__
+    result = import_attr(attr_name, module_name, __spec__.parent)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_import_utils.py", line 36, in import_attr
+    module = import_module(f".{module_name}", package=package)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\language_models\base.py", line 44, in <module>
+    from transformers import GPT2TokenizerFast  # type: ignore[import-not-found]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\__init__.py", line 950, in <module>
+    import_structure = define_import_structure(Path(__file__).parent / "models", prefix="models")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\utils\import_utils.py", line 2851, in define_import_structure
+    import_structure = create_import_structure_from_path(module_path)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\utils\import_utils.py", line 2564, in create_import_structure_from_path
+    import_structure[f] = create_import_structure_from_path(os.path.join(module_path, f))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\utils\import_utils.py", line 2566, in create_import_structure_from_path
+    elif not os.path.isdir(os.path.join(directory, f)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+2025-10-19 03:32:21.532 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
+2025-10-19 03:32:21.615 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
+2025-10-19 03:32:36.373 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:32:37.772 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:32:37.836 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:32:37.847 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:32:37.847 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:32:37.847 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:32:40.276 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
+    main(prog="alembic")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1022, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1012, in main
+    self.run_cmd(cfg, options)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 946, in run_cmd
+    fn(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\command.py", line 483, in upgrade
+    script.run_env()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\script\base.py", line 549, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 19, in <module>
+    from app.db.database import Base
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\db\database.py", line 4, in <module>
+    from app.config.settings import settings
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\config\settings.py", line 15, in <module>
+    from langchain_openai import ChatOpenAI
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\__init__.py", line 1, in <module>
+    from langchain_openai.chat_models import AzureChatOpenAI, ChatOpenAI
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\__init__.py", line 1, in <module>
+    from langchain_openai.chat_models.azure import AzureChatOpenAI
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\azure.py", line 11, in <module>
+    from langchain_core.language_models import LanguageModelInput
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\__init__.py", line 11, in <module>
+    from langchain_core._api import (
+  File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_api\__init__.py", line 63, in __getattr__
+    result = import_attr(attr_name, module_name, __spec__.parent)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_import_utils.py", line 36, in import_attr
+    module = import_module(f".{module_name}", package=package)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 27, in <module>
+    from pydantic.v1.fields import FieldInfo as FieldInfoV1
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\__init__.py", line 2, in <module>
+    from pydantic.v1 import dataclasses
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\dataclasses.py", line 51, in <module>
+    from pydantic.v1.config import BaseConfig, ConfigDict, Extra, get_config
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\config.py", line 46, in <module>
+    class ConfigDict(TypedDict, total=False):
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\config.py", line 74, in ConfigDict
+    post_init_call: Literal['before_validation', 'after_validation']
+                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 524, in __getitem__
+    return self._getitem(self, *parameters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 395, in inner
+    return _caches[func](*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 785, in Literal
+    return _LiteralGenericAlias(self, parameters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 1273, in __init__
+    self.__args__ = tuple(... if a is _TypingEllipsis else
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 1273, in <genexpr>
+    self.__args__ = tuple(... if a is _TypingEllipsis else
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+2025-10-19 03:32:40.277 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
+2025-10-19 03:32:40.333 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
+2025-10-19 03:32:57.447 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:32:58.952 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:32:59.017 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:32:59.032 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:32:59.032 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:32:59.032 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:33:02.867 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:33:02.875 | INFO     | __main__:insert_models:30 - 🔄 Syncing providers and models to database...
+2025-10-19 03:33:07.622 | INFO     | __main__:insert_models:32 - ✅ All providers and models synced successfully!
+2025-10-19 03:33:07.631 | INFO     | __main__:insert_models:37 - 📊 Database now contains 6 providers and 274 models
+2025-10-19 03:33:10.417 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:33:11.199 | INFO     | __main__:verify_data:65 - 📊 Database now contains:
+2025-10-19 03:33:11.200 | INFO     | __main__:verify_data:66 -    - 5 providers
+2025-10-19 03:33:11.200 | INFO     | __main__:verify_data:67 -    - 0 models
+2025-10-19 03:33:11.497 | INFO     | __main__:verify_data:71 - 📋 Providers:
+2025-10-19 03:33:11.498 | INFO     | __main__:verify_data:73 -    - Anthropic (anthropic)
+2025-10-19 03:33:11.498 | INFO     | __main__:verify_data:73 -    - Cohere (cohere)
+2025-10-19 03:33:11.498 | INFO     | __main__:verify_data:73 -    - Groq (groq)
+2025-10-19 03:33:11.499 | INFO     | __main__:verify_data:73 -    - OpenAI (openai)
+2025-10-19 03:33:11.499 | INFO     | __main__:verify_data:73 -    - Replicate (replicate)
+2025-10-19 03:33:15.719 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:33:15.724 | INFO     | __main__:insert_models:30 - 🔄 Syncing providers and models to database...
+2025-10-19 03:33:18.117 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:33:20.797 | INFO     | __main__:insert_models:32 - ✅ All providers and models synced successfully!
+2025-10-19 03:33:20.808 | INFO     | __main__:insert_models:37 - 📊 Database now contains 6 providers and 274 models
+2025-10-19 03:33:24.404 | INFO     | __main__:verify_data:65 - 📊 Database now contains:
+2025-10-19 03:33:24.404 | INFO     | __main__:verify_data:66 -    - 5 providers
+2025-10-19 03:33:24.405 | INFO     | __main__:verify_data:67 -    - 0 models
+2025-10-19 03:33:24.625 | INFO     | __main__:verify_data:71 - 📋 Providers:
+2025-10-19 03:33:24.625 | INFO     | __main__:verify_data:73 -    - Anthropic (anthropic)
+2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - Cohere (cohere)
+2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - Groq (groq)
+2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - OpenAI (openai)
+2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - Replicate (replicate)
+2025-10-19 03:33:26.740 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:33:28.075 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:33:28.141 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:33:28.152 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:33:28.152 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:33:28.152 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:33:39.032 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:35:41.448 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:35:49.904 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:36:02.718 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:36:02.725 | INFO     | __main__:insert_models:37 - 🔄 Syncing providers and models to database...
+2025-10-19 03:36:08.148 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:36:09.679 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:36:09.753 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:36:09.768 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:36:09.768 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:36:09.769 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:36:10.607 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 148, in _get_module_details
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__init__.py", line 1, in <module>
+    from . import context
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\context.py", line 1, in <module>
+    from .runtime.environment import EnvironmentContext
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\runtime\environment.py", line 18, in <module>
+    from sqlalchemy.sql.schema import Column
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\__init__.py", line 13, in <module>
+    from .engine import AdaptedConnection as AdaptedConnection
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\__init__.py", line 18, in <module>
+    from . import events as events
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\events.py", line 19, in <module>
+    from .base import Connection
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 28, in <module>
+    from .interfaces import BindTyping
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\interfaces.py", line 37, in <module>
+    from ..sql.compiler import Compiled as Compiled
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\sql\__init__.py", line 10, in <module>
+    from ._typing import ColumnExpressionArgument as ColumnExpressionArgument
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1085, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1208, in path_stats
+  File "<frozen importlib._bootstrap_external>", line 147, in _path_stat
+KeyboardInterrupt
+
+2025-10-19 03:36:10.608 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
+2025-10-19 03:36:10.669 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
+2025-10-19 03:36:16.464 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:36:16.469 | INFO     | __main__:insert_models:37 - 🔄 Syncing providers and models to database...
+2025-10-19 03:36:19.027 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:36:20.289 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:36:20.361 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:36:20.374 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:36:20.377 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:36:20.377 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:36:31.016 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:37:42.821 | INFO     | __main__:insert_models:41 - ✅ All providers and models synced successfully!
+2025-10-19 03:37:43.711 | INFO     | __main__:insert_models:46 - 📊 Database now contains 6 providers and 274 models
+2025-10-19 03:37:48.475 | INFO     | __main__:verify_data:75 - 📊 Database now contains:
+2025-10-19 03:37:48.475 | INFO     | __main__:verify_data:76 -    - 6 providers
+2025-10-19 03:37:48.476 | INFO     | __main__:verify_data:77 -    - 274 models
+2025-10-19 03:37:48.708 | INFO     | __main__:verify_data:81 - 📋 Providers:
+2025-10-19 03:37:48.708 | INFO     | __main__:verify_data:83 -    - Cerebras (cbf02325-c325-4ccb-aa7c-309d6bc96106)
+2025-10-19 03:37:48.708 | INFO     | __main__:verify_data:83 -    - Groq (11228f94-9807-45f7-92ca-51bcacc85910)
+2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - Mistral AI (4587d46b-34db-4924-b023-3d755b23cd6b)
+2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - NVIDIA NIM (4ff08c73-5504-4bc9-920e-1731b55549ca)
+2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - OpenAI (82cf357b-7bc0-42c2-a743-e781d4931871)
+2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - Sambanova (86f496ff-d2dd-4dc5-85a5-fcf666bc79f3)
+2025-10-19 03:39:15.592 | INFO     | main:lifespan:58 - Application shutting down...
+2025-10-19 03:39:49.016 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-19 03:39:50.772 | INFO     | __mp_main__:<module>:81 - Including API routers...
+2025-10-19 03:39:51.171 | INFO     | main:<module>:81 - Including API routers...
+2025-10-19 03:39:51.182 | INFO     | main:lifespan:22 - Application starting up...
+2025-10-19 03:39:51.182 | INFO     | main:lifespan:23 - Setting up database schema...
+2025-10-19 03:39:51.182 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
+2025-10-19 03:40:03.324 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+2025-10-19 03:43:02.202 | INFO     | main:lifespan:58 - Application shutting down...

@@ -8,6 +8,7 @@ dependencies = [
     "agno>=2.0.8",
     "aiohttp>=3.12.15",
     "alembic>=1.16.5",
+    "asyncpg>=0.30.0",
     "cerebras-cloud-sdk>=1.50.1",
     "clerk-backend-api>=3.3.0",
     "e2b-code-interpreter>=2.0.0",
