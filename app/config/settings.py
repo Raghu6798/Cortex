@@ -43,13 +43,11 @@ class Settings(BaseSettings):
         env_file_encoding='utf-8',
         extra='ignore' 
     )
-    PORTKEY_API_KEY:str
     GROQ_API_KEY:str
     DB_URI: PostgresDsn
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
     CLERK_SECRET_KEY:str
-    TRANSFORMERS_NO_ADVISORY_WARNINGS:str
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
 
