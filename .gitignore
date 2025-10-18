@@ -12,3 +12,7 @@ wheels/
 .ruff_cache
 .chainlit
 .files
+
+/logs
+/logs/*
+.log
