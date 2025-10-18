@@ -151,5 +151,4 @@ settings = Settings()
 agent_settings = AgentSettings()
 if __name__ == "__main__":
     print(settings.CEREBRAS_API_KEY)
-    print(settings.TRANSFORMERS_NO_ADVISORY_WARNINGS)
-    print(settings.DB_URI)
+    print(settings.SUPABASE_DB_URI)
