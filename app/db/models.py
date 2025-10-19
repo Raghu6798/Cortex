@@ -141,7 +141,7 @@ class AgentDB(Base):
     sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
 
 class ToolConfigDB(Base):
-     __tablename__ = "tool_configs"
+    __tablename__ = "tool_configs"
     __table_args__ = {'extend_existing': True}
     id = Column(String, primary_key=True, index=True)
     name = Column(String, nullable=False)
