@@ -12,6 +12,7 @@ from app.schemas.api_schemas import HealthStatus
 from app.api.v1.textual.langchain_route import router as langchain_router
 from app.api.v1.sessions import router as sessions_router
 from app.api.v1.frameworks import router as frameworks_router
+from app.api.v1.agents import router as agents_router
 from app.api.v1.providers import router as providers_router
 from app.utils.logger import logger 
 
@@ -85,6 +86,7 @@ app.include_router(sessions_router, prefix="/api/v1")
 app.include_router(frameworks_router)
 app.include_router(langchain_router)
 app.include_router(providers_router)
+app.include_router(agents_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
