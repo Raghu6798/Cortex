@@ -11,8 +11,6 @@ from app.schemas.provider_schemas import ProviderResponse, ModelResponse
 
 router = APIRouter(prefix="/api/v1/providers", tags=["providers"])
 
-    
-
 @router.get("/", response_model=List[ProviderResponse])
 async def get_all_providers(db: Session = Depends(get_db)):
     """Get all available LLM providers with their models"""
