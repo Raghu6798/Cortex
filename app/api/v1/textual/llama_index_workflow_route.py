@@ -18,6 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from mistralai import Mistral
 from mistralai import Tool, Function, UserMessage, AssistantMessage, ToolMessage
 
+from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
 from app.config.settings import settings
 from app.auth.clerk_auth import get_current_user
 from app.integrations.llm_router import llm_router
