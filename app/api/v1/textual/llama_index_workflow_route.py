@@ -142,52 +142,52 @@ async def execute_api_call(input_params: Dict[str, Any]):
 
 
 tool_parameters = {
-        "type": "object",
-        "properties": {
-            "api_url": {"type": "string", "description": "The API endpoint URL."},
-            "api_method": {
-                "type": "string",
-                "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
-                "default": "GET",
-                "description": "HTTP method to use."
-            },
-            "api_headers": {"type": "object", "additionalProperties": {"type": "string"}},
-            "api_query_params": {"type": "object", "additionalProperties": True},
-            "api_path_params": {"type": "object", "additionalProperties": True},
-            "api_body": {"type": "object", "additionalProperties": True},
+    "type": "object",
+    "properties": {
+        "api_url": {"type": "string", "description": "The API endpoint URL."},
+        "api_method": {
+            "type": "string",
+            "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
+            "default": "GET",
+            "description": "HTTP method to use."
         },
-        "required": ["api_url"]
-    }
+        "api_headers": {"type": "object", "additionalProperties": {"type": "string"}},
+        "api_query_params": {"type": "object", "additionalProperties": True},
+        "api_path_params": {"type": "object", "additionalProperties": True},
+        "api_body": {"type": "object", "additionalProperties": True},
+    },
+    "required": ["api_url"]
+}
 
 execute_api_call_tool = {
     "type": "function",
     "function": {
         "name": "execute_api_call",
-        "description":  """
-    Executes an HTTP API call (GET, POST, PUT, DELETE, etc.) with the specified parameters.
+        "description": """
+Executes an HTTP API call (GET, POST, PUT, DELETE, etc.) with the specified parameters.
 
-    This tool makes HTTP requests to external APIs. It handles URL construction, headers,
-    query parameters, path parameters, and request bodies.
+This tool makes HTTP requests to external APIs. It handles URL construction, headers,
+query parameters, path parameters, and request bodies.
 
-    Args:
-        input_params: A dictionary with the following keys:
-            - api_url (str, required): The base URL for the API endpoint
-            - api_method (str, optional): HTTP method (GET, POST, PUT, DELETE). Defaults to GET
-            - api_headers (dict, optional): HTTP headers as key-value pairs (e.g., {"Authorization": "Bearer token"})
-            - api_query_params (dict, optional): URL query parameters as key-value pairs
-            - api_path_params (dict, optional): Path parameters to replace in URL (e.g., {id})
-            - api_body (dict, optional): Request body for POST/PUT requests
+Args:
+    input_params: A dictionary with the following keys:
+        - api_url (str, required): The base URL for the API endpoint
+        - api_method (str, optional): HTTP method (GET, POST, PUT, DELETE). Defaults to GET
+        - api_headers (dict, optional): HTTP headers as key-value pairs (e.g., {"Authorization": "Bearer token"})
+        - api_query_params (dict, optional): URL query parameters as key-value pairs
+        - api_path_params (dict, optional): Path parameters to replace in URL (e.g., {id})
+        - api_body (dict, optional): Request body for POST/PUT requests
 
-    Example:
-        {
-            "api_url": "https://api.example.com/v1/models",
-            "api_method": "GET",
-            "api_headers": {"Authorization": "Bearer abc123"}
-        }
+Example:
+    {
+        "api_url": "https://api.example.com/v1/models",
+        "api_method": "GET",
+        "api_headers": {"Authorization": "Bearer abc123"}
+    }
 
-    Returns:
-        dict: JSON response from the API, or error details if the request fails
-    """,
+Returns:
+    dict: JSON response from the API, or error details if the request fails
+""",
         "parameters": tool_parameters
     }
 }
@@ -215,18 +215,18 @@ async def invoke_llama_index(request: CortexInvokeRequestSchema,current_user: di
         mistral = Mistral(api_key=api_key)
         llm = mistral.chat.completions(
             model=model_id,
-            messages= [
-        UserMessage(content=request.message)
-    ],
+            messages=[
+                UserMessage(content=request.message)
+            ],
             tools=tools,
             tool_choice="auto",
             max_tokens=1000,
             temperature=request.temperature
         )
-         assistant_response_message = response_from_model.choices[0].message
-         messages.append(assistant_response_message)
+        assistant_response_message = response_from_model.choices[0].message
+        messages.append(assistant_response_message)
 
-         if assistant_response_message.tool_calls is None:
+        if assistant_response_message.tool_calls is None:
             print("\n--- MODEL DID NOT USE A TOOL ---")
             print(assistant_response_message.content)
             
@@ -240,10 +240,11 @@ async def invoke_llama_index(request: CortexInvokeRequestSchema,current_user: di
         tool_msg_content = json.dumps(tool_result, indent=2)
         messages.append(ToolMessage(content=tool_msg_content, tool_call_id=tool_call.id))
         final_response = mistral.chat.complete(
-        model=model_id,
-        messages=messages 
-    )
+            model=model_id,
+            messages=messages 
+        )
         return final_response.choices[0].message.content
+    
     elif provider_id == "groq":
         llm = Groq(model=model_id, api_key=api_key)
         agent = ReActAgent(tools=tools, llm=llm, verbose=True)
