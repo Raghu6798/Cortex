@@ -13,8 +13,10 @@ class ToolConfigSchema(BaseModel):
     description: str
     api_url: str
     api_method: str
-    api_headers: List[Dict[str, str]] = []
-    api_query_params: List[Dict[str, str]] = []
+    api_headers: Dict[str, str] = {}
+    api_query_params: Dict[str, str] = {}
+    api_path_params: Dict[str, str] = {}
+    request_payload: str = ""
 
 class CortexInvokeRequestSchema(AgentSettings):
     message: str

@@ -59,12 +59,7 @@ async def create_agent(agent_data: AgentCreate,token_payload: str = Depends(get_
         raise HTTPException(status_code=500, detail=f"Failed to create agent: {str(e)}")
 
 @router.get("/", response_model=List[AgentResponse])
-async def get_user_agents(
-    token_payload: str = Depends(get_current_user),
-    db: Session = Depends(get_db),
-    page: int = 1,
-    limit: int = 10
-):
+async def get_user_agents(token_payload: str = Depends(get_current_user),db: Session = Depends(get_db),page: int = 1,limit: int = 10):
     """Get all agents for a user with pagination"""
     try:
         user_id = token_payload.get("sub")

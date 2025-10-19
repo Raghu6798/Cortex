@@ -44,7 +44,6 @@ class Settings(BaseSettings):
         extra='ignore' 
     )
     GROQ_API_KEY:str
-    # DB_URI: PostgresDsn
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
     CLERK_SECRET_KEY:str

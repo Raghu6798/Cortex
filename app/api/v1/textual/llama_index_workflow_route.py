@@ -15,10 +15,15 @@ from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 
+from mistralai import Mistral
+from mistralai import Tool, Function, UserMessage, AssistantMessage, ToolMessage
+
 from app.config.settings import settings
+from app.auth.clerk_auth import get_current_user
+from app.integrations.llm_router import llm_router
+from app.db.database import get_db
+from app.db.models import LLMProviderDB, LLMModelDB
 
-
-@tool
 async def execute_api_call(input_params: Dict[str, Any]):
     """
     Dynamically executes any HTTP request (GET, POST, PUT, DELETE, etc.) based on a
@@ -77,8 +82,7 @@ async def execute_api_call(input_params: Dict[str, Any]):
         if headers:
             request_kwargs["headers"] = headers
 
-        # 4. Construct Request Body (Method-Agnostic)
-        # This block runs if 'api_body' is defined, regardless of the HTTP method.
+     
         if body_def:
             payload = {}
             for prop,value in body_def.items():
@@ -127,40 +131,97 @@ async def execute_api_call(input_params: Dict[str, Any]):
         return {"error": f"An unexpected error occurred: {str(e)}"}
 
 
-# --- Tool Definition ---
-def get_math_result(expression: str) -> Dict[str, Any]:
-    """
-    Calculates a mathematical expression using the math.js API.
-    """
-    return asyncio.run(execute_api_call(
-        method="GET",
-        url="http://api.mathjs.org/v4/",
-        params={"expr": expression}  # only single encode!
-    ))
+tool_parameters = {
+        "type": "object",
+        "properties": {
+            "api_url": {"type": "string", "description": "The API endpoint URL."},
+            "api_method": {
+                "type": "string",
+                "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
+                "default": "GET",
+                "description": "HTTP method to use."
+            },
+            "api_headers": {"type": "object", "additionalProperties": {"type": "string"}},
+            "api_query_params": {"type": "object", "additionalProperties": True},
+            "api_path_params": {"type": "object", "additionalProperties": True},
+            "api_body": {"type": "object", "additionalProperties": True},
+        },
+        "required": ["api_url"]
+    }
 
+execute_api_call_tool = {
+    "type": "function",
+    "function": {
+        "name": "execute_api_call",
+        "description": "Executes an HTTP API call to any external service and returns the JSON response.",
+        "parameters": tool_parameters
+    }
+}
+
+tools = [execute_api_call_tool]
+names_to_functions = {"execute_api_call": execute_api_call}
+
+
+router = APIRouter(prefix="/api/v1", tags=["textual"])
 
 print("--- Setting up LlamaIndex ReActAgent with a custom API tool ---")
 
-# 1. Initialize the LLM
-llm = Groq(model="meta-llama/llama-4-maverick-17b-128e-instruct", api_key=settings.GROQ_API_KEY)
+@router.post("/chat/invoke/llama_index",response_model=CortexResponseFormat,tags=["Chat"])
+async def invoke_llama_index(request: CortexInvokeRequestSchema,current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> CortexResponseFormat:
+    user_id = current_user.get("sub")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    provider_id = request.provider_id
+    model_id = request.model_id
+    provider = await llm_router.get_provider(provider_id)
+    if not provider:
+        raise HTTPException(status_code=400, detail=f"Provider {provider_id} not found")
+    api_key = request.api_key.get_secret_value() if request.api_key else provider.api_key
+    if provider_id == "mistral":
+        mistral = Mistral(api_key=api_key)
+        llm = mistral.chat.completions(
+            model=model_id,
+            messages=messages = [
+        UserMessage(content=request.message)
+    ],
+            tools=tools,
+            tool_choice="auto",
+            max_tokens=1000,
+            temperature=request.temperature
+        )
+         assistant_response_message = response_from_model.choices[0].message
+         messages.append(assistant_response_message)
 
-# 2. Wrap math function as a proper LlamaIndex tool
-math_tool = FunctionTool.from_defaults(fn=get_math_result, name="MathTool", description="Evaluate math expressions.")
+         if assistant_response_message.tool_calls is None:
+            print("\n--- MODEL DID NOT USE A TOOL ---")
+            print(assistant_response_message.content)
+            
+        tool_call = assistant_response_message.tool_calls[0]
+        function_name = tool_call.function.name
+        function_params = json.loads(tool_call.function.arguments)
+        logger.info(f" Model decided to call function: {function_name}")
+        logger.info(f" With parameters: {function_params}")
 
-# 3. Set up the agent
-agent = ReActAgent(tools=[math_tool], llm=llm, verbose=True)
+        tool_result = await names_to_functions[function_name](**function_params)
+        tool_msg_content = json.dumps(tool_result, indent=2)
+        messages.append(ToolMessage(content=tool_msg_content, tool_call_id=tool_call.id))
+        final_response = mistral.chat.complete(
+        model=model_id,
+        messages=messages 
+    )
+        return final_response.choices[0].message.content
+    elif provider_id == "groq":
+        llm = Groq(model=model_id, api_key=api_key)
+        agent = ReActAgent(tools=tools, llm=llm, verbose=True)
+        ctx = Context(agent)
+        handler = agent.run(request.message, ctx=ctx)
+        return handler.choices[0].message.content
 
-# 4. Run the agent
-ctx = Context(agent)
-query = "What is 20 + (2 * 4)?"
-print(f"\n--- Running agent with query: '{query}' ---")
-async def main():
-    print(f"\n--- Running agent with query: '{query}' ---")
-    handler = await agent.run(query, ctx=ctx)
-    print(handler)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    elif provider_id == "cerebras":
+        cerebras = Cerebras(api_key=api_key)
 
 
-router = APIRouter(prefix="/chat", tags=["chat"])
+
+
+
+
