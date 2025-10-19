@@ -1,5 +1,4 @@
-# REVISED and CORRECTED FILE: app/auth/clerk_auth.py
-
+#  app/auth/clerk_auth.py
 import os
 from fastapi import Request, Depends, HTTPException
 from clerk_backend_api import Clerk

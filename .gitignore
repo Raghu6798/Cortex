@@ -14,5 +14,6 @@ wheels/
 .files
 
 /logs
+/log
 /logs/*
 .log

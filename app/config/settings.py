@@ -7,7 +7,7 @@ from typing import Literal, Optional
 from urllib.parse import urlparse
 
 # Use pydantic's dotenv functionality directly, no need for separate load_dotenv
-from pydantic import Field, SecretStr, model_validator
+from pydantic import Field, SecretStr
 from pydantic.networks import PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -79,72 +79,8 @@ class AgentSettings(BaseSettings):
     n_gpu_layers: int = Field(default=8, description="Number of GPU layers for LlamaCpp.")
     n_batch: int = Field(default=300, description="Batch size for LlamaCpp.")
     n_ctx: int = Field(default=10000, description="Context size for LlamaCpp.")
-
     provider: Optional[Provider] = Field(default=None, exclude=True)
 
-
-    model_config = SettingsConfigDict(env_file=DOTENV_PATH, env_file_encoding='utf-8', extra='ignore')
-
-    @model_validator(mode='after')
-    def determine_provider(self) -> 'AgentSettings':
-        if self.provider: return self
-        if self.model_path: self.provider = "llama_cpp"; return self
-        if self.model_name.lower().startswith('gemini'): self.provider = "google"; return self
-        if self.base_url:
-            hostname = urlparse(self.base_url).hostname
-            if hostname:
-                if "groq" in hostname: self.provider = "groq"; return self
-                if "mistral" in hostname: self.provider = "mistral"; return self
-                if "together" in hostname: self.provider = "together"; return self
-                if "openrouter" in hostname: self.provider = "openrouter"; return self
-                if "nvidia" in hostname: self.provider = "nvidia"; return self
-                if "cerebras" in hostname: self.provider = "cerebras"; return self
-                if "localhost" in hostname or "127.0.0.1" in hostname: self.provider = "ollama"; return self
-        self.provider = "openai"
-        return self
-
-def get_chat_model(settings: AgentSettings) -> BaseChatModel:
-    """Factory function to get an initialized LangChain ChatModel instance."""
-    if not settings.provider:
-        raise ValueError("Provider could not be determined. Please check settings.")
-
-    provider = settings.provider
-    api_key = settings.api_key.get_secret_value() if settings.api_key else None
-
-    init_params = {
-        "model": settings.model_name,
-        "temperature": settings.temperature,
-        "max_tokens": settings.max_tokens,
-        "top_p": settings.top_p, 
-    }
-    
-    if provider == "google":
-        if provider == "google":
-            return ChatGoogleGenerativeAI(
-            google_api_key=api_key,
-            model=settings.model_name,
-            temperature=settings.temperature,
-            max_output_tokens=settings.max_tokens,
-            top_p=settings.top_p,
-            top_k=settings.top_k
-        )
-    elif provider == "groq":
-        return ChatGroq(groq_api_key=api_key, **init_params)
-    elif provider == "ollama":
-        from langchain_ollama import ChatOllama
-        return ChatOllama(base_url=settings.base_url, **init_params)
-    elif provider == "llama_cpp":
-        if not settings.model_path: raise ValueError("model_path is required for LlamaCpp provider.")
-        return ChatLlamaCpp(
-            model_path=settings.model_path, temperature=settings.temperature, max_tokens=settings.max_tokens,
-            top_p=settings.top_p, top_k=settings.top_k, n_gpu_layers=settings.n_gpu_layers,
-            n_batch=settings.n_batch, n_ctx=settings.n_ctx, n_threads=multiprocessing.cpu_count() - 1,
-            verbose=False,
-        )
-    elif provider == "cerebras":
-        return ChatCerebras(cerebras_api_key=api_key, **init_params)
-    else:  
-        return ChatOpenAI(api_key=api_key, base_url=settings.base_url, **init_params)
 
 
 settings = Settings()

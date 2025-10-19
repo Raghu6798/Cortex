@@ -140,6 +140,25 @@ class AgentDB(Base):
     # Relationship to chat sessions
     sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
 
+class ToolConfigDB(Base):
+     __tablename__ = "tool_configs"
+    __table_args__ = {'extend_existing': True}
+    id = Column(String, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    api_url = Column(String, nullable=False)
+    api_method = Column(String, nullable=False)
+    api_headers = Column(JSON, nullable=True)
+    api_query_params = Column(JSON, nullable=True)
+    api_path_params = Column(JSON, nullable=True)
+    request_payload = Column(JSON, nullable=True)
+    response_payload = Column(JSON, nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    # Relationship to agent
+    agent = relationship("AgentDB", back_populates="tool_configs")
+
 # Update ChatSessionDB to include agent relationship
 # Add this to the existing ChatSessionDB class
 # agent_id = Column(String, ForeignKey("agents.id"), nullable=True)
