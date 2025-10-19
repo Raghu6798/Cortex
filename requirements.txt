@@ -21,6 +21,7 @@ langchain-community
 langchain-cerebras
 langchain-sambanova
 langgraph
+mistralai
 
 # Cerebras Cloud SDK
 cerebras-cloud-sdk
