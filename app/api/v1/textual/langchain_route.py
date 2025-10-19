@@ -44,32 +44,51 @@ from app.db.models import ChatSessionDB, LLMProviderDB, LLMModelDB, ChatMetricsD
 @tool
 async def execute_api_call(input_params: Dict[str, Any]):
     """
-    Dynamically executes any HTTP request (GET, POST, PUT, DELETE, etc.) based on a
-    structured API definition.
+    Executes an HTTP API call (GET, POST, PUT, DELETE, etc.) with the specified parameters.
 
-    This function is designed to be method-agnostic. It constructs the URL, headers,
-    and request body based entirely on the provided input parameters, allowing it to
-    handle any type of HTTP request.
+    This tool makes HTTP requests to external APIs. It handles URL construction, headers,
+    query parameters, path parameters, and request bodies.
 
     Args:
-        input_params: A dictionary containing the API call definition and runtime values
-                      sourced from the LLM or system variables.
+        input_params: A dictionary with the following keys:
+            - api_url (str, required): The base URL for the API endpoint
+            - api_method (str, optional): HTTP method (GET, POST, PUT, DELETE). Defaults to GET
+            - api_headers (dict, optional): HTTP headers as key-value pairs (e.g., {"Authorization": "Bearer token"})
+            - api_query_params (dict, optional): URL query parameters as key-value pairs
+            - api_path_params (dict, optional): Path parameters to replace in URL (e.g., {id})
+            - api_body (dict, optional): Request body for POST/PUT requests
+
+    Example:
+        {
+            "api_url": "https://api.example.com/v1/models",
+            "api_method": "GET",
+            "api_headers": {"Authorization": "Bearer abc123"}
+        }
 
     Returns:
-        A dictionary with the JSON response from the API or a detailed error message.
+        dict: JSON response from the API, or error details if the request fails
     """
     # 1. Extract essential API information from the input
-    method = input_params.get("api_method", "GET").upper()
-    base_url = input_params.get("api_url")
+    method = input_params.get("api_method") or input_params.get("method", "GET")
+    method = method.upper()
+    
+    # Accept both 'api_url' and 'url' for backwards compatibility
+    base_url = input_params.get("api_url") or input_params.get("url")
+    
     path_params_def = input_params.get("api_path_params", {})
     query_params_def = input_params.get("api_query_params", {})
-    headers_def = input_params.get("api_headers", {})
-    body_def = input_params.get("api_body", {}) 
+    
+    # Accept both 'api_headers' and 'headers'
+    headers_def = input_params.get("api_headers") or input_params.get("headers", {})
+    
+    body_def = input_params.get("api_body") or input_params.get("body", {})
     dynamic_variables = input_params.get("dynamic_variables",{})
+    
     logger.info(f"{method},{base_url},{path_params_def},{query_params_def},{headers_def},{body_def},{dynamic_variables}")
+    
     if not base_url:
         print("[function_handler] Error: 'api_url' not specified in input.")
-        return {"error": "API URL (api_url) was not specified."}
+        return {"error": "API URL (api_url or url) was not specified."}
 
     request_kwargs = {}
 
