@@ -14,9 +14,11 @@ from fastapi import FastAPI, APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
 
 from mistralai import Mistral
 from mistralai import Tool, Function, UserMessage, AssistantMessage, ToolMessage
+
 
 from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
 from app.config.settings import settings
