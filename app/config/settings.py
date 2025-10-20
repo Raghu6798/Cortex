@@ -17,7 +17,6 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 # from langchain_ollama import ChatOllama  # Import only when needed to avoid startup issues
-from langchain_community.chat_models import ChatLlamaCpp
 from langchain_cerebras import ChatCerebras
 
 

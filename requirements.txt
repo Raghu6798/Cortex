@@ -35,7 +35,6 @@ pytest
 # AI/ML Libraries
 agno
 litellm
-llama-cpp-python
 
 # LiveKit dependencies
 livekit-agents[cartesia,deepgram,openai,silero,turn-detector]
