@@ -814,3 +814,54 @@ configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found
 2025-10-20 16:30:07.983 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:332 - Stored metrics for session session-e76461ee-5cb0-42d0-ab09-f2fcd5742fdb: 357 tokens, Nones
 2025-10-20 17:52:22.013 | INFO     | main:lifespan:63 - Application shutting down...
 2025-10-20 17:52:32.781 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 17:52:44.871 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 17:52:44.927 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 17:52:44.939 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 17:52:44.939 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 17:52:44.940 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 17:52:51.528 | ERROR    | main:lifespan:45 - Alembic migration failed: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
+    main(prog="alembic")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1022, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 1012, in main
+    self.run_cmd(cfg, options)
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 946, in run_cmd
+    fn(
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\command.py", line 483, in upgrade
+    script.run_env()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\script\base.py", line 549, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\util\pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
+    run_migrations_online()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 61, in run_migrations_online
+    config.get_section(config.config_ini_section, {}),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 327, in get_section
+    return dict(self.file_config.items(name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 837, in items
+    return [(option, value_getter(option)) for option in orig_keys]
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 833, in <lambda>
+    value_getter = lambda option: self._interpolation.before_get(self,
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 367, in before_get
+    self._interpolate_some(parser, option, L, value, section, defaults, 1)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 414, in _interpolate_some
+    raise InterpolationSyntaxError(
+configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found: '%2Cj3Kn%23wd_EKH@aws-1-us-east-1.pooler.supabase.com:5432/postgres?sslmode=verify-full&sslrootcert=prod-ca-2021.crt'
+
+2025-10-20 17:52:51.529 | WARNING  | main:lifespan:47 - Falling back to manual table creation...
+2025-10-20 17:52:56.993 | SUCCESS  | main:lifespan:49 - Database schema ready with fallback!
+2025-10-20 17:59:28.079 | INFO     | main:lifespan:63 - Application shutting down...

@@ -21,47 +21,12 @@ from app.api.v1.providers import router as providers_router
 
 from app.utils.logger import logger 
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Application starting up...")
-    logger.info("Setting up database schema...")
-    
-    try:
-        # Use Alembic for database migrations instead of manual table creation
-        logger.info("Running database migrations with Alembic...")
-        
-        import subprocess
-        import sys
-        
-        # Run alembic upgrade to apply all migrations
-        result = subprocess.run([
-            sys.executable, "-m", "alembic", "upgrade", "head"
-        ], cwd=".", capture_output=True, text=True)
-        
-        if result.returncode == 0:
-            logger.success("Database migrations completed successfully!")
-        else:
-            logger.error(f"Alembic migration failed: {result.stderr}")
-            # Fallback to manual creation if migrations fail
-            logger.warning("Falling back to manual table creation...")
-            Base.metadata.create_all(bind=engine, checkfirst=True)
-            logger.success("Database schema ready with fallback!")
-        
-    except Exception as e:
-        logger.error(f"Database setup failed: {e}")
-        # Final fallback - try manual creation
-        try:
-            logger.warning("Attempting final fallback...")
-            Base.metadata.create_all(bind=engine, checkfirst=True)
-            logger.success("Database schema ready with final fallback!")
-        except Exception as e2:
-            logger.error(f"Could not create database: {e2}")
-            raise e2
-    
+    # The application now assumes the database schema is already up-to-date.
     yield
     logger.info("Application shutting down...")
-
 
 app = FastAPI(lifespan=lifespan)
 
