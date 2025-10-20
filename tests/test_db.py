@@ -1,12 +1,13 @@
 # test_db.py
 import sqlalchemy
 from sqlalchemy.exc import OperationalError
+
 from app.config.settings import settings # <-- Import your settings object
 
-print(f"Attempting to connect to the database at: {settings.DB_URI}")
+print(f"Attempting to connect to the database at: {settings.SUPABASE_DB_URI}")
 
 try:
-    engine = sqlalchemy.create_engine(str(settings.DB_URI))
+    engine = sqlalchemy.create_engine(str(settings.SUPABASE_DB_URI))
     with engine.connect() as connection:
         print("✅ Connection successful!")
 except OperationalError as e:

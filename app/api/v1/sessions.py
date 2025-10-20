@@ -16,7 +16,7 @@ from app.services.session_service import session_service
 # --- Import our verified custom dependency ---
 from app.auth.clerk_auth import get_current_user
 
-router = APIRouter(prefix="/sessions", tags=["Sessions"])
+router = APIRouter(prefix="/api/v1/sessions", tags=["Sessions"])
 
 @router.get("/", response_model=SessionsListResponse)
 async def get_user_sessions(

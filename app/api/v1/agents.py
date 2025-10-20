@@ -12,7 +12,7 @@ from app.schemas.api_schemas import HealthStatus
 from app.auth.clerk_auth import get_current_user
 from app.schemas.agents_schema import AgentCreate, AgentResponse, AgentUpdate
 
-router = APIRouter(prefix="/agents", tags=["Agents"])
+router = APIRouter(prefix="/api/v1/agents", tags=["Agents"])
 
 @router.post("/", response_model=AgentResponse)
 async def create_agent(agent_data: AgentCreate,token_payload: str = Depends(get_current_user),db: Session = Depends(get_db)):

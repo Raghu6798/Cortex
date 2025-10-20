@@ -4,7 +4,7 @@ from uuid import uuid4
 import asyncio
 import aiohttp
 import httpx
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field,SecretStr
 import traceback
 from typing import Optional,AsyncIterator,Dict,Any
 from functools import lru_cache

@@ -22,7 +22,8 @@ langchain-cerebras
 langchain-sambanova
 langgraph
 mistralai
-
+google-genai
+google-adk
 # Cerebras Cloud SDK
 cerebras-cloud-sdk
 
@@ -30,7 +31,7 @@ cerebras-cloud-sdk
 llama-index
 llama-index-llms-openai
 llama-index-llms-groq
-
+pytest 
 # AI/ML Libraries
 agno
 litellm

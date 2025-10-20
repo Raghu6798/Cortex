@@ -1,66 +1,250 @@
-2025-10-19 03:16:03.995 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:16:03.995 | INFO     | __main__:<module>:38 - Initializing providers and models...
-2025-10-19 03:16:04.001 | INFO     | __main__:init_providers:22 - Syncing providers and models to database...
-2025-10-19 03:16:09.362 | INFO     | __main__:init_providers:24 - Providers and models synced successfully!
-2025-10-19 03:16:09.377 | INFO     | __main__:init_providers:29 - Database now contains 6 providers and 274 models
-2025-10-19 03:16:50.857 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:16:52.426 | INFO     | __main__:<module>:81 - Including API routers...
-2025-10-19 03:17:00.994 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:17:02.274 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:17:02.412 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:17:02.422 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:17:02.423 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:17:02.423 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:17:14.038 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:19:29.626 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:19:51.575 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:19:52.836 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:19:52.889 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:19:52.906 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:19:52.906 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:19:52.906 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:20:03.779 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:21:46.758 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:21:57.983 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:21:59.391 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:21:59.454 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:21:59.468 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:21:59.468 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:21:59.468 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:22:10.068 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:22:12.584 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:22:20.859 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:22:22.163 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:22:22.223 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:22:22.233 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:22:22.233 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:22:22.233 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:22:33.273 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:22:37.635 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:22:45.579 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:22:46.883 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:22:46.943 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:22:46.954 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:22:46.955 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:22:46.955 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:22:57.539 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:24:53.664 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:25:01.724 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:25:02.975 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:25:03.042 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:25:03.072 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:25:03.074 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:25:03.074 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:25:13.945 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:25:17.835 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:25:51.779 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:26:00.124 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:26:01.410 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:26:01.467 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:26:01.477 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:26:01.477 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:26:01.477 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:26:10.275 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+2025-10-20 14:59:15.594 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 14:59:25.668 | INFO     | __main__:<module>:85 - Including API routers...
+2025-10-20 14:59:33.166 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 14:59:35.691 | INFO     | __mp_main__:<module>:85 - Including API routers...
+2025-10-20 14:59:36.007 | INFO     | main:<module>:85 - Including API routers...
+2025-10-20 14:59:36.022 | INFO     | main:lifespan:23 - Application starting up...
+2025-10-20 14:59:36.022 | INFO     | main:lifespan:24 - Setting up database schema...
+2025-10-20 14:59:36.023 | INFO     | main:lifespan:28 - Running database migrations with Alembic...
+2025-10-20 14:59:47.841 | SUCCESS  | main:lifespan:39 - Database migrations completed successfully!
+2025-10-20 15:00:37.513 | INFO     | main:lifespan:59 - Application shutting down...
+2025-10-20 15:03:04.049 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:03:14.713 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:04:22.291 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:06:32.620 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:06:41.701 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:06:41.751 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:06:41.762 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:06:41.762 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:06:41.762 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:06:52.162 | SUCCESS  | main:lifespan:43 - Database migrations completed successfully!
+2025-10-20 15:40:39.656 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTQ5NjEsImZ2YSI6WzE1NjMsLTFdLCJpYXQiOjE3NjA5NTQ5MDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NDg5MSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.cWS7L0-hTv5C8T8m_s6wEIQRNUH4JkBsHh65j00FIgwZBWEUnDLGOmQP_uLRZGvTCPdmIzmlaWBoxf5QPl1J4M4GdwW6tD6DIbxoaH7OZpmqBBxLTen0-xXQL3Sa3QVhBeAKNbppi8Kh8raZrWJUuzV6L1WvbVJZXdIgGJXopfOibfoSZRFRXskXiIqpnCbFn34Kz9Td5E5vrw7CEXqecLLSieiQMIB6tQ0AiDPUWoxmoTAWeZi6jyl0P9Xb2AS_UWAW01iuDJAFRhXIdcIlmO9AiMb-HdgL_iLbfnTzsb5cDg6obAO8HO0_G9yHnZUC3DD9YurQrQyiJLCvLVIM2w
+2025-10-20 15:40:40.722 | ERROR    | app.auth.clerk_auth:get_current_user:36 - 401: Not authenticated: TokenVerificationErrorReason.TOKEN_EXPIRED
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 376
+               │     └ 3
+               └ <function _main at 0x000001F6BF2F8360>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 376
+           │    └ <function BaseProcess._bootstrap at 0x000001F6BF2040E0>
+           └ <SpawnProcess name='SpawnProcess-33' parent=30076 started>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000001F6BF1FF600>
+    └ <SpawnProcess name='SpawnProcess-33' parent=30076 started>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000001F6F9619760>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-33' parent=30076 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-33' parent=30076 started>
+    │    └ <function subprocess_started at 0x000001F6C172CA40>
+    └ <SpawnProcess name='SpawnProcess-33' parent=30076 started>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=1860, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000001F6F9619E50>>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=1860, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000001F6C170BC40>
+           │       │   └ <uvicorn.server.Server object at 0x000001F6F9619E50>
+           │       └ <function run at 0x000001F6C0EC5940>
+           └ <module 'asyncio' from 'C:\\Users\\Raghu\\AppData\\Roaming\\uv\\python\\cpython-3.12.10-windows-x86_64-none\\Lib\\asyncio\\__...
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001F6F95F2A40>
+           │      └ <function Runner.run at 0x000001F6C0F29080>
+           └ <asyncio.runners.Runner object at 0x000001F6F95507D0>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001F6C0F26C00>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001F6F95507D0>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 678, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001F6C0F26B60>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 645, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001F6C0F289A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 1999, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001F6C0EB8FE0>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001F6F96C4880>()>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001F6F96C4880>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001F6F96C4880>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001F6F96C4880>()>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000001F6F931F710>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F6F9...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000001F6F9619BE0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000001F6F931F710>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F6F9...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F6F9...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001F6F961A3F0>
+          └ <fastapi.applications.FastAPI object at 0x000001F6F9619BE0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001F6F967F1A0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000001F6F961A480>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001F6F961A3F0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001F6F967F1A0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001F6F961AAE0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000001F6F961A480>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001F6F967F1A0>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001F6F96C4860>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000001F6F966CD40>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001F6F961AAE0>
+          └ <function wrap_app_handling_exceptions at 0x000001F6C26ABBA0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F6F967F240>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000001F6F966CD40>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F6F967F240>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001F6F966CD40>>
+          └ <fastapi.routing.APIRouter object at 0x000001F6F966CD40>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F6F967F240>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x000001F6C26E51C0>
+          └ APIRoute(path='/api/v1/ReActAgent/langchain', name='invoke_react_agent', methods=['POST'])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F6F967F240>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001F6F967D3A0>
+          └ APIRoute(path='/api/v1/ReActAgent/langchain', name='invoke_react_agent', methods=['POST'])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F6F967F240>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001F6F96C4AD0>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001F6F967F420>
+          └ <function wrap_app_handling_exceptions at 0x000001F6C26ABBA0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F6F967F560>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001F...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001F6F967F420>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001F6F96C4AD0>
+                     └ <function get_request_handler.<locals>.app at 0x000001F6F967D260>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\routing.py", line 292, in app
+    solved_result = await solve_dependencies(
+                          └ <function solve_dependencies at 0x000001F6C26A8CC0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+                   │      │             └ {'request': <starlette.requests.Request object at 0x000001F6F96C4AD0>}
+                   │      └ SolvedDependency(values={'request': <starlette.requests.Request object at 0x000001F6F96C4AD0>}, errors=[], background_tasks=N...
+                   └ <function get_current_user at 0x000001F6E83D6E80>
+
+> File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\auth\clerk_auth.py", line 31, in get_current_user
+    raise HTTPException(status_code=401, detail=f"Not authenticated: {request_state.reason or 'No payload'}")
+          │                                                           │             └ <TokenVerificationErrorReason.TOKEN_EXPIRED: ('token-expired', 'Token has expired and is no longer valid.')>
+          │                                                           └ RequestState(status=<AuthStatus.SIGNED_OUT: 'signed-out'>, reason=<TokenVerificationErrorReason.TOKEN_EXPIRED: ('token-expire...
+          └ <class 'fastapi.exceptions.HTTPException'>
+
+fastapi.exceptions.HTTPException: 401: Not authenticated: TokenVerificationErrorReason.TOKEN_EXPIRED
+2025-10-20 15:41:13.362 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTUxMTYsImZ2YSI6WzE1NjYsLTFdLCJpYXQiOjE3NjA5NTUwNTYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NTA0Niwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.VRfechSHzTOPm3i9WbBPS3Y_Hy7LNkEChdSBbm76YF1fDs-doiMvH2jognGJ7W1214XcBAZ-BsUDWjZFTYb7DDS-m6mJwAsplTXbxvCAopqPN9jv9cLFvRg2ApE-cNEt3NsLggWHjfhctTPDX-QkFa2n9k4s2IR4BTXWPs7wFLWIOYttuBjbnTb_dpEsfd7VWx-zMIl84bELToL2dezPG-rCRSxKcNahpT5Nv2hn1A01eK9K4EgBbj82Z7NAH6ZXEcuaCnIpwYsmREsYqpU3Vswpic-lTgfSK8_m2zlPMz8IjpD42jx5IKSfvbMh_9kXYxSQ0qCKUlz9d3LPRpSgRQ
+2025-10-20 15:42:09.450 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:42:20.842 | INFO     | __main__:<module>:89 - Including API routers...
+2025-10-20 15:42:27.440 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:42:36.824 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:42:36.878 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:42:36.888 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:42:36.889 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:42:36.889 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:42:48.778 | SUCCESS  | main:lifespan:43 - Database migrations completed successfully!
+2025-10-20 15:43:20.288 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTUyNDMsImZ2YSI6WzE1NjgsLTFdLCJpYXQiOjE3NjA5NTUxODMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NTE3Mywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.YdEzffST4Uhmd4xWGvZtDI9gfgipXNwn5sXhiZbCqQU6FZAolkJKiqAh3LX0oY7idlYBvEVWIXADH29ZIOEz1eMyQrjYo9HY-i4FwJi34Azd4I9gwKtkTroqe37sq-3TPyiXb3l21HRgcaVCOHM8UT69mI3cAtxEUwwMNTLCBJ6PFtmcDag7U04W-O8XAdDf-dopkWc__NOyR6LOwv4Etdto_stxd3C46qOU297xP6eVqvjF_a4AJ8EgsC-DGeL5pO6XdMtIIdfL14SCheWFd7EUVk39Cd-hB1uL4bAkH5lzZGMkoecqhy2FC80MV_nY4JJ8dynlR9T1sDz10EP9Rg
+2025-10-20 15:43:28.493 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 15:43:28.494 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 15:43:42.081 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:43:51.501 | INFO     | __main__:<module>:89 - Including API routers...
+2025-10-20 15:43:58.009 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:44:07.357 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:44:07.404 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:44:07.414 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:44:07.414 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:44:07.415 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:44:17.845 | SUCCESS  | main:lifespan:43 - Database migrations completed successfully!
+2025-10-20 15:44:51.164 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTUzMzAsImZ2YSI6WzE1NjksLTFdLCJpYXQiOjE3NjA5NTUyNzAsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NTI2MCwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.XHhWBBjAH-vNd4RaxZzLtVfyqCz9ec_M-8HL1d2hD6xksq3v4HdS0I4cl4KHkgI1zLcbIMLwl2tBcrCPJIMhQ3G_Ac2WGuRexI_q_gkoTay847Ze70RwcS0NbR4zYmV3BnMV1_I78AGBdfBuD_41pCbEtRmyMDLT4OxHN9iVEoVONRXKkt093PDLhK4ytTFcF48gs-uknS6VCwY2H_-vZ6RiepXVgNLyxuJ-UwPRpzrlAxfkKSQdNi6oyMmqV8r8DyYkELKbn1NnAITg07Y06YCXbtjhLNSeI-TAnfcJf0Lc_hGgdosoHFnLRI21-U4UWA_lKiGC1tDFuNod_UDNTg
+2025-10-20 15:49:49.799 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 15:49:58.953 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:50:08.429 | INFO     | __main__:<module>:89 - Including API routers...
+2025-10-20 15:50:14.839 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:50:24.122 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:50:24.169 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:50:24.187 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:50:24.187 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:50:24.187 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:50:35.028 | SUCCESS  | main:lifespan:43 - Database migrations completed successfully!
+2025-10-20 15:51:10.231 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTU3MDksImZ2YSI6WzE1NzYsLTFdLCJpYXQiOjE3NjA5NTU2NDksImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NTYzOSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.RcNataVld9NpRZcrZF-FdTM5Im8XU8wOgyypsKyR8S7HYB6Y7WLH9MUoBCoazadBiw_7CCNlte5xxXpqnz1OJYNqwYHTLEXQ1GzOQbJM0F1fOUkHuMmfguxIqP216R-3w3p5psm6M-kj4NV3ZS8yEZMCmkscYCgMmuA5YkUOY81HHw8T3K9Y_vOufP9lGXpJai4c0lzncwwdzXuvQ32gFW-1h4MISX33vu2fa_1UOa433I2RWN-QUA9olWyfSIApY3df5uFFnV8qoam49VDccdxQPX-EYrUY6nJMB5hmtIxH4vvbtJOCpHhUEjDoFMCU0iORHU38qbYVlC13e2al_A
+2025-10-20 15:52:15.786 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 15:52:24.703 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:52:44.527 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:52:53.829 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:53:04.404 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:53:04.459 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:53:04.468 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:53:04.468 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:53:04.468 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:53:14.867 | SUCCESS  | main:lifespan:43 - Database migrations completed successfully!
+2025-10-20 15:54:40.237 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 15:54:48.519 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:54:58.268 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:54:58.318 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:54:58.320 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:54:58.320 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:54:58.330 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:55:05.263 | ERROR    | main:lifespan:45 - Alembic migration failed: Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
   File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
@@ -85,93 +269,41 @@
   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
   File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
     run_migrations_online()
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 66, in run_migrations_online
-    with connectable.connect() as connection:
-         ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-          ^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 306, in _do_get
-    return self._create_connection()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 913, in __connect
-    )._exec_w_sync_on_first_run(self.dbapi_connection, self)
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 483, in _exec_w_sync_on_first_run
-    self(*args, **kw)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
-    fn(*args, **kw)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1997, in go
-    return once_fn(*arg, **kw)
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 767, in first_connect
-    dialect.initialize(c)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\psycopg2.py", line 683, in initialize
-    super().initialize(connection)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 3260, in initialize
-    super().initialize(connection)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 533, in initialize
-    self.default_schema_name = self._get_default_schema_name(
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 3437, in _get_default_schema_name
-    return connection.exec_driver_sql("select current_schema()").scalar()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1779, in exec_driver_sql
-    ret = self._execute_context(
-          ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
-    return self._exec_single_context(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
-    self._handle_dbapi_exception(
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2358, in _handle_dbapi_exception
-    raise exc_info[1].with_traceback(exc_info[2])
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
-    cursor.execute(statement, parameters)
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\encodings\utf_8.py", line 15, in decode
-    def decode(input, errors='strict'):
-    
-KeyboardInterrupt
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 61, in run_migrations_online
+    config.get_section(config.config_ini_section, {}),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 327, in get_section
+    return dict(self.file_config.items(name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 837, in items
+    return [(option, value_getter(option)) for option in orig_keys]
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 833, in <lambda>
+    value_getter = lambda option: self._interpolation.before_get(self,
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 367, in before_get
+    self._interpolate_some(parser, option, L, value, section, defaults, 1)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 414, in _interpolate_some
+    raise InterpolationSyntaxError(
+configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found: '%2Cj3Kn%23wd_EKH@aws-1-us-east-1.pooler.supabase.com:5432/postgres?sslmode=verify-full&sslrootcert=prod-ca-2021.crt'
 
-2025-10-19 03:26:10.276 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
-2025-10-19 03:26:10.335 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
-2025-10-19 03:26:26.758 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:26:28.070 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:26:28.132 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:26:28.143 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:26:28.144 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:26:28.144 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:26:38.739 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:26:45.487 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:27:34.226 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:27:35.525 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:27:35.591 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:27:35.598 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:27:35.598 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:27:35.598 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:27:45.459 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+2025-10-20 15:55:05.263 | WARNING  | main:lifespan:47 - Falling back to manual table creation...
+2025-10-20 15:55:06.352 | ERROR    | main:lifespan:52 - Database setup failed: (psycopg2.OperationalError) connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: FATAL:  Tenant or user not found
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-20 15:55:06.353 | WARNING  | main:lifespan:55 - Attempting final fallback...
+2025-10-20 15:55:07.296 | ERROR    | main:lifespan:59 - Could not create database: (psycopg2.OperationalError) connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  Tenant or user not found
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-20 15:56:18.071 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:56:36.530 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:56:47.969 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 15:56:57.890 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 15:56:57.940 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 15:56:57.940 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 15:56:57.940 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 15:56:57.940 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 15:57:05.162 | ERROR    | main:lifespan:45 - Alembic migration failed: Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
   File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
@@ -196,108 +328,41 @@ KeyboardInterrupt
   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
   File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
     run_migrations_online()
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 66, in run_migrations_online
-    with connectable.connect() as connection:
-         ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-          ^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 306, in _do_get
-    return self._create_connection()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 913, in __connect
-    )._exec_w_sync_on_first_run(self.dbapi_connection, self)
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 483, in _exec_w_sync_on_first_run
-    self(*args, **kw)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
-    fn(*args, **kw)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1997, in go
-    return once_fn(*arg, **kw)
-           ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 767, in first_connect
-    dialect.initialize(c)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\psycopg2.py", line 683, in initialize
-    super().initialize(connection)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 3265, in initialize
-    self._set_backslash_escapes(connection)
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\base.py", line 5223, in _set_backslash_escapes
-    std_string = connection.exec_driver_sql(
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1779, in exec_driver_sql
-    ret = self._execute_context(
-          ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
-    return self._exec_single_context(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
-    self._handle_dbapi_exception(
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2358, in _handle_dbapi_exception
-    raise exc_info[1].with_traceback(exc_info[2])
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
-    cursor.execute(statement, parameters)
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\encodings\utf_8.py", line 15, in decode
-    def decode(input, errors='strict'):
-    
-KeyboardInterrupt
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 61, in run_migrations_online
+    config.get_section(config.config_ini_section, {}),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 327, in get_section
+    return dict(self.file_config.items(name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 837, in items
+    return [(option, value_getter(option)) for option in orig_keys]
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 833, in <lambda>
+    value_getter = lambda option: self._interpolation.before_get(self,
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 367, in before_get
+    self._interpolate_some(parser, option, L, value, section, defaults, 1)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 414, in _interpolate_some
+    raise InterpolationSyntaxError(
+configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found: '%2Cj3Kn%23wd_EKH@aws-1-us-east-1.pooler.supabase.com:5432/postgres?sslmode=verify-full&sslrootcert=prod-ca-2021.crt'
 
-2025-10-19 03:27:45.460 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
-2025-10-19 03:27:45.518 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
-2025-10-19 03:27:58.070 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:27:59.383 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:27:59.454 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:27:59.466 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:27:59.466 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:27:59.467 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:28:10.604 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:29:05.875 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:29:12.942 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:29:21.800 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:29:21.836 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:29:23.236 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:29:23.307 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:29:23.319 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:29:23.319 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:29:23.319 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:29:34.479 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:29:45.325 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:29:53.367 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:29:54.686 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:29:54.747 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:29:54.759 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:29:54.760 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:29:54.760 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:30:05.498 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:32:07.363 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:32:16.043 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:32:17.427 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:32:17.491 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:32:17.501 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:32:17.501 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:32:17.501 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:32:21.531 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+2025-10-20 15:57:05.162 | WARNING  | main:lifespan:47 - Falling back to manual table creation...
+2025-10-20 15:57:06.341 | ERROR    | main:lifespan:52 - Database setup failed: (psycopg2.OperationalError) connection to server at "aws-1-us-east-1.pooler.supabase.com" (3.227.209.82), port 5432 failed: FATAL:  Tenant or user not found
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-20 15:57:06.341 | WARNING  | main:lifespan:55 - Attempting final fallback...
+2025-10-20 15:57:07.439 | ERROR    | main:lifespan:59 - Could not create database: (psycopg2.OperationalError) connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.213.155.45), port 5432 failed: FATAL:  Tenant or user not found
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-20 16:00:48.053 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 16:00:57.617 | INFO     | __main__:<module>:89 - Including API routers...
+2025-10-20 16:01:04.197 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 16:01:13.582 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 16:01:13.636 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 16:01:13.646 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 16:01:13.647 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 16:01:13.647 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 16:01:20.161 | ERROR    | main:lifespan:45 - Alembic migration failed: Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
   File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
@@ -320,54 +385,44 @@ KeyboardInterrupt
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "<frozen importlib._bootstrap_external>", line 999, in exec_module
   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 19, in <module>
-    from app.db.database import Base
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\db\database.py", line 4, in <module>
-    from app.config.settings import settings
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\config\settings.py", line 15, in <module>
-    from langchain_openai import ChatOpenAI
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\__init__.py", line 1, in <module>
-    from langchain_openai.chat_models import AzureChatOpenAI, ChatOpenAI
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\__init__.py", line 1, in <module>
-    from langchain_openai.chat_models.azure import AzureChatOpenAI
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\azure.py", line 11, in <module>
-    from langchain_core.language_models import LanguageModelInput
-  File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\language_models\__init__.py", line 112, in __getattr__
-    result = import_attr(attr_name, module_name, __spec__.parent)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_import_utils.py", line 36, in import_attr
-    module = import_module(f".{module_name}", package=package)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\importlib\__init__.py", line 90, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\language_models\base.py", line 44, in <module>
-    from transformers import GPT2TokenizerFast  # type: ignore[import-not-found]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\__init__.py", line 950, in <module>
-    import_structure = define_import_structure(Path(__file__).parent / "models", prefix="models")
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\utils\import_utils.py", line 2851, in define_import_structure
-    import_structure = create_import_structure_from_path(module_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\utils\import_utils.py", line 2564, in create_import_structure_from_path
-    import_structure[f] = create_import_structure_from_path(os.path.join(module_path, f))
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\transformers\utils\import_utils.py", line 2566, in create_import_structure_from_path
-    elif not os.path.isdir(os.path.join(directory, f)):
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-KeyboardInterrupt
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
+    run_migrations_online()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 61, in run_migrations_online
+    config.get_section(config.config_ini_section, {}),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 327, in get_section
+    return dict(self.file_config.items(name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 837, in items
+    return [(option, value_getter(option)) for option in orig_keys]
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 833, in <lambda>
+    value_getter = lambda option: self._interpolation.before_get(self,
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 367, in before_get
+    self._interpolate_some(parser, option, L, value, section, defaults, 1)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 414, in _interpolate_some
+    raise InterpolationSyntaxError(
+configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found: '%2Cj3Kn%23wd_EKH@aws-1-us-east-1.pooler.supabase.com:5432/postgres?sslmode=verify-full&sslrootcert=prod-ca-2021.crt'
 
-2025-10-19 03:32:21.532 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
-2025-10-19 03:32:21.615 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
-2025-10-19 03:32:36.373 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:32:37.772 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:32:37.836 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:32:37.847 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:32:37.847 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:32:37.847 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:32:40.276 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
+2025-10-20 16:01:20.161 | WARNING  | main:lifespan:47 - Falling back to manual table creation...
+2025-10-20 16:01:25.927 | SUCCESS  | main:lifespan:49 - Database schema ready with fallback!
+2025-10-20 16:04:11.989 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY0OTMsImZ2YSI6WzE1ODksLTFdLCJpYXQiOjE3NjA5NTY0MzMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjQyMywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.nqj03y0-yaCvj1QLAdMeG5ZUz9BJ5Z5BJj-UszAPZUcKzzfTLSiXOrWnEvUY-7fgRNd58s03OZFHamK2GjyYry92b-zExcdbRq3A5xYZ3T1ONEjj-Nb3zJ6Sl3yTIlJpzvB3r5SUclYJMz2aS2kFZxX3SGfjZiXbLTHOxR--y6-ZUMenJ6PQsyEF0Z4LD0OZQdMv2BFPn9FEafdZ7NAki-xgAOlJW3OsVkGwZqwbENz9v_-dovkCeyt4uHS55_u06qVI4D4t_HMRYDfcwDJeU-gm4V-nzebve4ZpImeXc4FufLAL7RG3Yi1huUbTljUyyzgTvX8SY1MQZ0Kbj9dOig
+2025-10-20 16:04:13.925 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:186 - request payload : model_name='llama-4-maverick-17b-128e-instruct' api_key=SecretStr('**********') base_url='https://api.cerebras.ai/v1' temperature=0.7 top_p=1.0 top_k=0 max_tokens=512 system_prompt='You are a helpful AI assistant.' model_path='string' n_gpu_layers=8 n_batch=300 n_ctx=10000 provider='cerebras' message='string' tools=[] provider_id='cerebras' model_id='string'
+2025-10-20 16:04:13.925 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:190 - Request provider_id: cerebras
+2025-10-20 16:04:13.925 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:191 - Request model_id: string
+2025-10-20 16:04:13.926 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:200 - Provider ID: cerebras and ProviderInfo(id='cerebras', name='cerebras', display_name='Cerebras', base_url='https://api.cerebras.ai/v1', logo_url='https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/cerebras-color.png', description='Cerebras high-performance models', requires_api_key=True, supports_streaming=True, supports_tools=True, supports_embeddings=False, max_tokens=4096, models=[])
+2025-10-20 16:04:13.926 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:201 - Base URL: https://api.cerebras.ai/v1
+2025-10-20 16:04:13.926 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:202 - The temperature is: 0.7
+2025-10-20 16:04:13.926 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:203 - The max tokens is: 512
+2025-10-20 16:04:40.149 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 16:04:48.858 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 16:04:59.250 | INFO     | __mp_main__:<module>:89 - Including API routers...
+2025-10-20 16:04:59.299 | INFO     | main:<module>:89 - Including API routers...
+2025-10-20 16:04:59.309 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-20 16:04:59.310 | INFO     | main:lifespan:28 - Setting up database schema...
+2025-10-20 16:04:59.310 | INFO     | main:lifespan:32 - Running database migrations with Alembic...
+2025-10-20 16:05:06.151 | ERROR    | main:lifespan:45 - Alembic migration failed: Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
   File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__main__.py", line 4, in <module>
@@ -390,186 +445,231 @@ KeyboardInterrupt
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "<frozen importlib._bootstrap_external>", line 999, in exec_module
   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 19, in <module>
-    from app.db.database import Base
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\db\database.py", line 4, in <module>
-    from app.config.settings import settings
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\config\settings.py", line 15, in <module>
-    from langchain_openai import ChatOpenAI
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\__init__.py", line 1, in <module>
-    from langchain_openai.chat_models import AzureChatOpenAI, ChatOpenAI
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\__init__.py", line 1, in <module>
-    from langchain_openai.chat_models.azure import AzureChatOpenAI
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_openai\chat_models\azure.py", line 11, in <module>
-    from langchain_core.language_models import LanguageModelInput
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\__init__.py", line 11, in <module>
-    from langchain_core._api import (
-  File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_api\__init__.py", line 63, in __getattr__
-    result = import_attr(attr_name, module_name, __spec__.parent)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_import_utils.py", line 36, in import_attr
-    module = import_module(f".{module_name}", package=package)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\importlib\__init__.py", line 90, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 27, in <module>
-    from pydantic.v1.fields import FieldInfo as FieldInfoV1
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\__init__.py", line 2, in <module>
-    from pydantic.v1 import dataclasses
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\dataclasses.py", line 51, in <module>
-    from pydantic.v1.config import BaseConfig, ConfigDict, Extra, get_config
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\config.py", line 46, in <module>
-    class ConfigDict(TypedDict, total=False):
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\pydantic\v1\config.py", line 74, in ConfigDict
-    post_init_call: Literal['before_validation', 'after_validation']
-                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 524, in __getitem__
-    return self._getitem(self, *parameters)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 395, in inner
-    return _caches[func](*args, **kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 785, in Literal
-    return _LiteralGenericAlias(self, parameters)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 1273, in __init__
-    self.__args__ = tuple(... if a is _TypingEllipsis else
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\typing.py", line 1273, in <genexpr>
-    self.__args__ = tuple(... if a is _TypingEllipsis else
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-KeyboardInterrupt
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 78, in <module>
+    run_migrations_online()
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\alembic\env.py", line 61, in run_migrations_online
+    config.get_section(config.config_ini_section, {}),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\config.py", line 327, in get_section
+    return dict(self.file_config.items(name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 837, in items
+    return [(option, value_getter(option)) for option in orig_keys]
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 833, in <lambda>
+    value_getter = lambda option: self._interpolation.before_get(self,
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 367, in before_get
+    self._interpolate_some(parser, option, L, value, section, defaults, 1)
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\configparser.py", line 414, in _interpolate_some
+    raise InterpolationSyntaxError(
+configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found: '%2Cj3Kn%23wd_EKH@aws-1-us-east-1.pooler.supabase.com:5432/postgres?sslmode=verify-full&sslrootcert=prod-ca-2021.crt'
 
-2025-10-19 03:32:40.277 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
-2025-10-19 03:32:40.333 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
-2025-10-19 03:32:57.447 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:32:58.952 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:32:59.017 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:32:59.032 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:32:59.032 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:32:59.032 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:33:02.867 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:33:02.875 | INFO     | __main__:insert_models:30 - 🔄 Syncing providers and models to database...
-2025-10-19 03:33:07.622 | INFO     | __main__:insert_models:32 - ✅ All providers and models synced successfully!
-2025-10-19 03:33:07.631 | INFO     | __main__:insert_models:37 - 📊 Database now contains 6 providers and 274 models
-2025-10-19 03:33:10.417 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:33:11.199 | INFO     | __main__:verify_data:65 - 📊 Database now contains:
-2025-10-19 03:33:11.200 | INFO     | __main__:verify_data:66 -    - 5 providers
-2025-10-19 03:33:11.200 | INFO     | __main__:verify_data:67 -    - 0 models
-2025-10-19 03:33:11.497 | INFO     | __main__:verify_data:71 - 📋 Providers:
-2025-10-19 03:33:11.498 | INFO     | __main__:verify_data:73 -    - Anthropic (anthropic)
-2025-10-19 03:33:11.498 | INFO     | __main__:verify_data:73 -    - Cohere (cohere)
-2025-10-19 03:33:11.498 | INFO     | __main__:verify_data:73 -    - Groq (groq)
-2025-10-19 03:33:11.499 | INFO     | __main__:verify_data:73 -    - OpenAI (openai)
-2025-10-19 03:33:11.499 | INFO     | __main__:verify_data:73 -    - Replicate (replicate)
-2025-10-19 03:33:15.719 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:33:15.724 | INFO     | __main__:insert_models:30 - 🔄 Syncing providers and models to database...
-2025-10-19 03:33:18.117 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:33:20.797 | INFO     | __main__:insert_models:32 - ✅ All providers and models synced successfully!
-2025-10-19 03:33:20.808 | INFO     | __main__:insert_models:37 - 📊 Database now contains 6 providers and 274 models
-2025-10-19 03:33:24.404 | INFO     | __main__:verify_data:65 - 📊 Database now contains:
-2025-10-19 03:33:24.404 | INFO     | __main__:verify_data:66 -    - 5 providers
-2025-10-19 03:33:24.405 | INFO     | __main__:verify_data:67 -    - 0 models
-2025-10-19 03:33:24.625 | INFO     | __main__:verify_data:71 - 📋 Providers:
-2025-10-19 03:33:24.625 | INFO     | __main__:verify_data:73 -    - Anthropic (anthropic)
-2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - Cohere (cohere)
-2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - Groq (groq)
-2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - OpenAI (openai)
-2025-10-19 03:33:24.626 | INFO     | __main__:verify_data:73 -    - Replicate (replicate)
-2025-10-19 03:33:26.740 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:33:28.075 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:33:28.141 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:33:28.152 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:33:28.152 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:33:28.152 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:33:39.032 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:35:41.448 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:35:49.904 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:36:02.718 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:36:02.725 | INFO     | __main__:insert_models:37 - 🔄 Syncing providers and models to database...
-2025-10-19 03:36:08.148 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:36:09.679 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:36:09.753 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:36:09.768 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:36:09.768 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:36:09.769 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:36:10.607 | ERROR    | main:lifespan:40 - Alembic migration failed: Traceback (most recent call last):
-  File "<frozen runpy>", line 189, in _run_module_as_main
-  File "<frozen runpy>", line 148, in _get_module_details
-  File "<frozen runpy>", line 112, in _get_module_details
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\__init__.py", line 1, in <module>
-    from . import context
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\context.py", line 1, in <module>
-    from .runtime.environment import EnvironmentContext
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\alembic\runtime\environment.py", line 18, in <module>
-    from sqlalchemy.sql.schema import Column
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\__init__.py", line 13, in <module>
-    from .engine import AdaptedConnection as AdaptedConnection
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\__init__.py", line 18, in <module>
-    from . import events as events
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\events.py", line 19, in <module>
-    from .base import Connection
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 28, in <module>
-    from .interfaces import BindTyping
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\engine\interfaces.py", line 37, in <module>
-    from ..sql.compiler import Compiled as Compiled
-  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\sqlalchemy\sql\__init__.py", line 10, in <module>
-    from ._typing import ColumnExpressionArgument as ColumnExpressionArgument
-  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
-  File "<frozen importlib._bootstrap_external>", line 1085, in get_code
-  File "<frozen importlib._bootstrap_external>", line 1208, in path_stats
-  File "<frozen importlib._bootstrap_external>", line 147, in _path_stat
-KeyboardInterrupt
+2025-10-20 16:05:06.152 | WARNING  | main:lifespan:47 - Falling back to manual table creation...
+2025-10-20 16:05:11.854 | SUCCESS  | main:lifespan:49 - Database schema ready with fallback!
+2025-10-20 16:05:11.855 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY0OTMsImZ2YSI6WzE1ODksLTFdLCJpYXQiOjE3NjA5NTY0MzMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjQyMywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.nqj03y0-yaCvj1QLAdMeG5ZUz9BJ5Z5BJj-UszAPZUcKzzfTLSiXOrWnEvUY-7fgRNd58s03OZFHamK2GjyYry92b-zExcdbRq3A5xYZ3T1ONEjj-Nb3zJ6Sl3yTIlJpzvB3r5SUclYJMz2aS2kFZxX3SGfjZiXbLTHOxR--y6-ZUMenJ6PQsyEF0Z4LD0OZQdMv2BFPn9FEafdZ7NAki-xgAOlJW3OsVkGwZqwbENz9v_-dovkCeyt4uHS55_u06qVI4D4t_HMRYDfcwDJeU-gm4V-nzebve4ZpImeXc4FufLAL7RG3Yi1huUbTljUyyzgTvX8SY1MQZ0Kbj9dOig
+2025-10-20 16:05:12.912 | ERROR    | app.auth.clerk_auth:get_current_user:36 - 401: Not authenticated: TokenVerificationErrorReason.TOKEN_EXPIRED
+Traceback (most recent call last):
 
-2025-10-19 03:36:10.608 | WARNING  | main:lifespan:42 - Falling back to manual table creation...
-2025-10-19 03:36:10.669 | SUCCESS  | main:lifespan:44 - Database schema ready with fallback!
-2025-10-19 03:36:16.464 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:36:16.469 | INFO     | __main__:insert_models:37 - 🔄 Syncing providers and models to database...
-2025-10-19 03:36:19.027 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:36:20.289 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:36:20.361 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:36:20.374 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:36:20.377 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:36:20.377 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:36:31.016 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:37:42.821 | INFO     | __main__:insert_models:41 - ✅ All providers and models synced successfully!
-2025-10-19 03:37:43.711 | INFO     | __main__:insert_models:46 - 📊 Database now contains 6 providers and 274 models
-2025-10-19 03:37:48.475 | INFO     | __main__:verify_data:75 - 📊 Database now contains:
-2025-10-19 03:37:48.475 | INFO     | __main__:verify_data:76 -    - 6 providers
-2025-10-19 03:37:48.476 | INFO     | __main__:verify_data:77 -    - 274 models
-2025-10-19 03:37:48.708 | INFO     | __main__:verify_data:81 - 📋 Providers:
-2025-10-19 03:37:48.708 | INFO     | __main__:verify_data:83 -    - Cerebras (cbf02325-c325-4ccb-aa7c-309d6bc96106)
-2025-10-19 03:37:48.708 | INFO     | __main__:verify_data:83 -    - Groq (11228f94-9807-45f7-92ca-51bcacc85910)
-2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - Mistral AI (4587d46b-34db-4924-b023-3d755b23cd6b)
-2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - NVIDIA NIM (4ff08c73-5504-4bc9-920e-1731b55549ca)
-2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - OpenAI (82cf357b-7bc0-42c2-a743-e781d4931871)
-2025-10-19 03:37:48.709 | INFO     | __main__:verify_data:83 -    - Sambanova (86f496ff-d2dd-4dc5-85a5-fcf666bc79f3)
-2025-10-19 03:39:15.592 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:39:49.016 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:39:50.772 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:39:51.171 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:39:51.182 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:39:51.182 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:39:51.182 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:40:03.324 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:43:02.202 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 03:43:10.317 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 03:43:11.599 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 03:43:11.657 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 03:43:11.667 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 03:43:11.667 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 03:43:11.667 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 03:43:23.669 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
-2025-10-19 03:46:22.288 | INFO     | main:lifespan:58 - Application shutting down...
-2025-10-19 04:05:19.407 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
-2025-10-19 04:05:20.680 | INFO     | __mp_main__:<module>:81 - Including API routers...
-2025-10-19 04:05:20.734 | INFO     | main:<module>:81 - Including API routers...
-2025-10-19 04:05:20.749 | INFO     | main:lifespan:22 - Application starting up...
-2025-10-19 04:05:20.749 | INFO     | main:lifespan:23 - Setting up database schema...
-2025-10-19 04:05:20.749 | INFO     | main:lifespan:27 - Running database migrations with Alembic...
-2025-10-19 04:05:31.184 | SUCCESS  | main:lifespan:38 - Database migrations completed successfully!
+  File "<string>", line 1, in <module>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 376
+               │     └ 3
+               └ <function _main at 0x0000018682238360>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 376
+           │    └ <function BaseProcess._bootstrap at 0x00000186821440E0>
+           └ <SpawnProcess name='SpawnProcess-2' parent=19124 started>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x0000018682143600>
+    └ <SpawnProcess name='SpawnProcess-2' parent=19124 started>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000186BC2A3890>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-2' parent=19124 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-2' parent=19124 started>
+    │    └ <function subprocess_started at 0x00000186845ACA40>
+    └ <SpawnProcess name='SpawnProcess-2' parent=19124 started>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=1640, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000186BC50BF80>>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=1640, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000001868457FC40>
+           │       │   └ <uvicorn.server.Server object at 0x00000186BC50BF80>
+           │       └ <function run at 0x000001868420D940>
+           └ <module 'asyncio' from 'C:\\Users\\Raghu\\AppData\\Roaming\\uv\\python\\cpython-3.12.10-windows-x86_64-none\\Lib\\asyncio\\__...
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000186BC4FAA40>
+           │      └ <function Runner.run at 0x0000018684269080>
+           └ <asyncio.runners.Runner object at 0x00000186BC2A1B50>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000018684266C00>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000186BC2A1B50>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 678, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000018684266B60>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 645, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000186842689A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 1999, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000186841F8FE0>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x00000186BBF79E70>()>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x00000186BBF79E70>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x00000186BBF79E70>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x00000186BBF79E70>()>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000186BC43AAE0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000186BC...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x00000186BC562F90>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000186BC43AAE0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000186BC...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000186BC...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000186BC534320>
+          └ <fastapi.applications.FastAPI object at 0x00000186BC562F90>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000186BC519C60>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x00000186BC534560>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000186BC534320>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000186BC519C60>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000186BC5345C0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000186BC534560>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000186BC519C60>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000186BC5C11F0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000186BC563140>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000186BC5345C0>
+          └ <function wrap_app_handling_exceptions at 0x000001868558BBA0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000186BC5CD4E0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000186BC563140>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000186BC5CD4E0>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000186BC563140>>
+          └ <fastapi.routing.APIRouter object at 0x00000186BC563140>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000186BC5CD4E0>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000186855C51C0>
+          └ APIRoute(path='/api/v1/ReActAgent/langchain', name='invoke_react_agent', methods=['POST'])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000186BC5CD4E0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000186BC58D3A0>
+          └ APIRoute(path='/api/v1/ReActAgent/langchain', name='invoke_react_agent', methods=['POST'])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000186BC5CD4E0>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000186BC5C2CF0>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000186BC5CD580>
+          └ <function wrap_app_handling_exceptions at 0x000001868558BBA0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000186BC5CD6C0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000186BC5CD580>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000186BC5C2CF0>
+                     └ <function get_request_handler.<locals>.app at 0x00000186BC58D260>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\routing.py", line 292, in app
+    solved_result = await solve_dependencies(
+                          └ <function solve_dependencies at 0x0000018685588CC0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+                   │      │             └ {'request': <starlette.requests.Request object at 0x00000186BC5C2CF0>}
+                   │      └ SolvedDependency(values={'request': <starlette.requests.Request object at 0x00000186BC5C2CF0>}, errors=[], background_tasks=N...
+                   └ <function get_current_user at 0x00000186AB2DAE80>
+
+> File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\auth\clerk_auth.py", line 31, in get_current_user
+    raise HTTPException(status_code=401, detail=f"Not authenticated: {request_state.reason or 'No payload'}")
+          │                                                           │             └ <TokenVerificationErrorReason.TOKEN_EXPIRED: ('token-expired', 'Token has expired and is no longer valid.')>
+          │                                                           └ RequestState(status=<AuthStatus.SIGNED_OUT: 'signed-out'>, reason=<TokenVerificationErrorReason.TOKEN_EXPIRED: ('token-expire...
+          └ <class 'fastapi.exceptions.HTTPException'>
+
+fastapi.exceptions.HTTPException: 401: Not authenticated: TokenVerificationErrorReason.TOKEN_EXPIRED
+2025-10-20 16:05:50.347 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY1ODgsImZ2YSI6WzE1OTAsLTFdLCJpYXQiOjE3NjA5NTY1MjgsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjUxOCwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.EoCJhOLC9XskD-OXC7qCBupe87J5hlEfvCbrTdEnBIHkWNUZrdlXJ24agMqFCnCGgsnKH43vZU7salxyw2o7sYvyM9JFE73K7o8EOWB_E0Sb1qKcXjC9qqPPLaSwf7MN8Y2bKQ8juys-YyWgepcdFp30v1fPh5ehVLcI4DsCbC8JDEG1QbfItP11DVoXCYM8HOwOgGLL5TXcDT3GeBfEY8WTopO83jYzSmCbCknKSGs69K7fTzvfIVYKuzP-vxs5w9xVsDQ6l9OhqTTRzdjBWPvaqNId_UL2-tZ-srHUdY5KJXn1ZUJZSilPE6BQ224t7uJoExhnI4OzQ2VzwitI5Q
+2025-10-20 16:05:51.057 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:186 - request payload : model_name='llama-4-maverick-17b-128e-instruct' api_key=SecretStr('**********') base_url='https://api.cerebras.ai/v1' temperature=0.7 top_p=1.0 top_k=0 max_tokens=512 system_prompt='You are a helpful AI assistant.' model_path='string' n_gpu_layers=8 n_batch=300 n_ctx=10000 provider='cerebras' message='string' tools=[] provider_id='cerebras' model_id='string'
+2025-10-20 16:05:51.058 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:190 - Request provider_id: cerebras
+2025-10-20 16:05:51.058 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:191 - Request model_id: string
+2025-10-20 16:05:51.058 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:200 - Provider ID: cerebras and ProviderInfo(id='cerebras', name='cerebras', display_name='Cerebras', base_url='https://api.cerebras.ai/v1', logo_url='https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/cerebras-color.png', description='Cerebras high-performance models', requires_api_key=True, supports_streaming=True, supports_tools=True, supports_embeddings=False, max_tokens=4096, models=[])
+2025-10-20 16:05:51.059 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:201 - Base URL: https://api.cerebras.ai/v1
+2025-10-20 16:05:51.059 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:202 - The temperature is: 0.7
+2025-10-20 16:05:51.059 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:203 - The max tokens is: 512
+2025-10-20 16:05:55.499 | ERROR    | app.api.v1.textual.langchain_route:invoke_react_agent:344 - Error during agent invocation: Error code: 404 - {'message': 'Model string does not exist or you do not have access to it.', 'type': 'not_found_error', 'param': 'model', 'code': 'model_not_found'}
+2025-10-20 16:06:32.069 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY1ODgsImZ2YSI6WzE1OTAsLTFdLCJpYXQiOjE3NjA5NTY1MjgsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjUxOCwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.EoCJhOLC9XskD-OXC7qCBupe87J5hlEfvCbrTdEnBIHkWNUZrdlXJ24agMqFCnCGgsnKH43vZU7salxyw2o7sYvyM9JFE73K7o8EOWB_E0Sb1qKcXjC9qqPPLaSwf7MN8Y2bKQ8juys-YyWgepcdFp30v1fPh5ehVLcI4DsCbC8JDEG1QbfItP11DVoXCYM8HOwOgGLL5TXcDT3GeBfEY8WTopO83jYzSmCbCknKSGs69K7fTzvfIVYKuzP-vxs5w9xVsDQ6l9OhqTTRzdjBWPvaqNId_UL2-tZ-srHUdY5KJXn1ZUJZSilPE6BQ224t7uJoExhnI4OzQ2VzwitI5Q
+2025-10-20 16:06:32.756 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:186 - request payload : model_name='llama-3.3-70b' api_key=SecretStr('**********') base_url='https://api.cerebras.ai/v1' temperature=0.7 top_p=1.0 top_k=0 max_tokens=512 system_prompt='You are a helpful AI assistant.' model_path='string' n_gpu_layers=8 n_batch=300 n_ctx=10000 provider='cerebras' message='string' tools=[] provider_id='cerebras' model_id='string'
+2025-10-20 16:06:32.756 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:190 - Request provider_id: cerebras
+2025-10-20 16:06:32.756 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:191 - Request model_id: string
+2025-10-20 16:06:32.757 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:200 - Provider ID: cerebras and ProviderInfo(id='cerebras', name='cerebras', display_name='Cerebras', base_url='https://api.cerebras.ai/v1', logo_url='https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/cerebras-color.png', description='Cerebras high-performance models', requires_api_key=True, supports_streaming=True, supports_tools=True, supports_embeddings=False, max_tokens=4096, models=[])
+2025-10-20 16:06:32.757 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:201 - Base URL: https://api.cerebras.ai/v1
+2025-10-20 16:06:32.757 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:202 - The temperature is: 0.7
+2025-10-20 16:06:32.758 | INFO     | app.api.v1.textual.langchain_route:invoke_react_agent:203 - The max tokens is: 512
+2025-10-20 16:06:34.480 | ERROR    | app.api.v1.textual.langchain_route:invoke_react_agent:344 - Error during agent invocation: Error code: 404 - {'message': 'Model string does not exist or you do not have access to it.', 'type': 'not_found_error', 'param': 'model', 'code': 'model_not_found'}
+2025-10-20 16:08:09.236 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY3NDIsImZ2YSI6WzE1OTMsLTFdLCJpYXQiOjE3NjA5NTY2ODIsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjY3Miwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.RsnL1pTjO52jTsBEe8_4jUc_Tega0wMRGARv5cXaDnwrQBZYENX3T27s3MLwWdhJ6aa-lfJ7EbSSOWp8VzCXgwBiZXRHbloJjSssSyGhBcyfeXe5omf5cXwD3BWw7Gv5fQ3o5IvPkGv4PvjIgxwdZaBwk5VZHl9hftHBJAQbYrmYa5f1an6pAOpSkInYBQUZZOcIv0Bu9srAXkKeyhECHYw0XqveFcA46pWd4liDJL9pGZ77weliJR0laE0SfX3bFhYKwBwIMtb3J_8qk5sj3DMWEiqqLBtajW_381r_XJh_UN7vD3z1eulTBTmHdyauVo_T-NDIcHZQWXvd9008nw
+2025-10-20 16:08:11.483 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY3NDIsImZ2YSI6WzE1OTMsLTFdLCJpYXQiOjE3NjA5NTY2ODIsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjY3Miwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.RsnL1pTjO52jTsBEe8_4jUc_Tega0wMRGARv5cXaDnwrQBZYENX3T27s3MLwWdhJ6aa-lfJ7EbSSOWp8VzCXgwBiZXRHbloJjSssSyGhBcyfeXe5omf5cXwD3BWw7Gv5fQ3o5IvPkGv4PvjIgxwdZaBwk5VZHl9hftHBJAQbYrmYa5f1an6pAOpSkInYBQUZZOcIv0Bu9srAXkKeyhECHYw0XqveFcA46pWd4liDJL9pGZ77weliJR0laE0SfX3bFhYKwBwIMtb3J_8qk5sj3DMWEiqqLBtajW_381r_XJh_UN7vD3z1eulTBTmHdyauVo_T-NDIcHZQWXvd9008nw
+2025-10-20 16:08:14.209 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY3NDIsImZ2YSI6WzE1OTMsLTFdLCJpYXQiOjE3NjA5NTY2ODIsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjY3Miwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.RsnL1pTjO52jTsBEe8_4jUc_Tega0wMRGARv5cXaDnwrQBZYENX3T27s3MLwWdhJ6aa-lfJ7EbSSOWp8VzCXgwBiZXRHbloJjSssSyGhBcyfeXe5omf5cXwD3BWw7Gv5fQ3o5IvPkGv4PvjIgxwdZaBwk5VZHl9hftHBJAQbYrmYa5f1an6pAOpSkInYBQUZZOcIv0Bu9srAXkKeyhECHYw0XqveFcA46pWd4liDJL9pGZ77weliJR0laE0SfX3bFhYKwBwIMtb3J_8qk5sj3DMWEiqqLBtajW_381r_XJh_UN7vD3z1eulTBTmHdyauVo_T-NDIcHZQWXvd9008nw
+2025-10-20 16:08:16.961 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY3NDIsImZ2YSI6WzE1OTMsLTFdLCJpYXQiOjE3NjA5NTY2ODIsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjY3Miwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.RsnL1pTjO52jTsBEe8_4jUc_Tega0wMRGARv5cXaDnwrQBZYENX3T27s3MLwWdhJ6aa-lfJ7EbSSOWp8VzCXgwBiZXRHbloJjSssSyGhBcyfeXe5omf5cXwD3BWw7Gv5fQ3o5IvPkGv4PvjIgxwdZaBwk5VZHl9hftHBJAQbYrmYa5f1an6pAOpSkInYBQUZZOcIv0Bu9srAXkKeyhECHYw0XqveFcA46pWd4liDJL9pGZ77weliJR0laE0SfX3bFhYKwBwIMtb3J_8qk5sj3DMWEiqqLBtajW_381r_XJh_UN7vD3z1eulTBTmHdyauVo_T-NDIcHZQWXvd9008nw
+2025-10-20 16:09:42.021 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4MDYsImZ2YSI6WzE1OTQsLTFdLCJpYXQiOjE3NjA5NTY3NDYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjczNiwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.CkBqQ_n9VdZqDRsJQFBDGYEeK7hy-l8TKBeWJBTSHNfxTiQmACEyGqIjZvXKcTU1wTeK0JW_JmeMaqbeuJi6UYcQgg9RO3mmeHdLTbfJ0qpNHv-GYHuGGXIxBuhv0OkTaH36A4njienNREAr7UvDzoM4lIy66nfyYO7zRe56fwL8zqFGLtVElY0n5XZK5w1oF4SLDBNKMeu3a3srrfA2zCnOMnDW2-ZxNSpeugCJq8hghUnvqPGNf_gytQQmKr6fdp3vHL9aOUeMg9wSuCR5Ha40CTLULzjF2xaOmrOSnKc3kGdsb68zu2pGp9EtTtpy00bNe5cIQLGIaShgyT7vhg
+2025-10-20 16:09:44.206 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4MDYsImZ2YSI6WzE1OTQsLTFdLCJpYXQiOjE3NjA5NTY3NDYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjczNiwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.CkBqQ_n9VdZqDRsJQFBDGYEeK7hy-l8TKBeWJBTSHNfxTiQmACEyGqIjZvXKcTU1wTeK0JW_JmeMaqbeuJi6UYcQgg9RO3mmeHdLTbfJ0qpNHv-GYHuGGXIxBuhv0OkTaH36A4njienNREAr7UvDzoM4lIy66nfyYO7zRe56fwL8zqFGLtVElY0n5XZK5w1oF4SLDBNKMeu3a3srrfA2zCnOMnDW2-ZxNSpeugCJq8hghUnvqPGNf_gytQQmKr6fdp3vHL9aOUeMg9wSuCR5Ha40CTLULzjF2xaOmrOSnKc3kGdsb68zu2pGp9EtTtpy00bNe5cIQLGIaShgyT7vhg
+2025-10-20 16:10:02.736 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4NTMsImZ2YSI6WzE1OTUsLTFdLCJpYXQiOjE3NjA5NTY3OTMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1Njc4Mywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.SMQDgPirKCSqwnIDvHcUrZdMZWj8urUjo_qREH_OmHk7wMfb__OvbPUieBRH1HEMvr4K21b6gaFVRZcydAjmuKqi3PFTXi9c_xtX3jObymo5XiFqM9EknlGgenD7CpbwuL3_SCf6wTICISrpUNNTQgPldZtYcavoaK984xqooNhFkKZnVx97U-FAATezi3ZtZpBpDCQ7FZKirg6mL_WQVpb0-fPuBQVl4itp_MThJj32q9cMtqkoM1_FzrzZrppT3rUc3yXsVfxWlrKCkDnV5PP3q1AthBj0Y2sFc_yU9N-Tgo-_ZVjnfmIb_-vZiV2gWw2Rdhjx1ks08dvqxgf58A
+2025-10-20 16:10:04.699 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4NTMsImZ2YSI6WzE1OTUsLTFdLCJpYXQiOjE3NjA5NTY3OTMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1Njc4Mywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.SMQDgPirKCSqwnIDvHcUrZdMZWj8urUjo_qREH_OmHk7wMfb__OvbPUieBRH1HEMvr4K21b6gaFVRZcydAjmuKqi3PFTXi9c_xtX3jObymo5XiFqM9EknlGgenD7CpbwuL3_SCf6wTICISrpUNNTQgPldZtYcavoaK984xqooNhFkKZnVx97U-FAATezi3ZtZpBpDCQ7FZKirg6mL_WQVpb0-fPuBQVl4itp_MThJj32q9cMtqkoM1_FzrzZrppT3rUc3yXsVfxWlrKCkDnV5PP3q1AthBj0Y2sFc_yU9N-Tgo-_ZVjnfmIb_-vZiV2gWw2Rdhjx1ks08dvqxgf58A
+2025-10-20 16:10:36.334 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4ODYsImZ2YSI6WzE1OTUsLTFdLCJpYXQiOjE3NjA5NTY4MjYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjgxNiwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.pYZDhMkk3Jrphyx-XTZ1AEw8fZ7pkX-ZjJ35EKJyipprJ9GR4iwYWs9qLbk28KQ4TLYbp9aalrcLit8M1JmDCzOuOgxggVByNUx_1Ref68YkOkfI_VeN9P_4jGuMQDMBNN5WzCdviwXYOlSvH9KYXuleKVOjogoFWUAmWZz4kcMIQQkZzOyhRgx_XFiPytC2pDBdSd90bLbxjPMJYzG5Z17uJb70Ee9J4amYSRZg-FoKD75DRi4PofYoCCziPhKPBcEIJzaN7pHzq0iXr9oO_eEBimGNso4qEqHc2tOsBN5xia7llSvuTC0fEzEM0qGyqHW53d2c1Axtg8LBJnm3sQ
+2025-10-20 16:10:40.384 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4ODYsImZ2YSI6WzE1OTUsLTFdLCJpYXQiOjE3NjA5NTY4MjYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjgxNiwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.pYZDhMkk3Jrphyx-XTZ1AEw8fZ7pkX-ZjJ35EKJyipprJ9GR4iwYWs9qLbk28KQ4TLYbp9aalrcLit8M1JmDCzOuOgxggVByNUx_1Ref68YkOkfI_VeN9P_4jGuMQDMBNN5WzCdviwXYOlSvH9KYXuleKVOjogoFWUAmWZz4kcMIQQkZzOyhRgx_XFiPytC2pDBdSd90bLbxjPMJYzG5Z17uJb70Ee9J4amYSRZg-FoKD75DRi4PofYoCCziPhKPBcEIJzaN7pHzq0iXr9oO_eEBimGNso4qEqHc2tOsBN5xia7llSvuTC0fEzEM0qGyqHW53d2c1Axtg8LBJnm3sQ
+2025-10-20 16:10:42.280 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4ODYsImZ2YSI6WzE1OTUsLTFdLCJpYXQiOjE3NjA5NTY4MjYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjgxNiwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.pYZDhMkk3Jrphyx-XTZ1AEw8fZ7pkX-ZjJ35EKJyipprJ9GR4iwYWs9qLbk28KQ4TLYbp9aalrcLit8M1JmDCzOuOgxggVByNUx_1Ref68YkOkfI_VeN9P_4jGuMQDMBNN5WzCdviwXYOlSvH9KYXuleKVOjogoFWUAmWZz4kcMIQQkZzOyhRgx_XFiPytC2pDBdSd90bLbxjPMJYzG5Z17uJb70Ee9J4amYSRZg-FoKD75DRi4PofYoCCziPhKPBcEIJzaN7pHzq0iXr9oO_eEBimGNso4qEqHc2tOsBN5xia7llSvuTC0fEzEM0qGyqHW53d2c1Axtg8LBJnm3sQ
+2025-10-20 16:10:43.426 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjA5NTY4ODYsImZ2YSI6WzE1OTUsLTFdLCJpYXQiOjE3NjA5NTY4MjYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MDk1NjgxNiwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.pYZDhMkk3Jrphyx-XTZ1AEw8fZ7pkX-ZjJ35EKJyipprJ9GR4iwYWs9qLbk28KQ4TLYbp9aalrcLit8M1JmDCzOuOgxggVByNUx_1Ref68YkOkfI_VeN9P_4jGuMQDMBNN5WzCdviwXYOlSvH9KYXuleKVOjogoFWUAmWZz4kcMIQQkZzOyhRgx_XFiPytC2pDBdSd90bLbxjPMJYzG5Z17uJb70Ee9J4amYSRZg-FoKD75DRi4PofYoCCziPhKPBcEIJzaN7pHzq0iXr9oO_eEBimGNso4qEqHc2tOsBN5xia7llSvuTC0fEzEM0qGyqHW53d2c1Axtg8LBJnm3sQ
+2025-10-20 16:12:17.835 | INFO     | main:lifespan:63 - Application shutting down...

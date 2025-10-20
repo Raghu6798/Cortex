@@ -1,5 +1,4 @@
-# REVISED FILE: app/api/v1/textual/llama_index_workflow_route.py
-
+#app/api/v1/textual/llama_index_workflow_route.py
 import asyncio
 import aiohttp
 import urllib.parse
@@ -19,13 +18,12 @@ from sqlalchemy.orm import Session
 from mistralai import Mistral
 from mistralai import Tool, Function, UserMessage, AssistantMessage, ToolMessage
 
-
 from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
 from app.config.settings import settings
 from app.auth.clerk_auth import get_current_user
 from app.integrations.llm_router import llm_router
 from app.db.database import get_db
-from app.db.models import LLMProviderDB, LLMModelDB
+from app.db.models import ChatSessionDB, LLMProviderDB, LLMModelDB, ChatMetricsDB
 
 async def execute_api_call(input_params: Dict[str, Any]):
     """
@@ -142,7 +140,6 @@ async def execute_api_call(input_params: Dict[str, Any]):
     except Exception as e:
         logger.error(f"[function_handler] An unexpected error occurred: {e}")
         return {"error": f"An unexpected error occurred: {str(e)}"}
-
 
 tool_parameters = {
     "type": "object",
