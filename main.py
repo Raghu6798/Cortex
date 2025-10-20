@@ -88,7 +88,7 @@ app.include_router(frameworks_router)
 app.include_router(langchain_router)
 app.include_router(providers_router)
 app.include_router(agents_router, prefix="/api/v1")
-app.include_router(llama_index_workflow_router, prefix="/api/v1")
+app.include_router(llama_index_workflow_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

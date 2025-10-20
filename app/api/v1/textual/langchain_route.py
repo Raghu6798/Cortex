@@ -170,7 +170,7 @@ async def execute_api_call(input_params: Dict[str, Any]):
 
 router = APIRouter(prefix="/api/v1", tags=["textual"])
 
-@router.post("/chat/invoke/langchain",response_model=CortexResponseFormat,tags=["Chat"])
+@router.post("/ReActAgent/langchain",response_model=CortexResponseFormat,tags=["Chat"])
 async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> CortexResponseFormat:
 
     """
