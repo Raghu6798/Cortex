@@ -1,0 +1,47 @@
+# render.yaml - Cortex Backend Deployment Configuration (Refined)
+services:
+  - type: web
+    name: cortex-backend
+    env: python
+    region: oregon 
+    plan: starter 
+    
+    # Build configuration
+    buildCommand: "pip install -r requirements.txt"
+    
+    # Run database migrations before starting the server
+    preDeployCommand: "alembic upgrade head"
+    
+    # Start the FastAPI server using Render's built-in $PORT
+    # The --workers flag is good for paid plans like 'starter'
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT --workers 2"
+    
+    # Health check endpoint (ensure this exists in your FastAPI app)
+    healthCheckPath: /health
+    
+    # Environment Variables
+    envVars:
+      # --- Secrets ---
+      # Set the values for these in the Render dashboard
+      # sync: false prevents them from being stored in the yaml
+      - key: SUPABASE_DB_URI
+        sync: false
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CEREBRAS_API_KEY
+        sync: false
+      - key: MISTRAL_API_KEY
+        sync: false
+      - key: SAMBANOVA_API_KEY
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false
+      
+      # --- Configuration ---
+      - key: PYTHON_VERSION
+        value: "3.12"
+
+      # REMOVED: The HOST and PORT variables are redundant.
+      # The startCommand and Render's environment handle them directly.
