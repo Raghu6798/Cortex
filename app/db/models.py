@@ -2,7 +2,9 @@
 from sqlalchemy import Column, String, DateTime, ForeignKey, Float, JSON, Boolean, Text, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func 
+
 from app.db.database import Base
+from app.utils.encryption import encrypt_value, decrypt_value
 
 class ChatSessionDB(Base):
     __tablename__ = "chat_sessions"
@@ -139,3 +141,26 @@ class AgentDB(Base):
     
     # Relationship to chat sessions
     sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
+
+class UserSecretDB(Base):
+    __tablename__ = "user_secrets"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, nullable=False, index=True)
+    name = Column(String, nullable=False) 
+    
+    _secret_value = Column("secret_value", String, nullable=False)
+
+    @property
+    def secret_value(self):
+        # This will now use your robust decryption function
+        return decrypt_value(self._secret_value)
+
+    @secret_value.setter
+    def secret_value(self, value: str):
+        # This will now use your robust encryption function
+        self._secret_value = encrypt_value(value)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())

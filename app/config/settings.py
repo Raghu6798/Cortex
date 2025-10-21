@@ -46,6 +46,7 @@ class Settings(BaseSettings):
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
     CLERK_SECRET_KEY:str
+    ENCRYPTION_KEY:str
     SUPABASE_DB_URI:PostgresDsn
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str

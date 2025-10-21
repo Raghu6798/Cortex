@@ -865,3 +865,250 @@ configparser.InterpolationSyntaxError: '%' must be followed by '%' or '(', found
 2025-10-20 17:52:51.529 | WARNING  | main:lifespan:47 - Falling back to manual table creation...
 2025-10-20 17:52:56.993 | SUCCESS  | main:lifespan:49 - Database schema ready with fallback!
 2025-10-20 17:59:28.079 | INFO     | main:lifespan:63 - Application shutting down...
+2025-10-20 17:59:36.642 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-20 17:59:46.351 | INFO     | __mp_main__:<module>:54 - Including API routers...
+2025-10-20 17:59:46.400 | INFO     | main:<module>:54 - Including API routers...
+2025-10-20 17:59:46.411 | INFO     | main:lifespan:26 - Application starting up...
+2025-10-21 14:40:11.817 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:41:21.781 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:45:57.234 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:47:04.652 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:47:40.521 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:48:53.912 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:53:00.138 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:58:04.921 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:59:16.820 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 14:59:32.505 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:00:23.401 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:03:11.558 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:04:42.693 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:06:33.504 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:07:24.478 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:08:11.019 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:08:23.021 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:09:45.865 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:12:33.794 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:14:01.332 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:19:29.636 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:20:23.109 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:21:01.529 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:53:32.899 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:54:38.611 | INFO     | __main__:<module>:55 - Including API routers...
+2025-10-21 15:54:45.960 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:54:56.891 | INFO     | __mp_main__:<module>:55 - Including API routers...
+2025-10-21 15:54:57.187 | INFO     | main:<module>:55 - Including API routers...
+2025-10-21 15:54:57.202 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-21 15:55:04.324 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDIzNjksImZ2YSI6WzMwMjAsLTFdLCJpYXQiOjE3NjEwNDIzMDksImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjI5OSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.Duys-zIKXYr2NFMhNkmeqRDyfAvShQR3cEo6FpkFciHG6vJ9XKxlNB1u8EDspUD900Szmt8zFKgJzSxTzWfwsuHtP7q1EtJk1f9I1WGVH44xAE9oghEoNMhYSwYa8FWIpl-o7uA6pIT8ybBPJMDfhIcmiEXjupS2AuHpaxMOyv1khBV8m-BZlu2y4q9jo6QKl798o4mYcUUgD7fF4UwmOpnssYObcgd97AAg6HurF2--UzEfp4LFHfU2xqrqV7pfaoGa5F4gCtcTMWGAgjuC-yb9HSDn0-j2YIr2LMthJcuRZVf6vggeLaFZDwbvyACHFtDokFYDYlrrfY7_LjdBhQ
+2025-10-21 15:55:06.961 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDIzNjksImZ2YSI6WzMwMjAsLTFdLCJpYXQiOjE3NjEwNDIzMDksImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjI5OSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.Duys-zIKXYr2NFMhNkmeqRDyfAvShQR3cEo6FpkFciHG6vJ9XKxlNB1u8EDspUD900Szmt8zFKgJzSxTzWfwsuHtP7q1EtJk1f9I1WGVH44xAE9oghEoNMhYSwYa8FWIpl-o7uA6pIT8ybBPJMDfhIcmiEXjupS2AuHpaxMOyv1khBV8m-BZlu2y4q9jo6QKl798o4mYcUUgD7fF4UwmOpnssYObcgd97AAg6HurF2--UzEfp4LFHfU2xqrqV7pfaoGa5F4gCtcTMWGAgjuC-yb9HSDn0-j2YIr2LMthJcuRZVf6vggeLaFZDwbvyACHFtDokFYDYlrrfY7_LjdBhQ
+2025-10-21 15:55:08.408 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDIzNjksImZ2YSI6WzMwMjAsLTFdLCJpYXQiOjE3NjEwNDIzMDksImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjI5OSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.Duys-zIKXYr2NFMhNkmeqRDyfAvShQR3cEo6FpkFciHG6vJ9XKxlNB1u8EDspUD900Szmt8zFKgJzSxTzWfwsuHtP7q1EtJk1f9I1WGVH44xAE9oghEoNMhYSwYa8FWIpl-o7uA6pIT8ybBPJMDfhIcmiEXjupS2AuHpaxMOyv1khBV8m-BZlu2y4q9jo6QKl798o4mYcUUgD7fF4UwmOpnssYObcgd97AAg6HurF2--UzEfp4LFHfU2xqrqV7pfaoGa5F4gCtcTMWGAgjuC-yb9HSDn0-j2YIr2LMthJcuRZVf6vggeLaFZDwbvyACHFtDokFYDYlrrfY7_LjdBhQ
+2025-10-21 15:55:22.803 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDIzNjksImZ2YSI6WzMwMjAsLTFdLCJpYXQiOjE3NjEwNDIzMDksImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjI5OSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.Duys-zIKXYr2NFMhNkmeqRDyfAvShQR3cEo6FpkFciHG6vJ9XKxlNB1u8EDspUD900Szmt8zFKgJzSxTzWfwsuHtP7q1EtJk1f9I1WGVH44xAE9oghEoNMhYSwYa8FWIpl-o7uA6pIT8ybBPJMDfhIcmiEXjupS2AuHpaxMOyv1khBV8m-BZlu2y4q9jo6QKl798o4mYcUUgD7fF4UwmOpnssYObcgd97AAg6HurF2--UzEfp4LFHfU2xqrqV7pfaoGa5F4gCtcTMWGAgjuC-yb9HSDn0-j2YIr2LMthJcuRZVf6vggeLaFZDwbvyACHFtDokFYDYlrrfY7_LjdBhQ
+2025-10-21 15:58:38.122 | INFO     | main:lifespan:30 - Application shutting down...
+2025-10-21 15:58:48.573 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:59:04.388 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 15:59:14.683 | INFO     | __mp_main__:<module>:55 - Including API routers...
+2025-10-21 15:59:14.731 | INFO     | main:<module>:55 - Including API routers...
+2025-10-21 15:59:14.744 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-21 16:00:32.920 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 16:01:17.168 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: None
+2025-10-21 16:01:17.169 | ERROR    | app.auth.clerk_auth:get_current_user:36 - 401: Not authenticated: AuthErrorReason.SESSION_TOKEN_MISSING
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 392
+               │     └ 3
+               └ <function _main at 0x000002B3FB298360>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 392
+           │    └ <function BaseProcess._bootstrap at 0x000002B3FB1A40E0>
+           └ <SpawnProcess name='SpawnProcess-8' parent=17916 started>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000002B3FB1A3600>
+    └ <SpawnProcess name='SpawnProcess-8' parent=17916 started>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000002B3B55583E0>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-8' parent=17916 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-8' parent=17916 started>
+    │    └ <function subprocess_started at 0x000002B3FD66CA40>
+    └ <SpawnProcess name='SpawnProcess-8' parent=17916 started>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=1760, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000002B3B5558A70>>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=1760, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000002B3FD64BC40>
+           │       │   └ <uvicorn.server.Server object at 0x000002B3B5558A70>
+           │       └ <function run at 0x000002B3FCE69940>
+           └ <module 'asyncio' from 'C:\\Users\\Raghu\\AppData\\Roaming\\uv\\python\\cpython-3.12.10-windows-x86_64-none\\Lib\\asyncio\\__...
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000002B3B551BBC0>
+           │      └ <function Runner.run at 0x000002B3FCEC9080>
+           └ <asyncio.runners.Runner object at 0x000002B3B55580E0>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002B3FCEC6C00>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002B3B55580E0>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 678, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002B3FCEC6B60>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 645, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002B3FCEC89A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\base_events.py", line 1999, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002B3FCE58FE0>
+    └ <Handle Task.task_wakeup(<Future finis...02B3B5604950>>)>
+  File "C:\Users\Raghu\AppData\Roaming\uv\python\cpython-3.12.10-windows-x86_64-none\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...02B3B5604950>>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...02B3B5604950>>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...02B3B5604950>>)>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002B3B5261580>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B3B5...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002B3B55597F0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002B3B5261580>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B3B5...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B3B5...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002B3B5558F80>
+          └ <fastapi.applications.FastAPI object at 0x000002B3B55597F0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002B3B55ED440>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002B3B5558FE0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002B3B5558F80>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002B3B55ED440>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002B3B5559010>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002B3B5558FE0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002B3B55ED440>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000002B3B56043B0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000002B3B558FB90>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002B3B5559010>
+          └ <function wrap_app_handling_exceptions at 0x000002B3FE5EFBA0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3B55ED580>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000002B3B558FB90>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3B55ED580>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000002B3B558FB90>>
+          └ <fastapi.routing.APIRouter object at 0x000002B3B558FB90>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3B55ED580>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x000002B3FE6251C0>
+          └ APIRoute(path='/api/v1/secrets/', name='list_secrets', methods=['GET'])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3B55ED580>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000002B3B55AD9E0>
+          └ APIRoute(path='/api/v1/secrets/', name='list_secrets', methods=['GET'])
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3B55ED580>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000002B3B5604650>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000002B3B55ED620>
+          └ <function wrap_app_handling_exceptions at 0x000002B3FE5EFBA0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3B55ED8A0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002B...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000002B3B55ED620>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000002B3B5604650>
+                     └ <function get_request_handler.<locals>.app at 0x000002B3B55AD940>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\routing.py", line 292, in app
+    solved_result = await solve_dependencies(
+                          └ <function solve_dependencies at 0x000002B3FE5ECCC0>
+  File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+                   │      │             └ {'request': <starlette.requests.Request object at 0x000002B3B5604650>}
+                   │      └ SolvedDependency(values={'request': <starlette.requests.Request object at 0x000002B3B5604650>}, errors=[], background_tasks=N...
+                   └ <function get_current_user at 0x000002B3A3BDB6A0>
+
+> File "C:\Users\Raghu\Downloads\Cortex_Frontend\backend\app\auth\clerk_auth.py", line 31, in get_current_user
+    raise HTTPException(status_code=401, detail=f"Not authenticated: {request_state.reason or 'No payload'}")
+          │                                                           │             └ <AuthErrorReason.SESSION_TOKEN_MISSING: ('session-token-missing', 'Could not retrieve session token. Please make sure that th...
+          │                                                           └ RequestState(status=<AuthStatus.SIGNED_OUT: 'signed-out'>, reason=<AuthErrorReason.SESSION_TOKEN_MISSING: ('session-token-mis...
+          └ <class 'fastapi.exceptions.HTTPException'>
+
+fastapi.exceptions.HTTPException: 401: Not authenticated: AuthErrorReason.SESSION_TOKEN_MISSING
+2025-10-21 16:01:55.840 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 16:02:06.711 | INFO     | __main__:<module>:55 - Including API routers...
+2025-10-21 16:02:12.855 | INFO     | app.utils.logger:<module>:41 - Logger initialized successfully.
+2025-10-21 16:02:23.263 | INFO     | __mp_main__:<module>:55 - Including API routers...
+2025-10-21 16:02:23.314 | INFO     | main:<module>:55 - Including API routers...
+2025-10-21 16:02:23.328 | INFO     | main:lifespan:27 - Application starting up...
+2025-10-21 16:02:44.190 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI4MTYsImZ2YSI6WzMwMjcsLTFdLCJpYXQiOjE3NjEwNDI3NTYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjc0Niwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.cXhaMnJZzAVckvjnuZVP6qGObLiMQiDeUXGrjQj8dHpC27SRZnGz0qUpyW8IKcYoMfz5pxIjnotVGgvk1l5kS_JaupnHWxBTYIonA5UBthNGDi8OsDILK-aa6ZjyOr_83o2e6BEdCRcPzrz-LJzbXJ6SeMtAF6NnGKOdq2pY3G6nqvP6LaEifN1ZK5_VF-vc8yPkgXcfEVxN-Sygeu9jZffua6xcTq4M72YCe3tBbOhMiwDy6P57E76BY9-v1Sqd-06AJkPgzM0VEXnFvMywJs244CUX8-KNrC9HGwGHa9D6jUW6deKkIrqvlTuxP-8jQpZP6_VT7CxWOFI0vA7IAQ
+2025-10-21 16:03:00.579 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI4MTYsImZ2YSI6WzMwMjcsLTFdLCJpYXQiOjE3NjEwNDI3NTYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjc0Niwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.cXhaMnJZzAVckvjnuZVP6qGObLiMQiDeUXGrjQj8dHpC27SRZnGz0qUpyW8IKcYoMfz5pxIjnotVGgvk1l5kS_JaupnHWxBTYIonA5UBthNGDi8OsDILK-aa6ZjyOr_83o2e6BEdCRcPzrz-LJzbXJ6SeMtAF6NnGKOdq2pY3G6nqvP6LaEifN1ZK5_VF-vc8yPkgXcfEVxN-Sygeu9jZffua6xcTq4M72YCe3tBbOhMiwDy6P57E76BY9-v1Sqd-06AJkPgzM0VEXnFvMywJs244CUX8-KNrC9HGwGHa9D6jUW6deKkIrqvlTuxP-8jQpZP6_VT7CxWOFI0vA7IAQ
+2025-10-21 16:03:12.598 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI4MTYsImZ2YSI6WzMwMjcsLTFdLCJpYXQiOjE3NjEwNDI3NTYsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjc0Niwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.cXhaMnJZzAVckvjnuZVP6qGObLiMQiDeUXGrjQj8dHpC27SRZnGz0qUpyW8IKcYoMfz5pxIjnotVGgvk1l5kS_JaupnHWxBTYIonA5UBthNGDi8OsDILK-aa6ZjyOr_83o2e6BEdCRcPzrz-LJzbXJ6SeMtAF6NnGKOdq2pY3G6nqvP6LaEifN1ZK5_VF-vc8yPkgXcfEVxN-Sygeu9jZffua6xcTq4M72YCe3tBbOhMiwDy6P57E76BY9-v1Sqd-06AJkPgzM0VEXnFvMywJs244CUX8-KNrC9HGwGHa9D6jUW6deKkIrqvlTuxP-8jQpZP6_VT7CxWOFI0vA7IAQ
+2025-10-21 16:03:25.024 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI4NTgsImZ2YSI6WzMwMjgsLTFdLCJpYXQiOjE3NjEwNDI3OTgsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjc4OCwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.swxKbU1zxjCOI3bAZt5Mkt_gWdQlShb8t2wzwz4CbACrtjJSqvfTemlnax4vbBlY7dFPJJeVm2DOp_63Ih1K5N_prQPHsyRpFBHGEa1Nl2lnvfOds-bQIABAIgB_NVBdTscPMeTGi2aIO8QGHVB5xnN1tfE9ZjZL7P6f22qw5O8TvdhqOZ10ovHkaqxV1vophY-jb2LucW0lDptV9BAS50AuUDDtSFaFf0bfBm4saRvVA4u3vYYYPnHFmTXuK-IE5VSXlHy2F8ZG7Qwp5s9-mPrd8-QDIEiwHcJiEqGbFLeQz-fZsGrniYJsAkKH3EbTqGtTXKotPW-VJdjRgFmX3w
+2025-10-21 16:03:35.544 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI4NTgsImZ2YSI6WzMwMjgsLTFdLCJpYXQiOjE3NjEwNDI3OTgsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjc4OCwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.swxKbU1zxjCOI3bAZt5Mkt_gWdQlShb8t2wzwz4CbACrtjJSqvfTemlnax4vbBlY7dFPJJeVm2DOp_63Ih1K5N_prQPHsyRpFBHGEa1Nl2lnvfOds-bQIABAIgB_NVBdTscPMeTGi2aIO8QGHVB5xnN1tfE9ZjZL7P6f22qw5O8TvdhqOZ10ovHkaqxV1vophY-jb2LucW0lDptV9BAS50AuUDDtSFaFf0bfBm4saRvVA4u3vYYYPnHFmTXuK-IE5VSXlHy2F8ZG7Qwp5s9-mPrd8-QDIEiwHcJiEqGbFLeQz-fZsGrniYJsAkKH3EbTqGtTXKotPW-VJdjRgFmX3w
+2025-10-21 16:03:43.944 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI4NTgsImZ2YSI6WzMwMjgsLTFdLCJpYXQiOjE3NjEwNDI3OTgsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjc4OCwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.swxKbU1zxjCOI3bAZt5Mkt_gWdQlShb8t2wzwz4CbACrtjJSqvfTemlnax4vbBlY7dFPJJeVm2DOp_63Ih1K5N_prQPHsyRpFBHGEa1Nl2lnvfOds-bQIABAIgB_NVBdTscPMeTGi2aIO8QGHVB5xnN1tfE9ZjZL7P6f22qw5O8TvdhqOZ10ovHkaqxV1vophY-jb2LucW0lDptV9BAS50AuUDDtSFaFf0bfBm4saRvVA4u3vYYYPnHFmTXuK-IE5VSXlHy2F8ZG7Qwp5s9-mPrd8-QDIEiwHcJiEqGbFLeQz-fZsGrniYJsAkKH3EbTqGtTXKotPW-VJdjRgFmX3w
+2025-10-21 16:03:57.834 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:00.929 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:02.052 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:03.048 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:05.874 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:07.452 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:09.187 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:11.028 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:13.642 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:15.426 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:18.508 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:19.891 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:23.668 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MDEsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NDEsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0MjgzMSwic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.B9So--Efjvv2jLK7COjBHUuqfnKnChlsiioRwRPbclANMtyFGhhPxbwSXFsVOocbqS6a_1SxcMoVbqMAsGrswy8MN36ETVfhcMGXWi-X5nrCaRv56X05krT_t-e7bszUJYj-zrMlEpCz8QdP6n2H0bnUUkOuGTY1x24ibQ2ge2CvTp7Ti-qK1qOpLTbvWrXd_EKiEmz7iYR6cVM_wi6fFSPwUAEpLJlsyMxmYY0boAhE_aIBBaDMT5p0yye6-CWH7f-c6WuEPUG-tBrg_kD59x5cPpvyqC4bjI7I_ZEiDAEP4DythA6Yic469xAj21itsUxMpAwKi9yUVF6S0w_WcA
+2025-10-21 16:04:51.462 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MzMsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NzMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjg2Mywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.Lww5KT2MUvd8-3RoJewv66m7PypbVGvmwXz-VhRm-W-k1-JvHqxmOeN18IE06PtnIyVjyvOYHUFChnOtqX57JyKtp7GVHmFMkvKcHccuGfQnuVinMJtYPM2px0LfbRTVKnFYWtgYFXZuaADDzmEzgRNPZnOOFByiMRMvQoSrcfphqyBZrqQTli9AB2r2TQygxjW1GDDGexf3xEdzA8TZvCCXXtVvker7TeCCgHVbQi42dmqPmxUoKW1TT1tDG3DqMUl2x4d04MNlg00VYwRYcZAUQU0dWHlHafWURbxBtbJZjn59yR91t1QYE2kEfNV6cvhRnQQbbZ07c1Z6lCDmNA
+2025-10-21 16:05:03.144 | INFO     | app.auth.clerk_auth:get_current_user:24 - BACKEND DEBUG: Authorization header received: Bearer eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18zMm8ya0NWbTNhelg1bkhtRW5oNjlraEdmbTciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJleHAiOjE3NjEwNDI5MzMsImZ2YSI6WzMwMjksLTFdLCJpYXQiOjE3NjEwNDI4NzMsImlzcyI6Imh0dHBzOi8vc3VwcmVtZS1jYXJpYm91LTk1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc2MTA0Mjg2Mywic2lkIjoic2Vzc18zNEhDUHFDQ3lOMER2dncyWFNHOTg5TWdXWXkiLCJzdHMiOiJhY3RpdmUiLCJzdWIiOiJ1c2VyXzMybzNvU1FxQk1RNkgwU0VwS0FNaWt3azQ5aSIsInYiOjJ9.Lww5KT2MUvd8-3RoJewv66m7PypbVGvmwXz-VhRm-W-k1-JvHqxmOeN18IE06PtnIyVjyvOYHUFChnOtqX57JyKtp7GVHmFMkvKcHccuGfQnuVinMJtYPM2px0LfbRTVKnFYWtgYFXZuaADDzmEzgRNPZnOOFByiMRMvQoSrcfphqyBZrqQTli9AB2r2TQygxjW1GDDGexf3xEdzA8TZvCCXXtVvker7TeCCgHVbQi42dmqPmxUoKW1TT1tDG3DqMUl2x4d04MNlg00VYwRYcZAUQU0dWHlHafWURbxBtbJZjn59yR91t1QYE2kEfNV6cvhRnQQbbZ07c1Z6lCDmNA
+2025-10-21 16:05:13.605 | INFO     | main:lifespan:30 - Application shutting down...

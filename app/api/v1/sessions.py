@@ -65,6 +65,7 @@ async def create_session(
         framework=request.framework,
         title=request.title,
         agent_config=request.agent_config,
+        agent_id=request.agent_id,
     )
     return session
 

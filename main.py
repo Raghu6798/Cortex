@@ -11,6 +11,7 @@ from app.db import models
 from app.schemas.api_schemas import HealthStatus
 
 # routers
+from app.api.v1.secrets import router as secrets_router
 from app.api.v1.sessions import router as sessions_router
 from app.api.v1.frameworks import router as frameworks_router
 from app.api.v1.agents import router as agents_router
@@ -52,6 +53,7 @@ async def health_check():
     return {"status": "ok", "message": "Service is healthy"}
 
 logger.info("Including API routers...")
+app.include_router(secrets_router)
 app.include_router(sessions_router)
 app.include_router(frameworks_router)
 app.include_router(langchain_router)

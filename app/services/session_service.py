@@ -13,7 +13,7 @@ class SessionService:
     """Service for managing chat sessions with a PostgreSQL database."""
 
     def create_session(
-        self, db: Session, user_id: str, framework: AgentFramework, title: Optional[str] = None, agent_config: Optional[AgentConfig] = None
+        self, db: Session, user_id: str, framework: AgentFramework, title: Optional[str] = None, agent_config: Optional[AgentConfig] = None, agent_id: Optional[str] = None
     ) -> ChatSession:
         session_id = f"session-{uuid4()}"
         
@@ -25,6 +25,7 @@ class SessionService:
         current_utc_time = datetime.now(timezone.utc)
         db_session = ChatSessionDB(
             id=session_id,
+            agent_id=agent_id,
             user_id=user_id,
             title=title,
             framework=framework.value,

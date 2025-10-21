@@ -52,13 +52,15 @@ class SessionCreateRequest(BaseModel):
     framework: AgentFramework
     title: Optional[str] = None
     agent_config: Optional[AgentConfig] = None
+    agent_id: Optional[str] = None
 
 class SessionUpdateRequest(BaseModel):
     """Request model for updating a session."""
     title: Optional[str] = None
     agent_config: Optional[AgentConfig] = None
     messages: Optional[List[Message]] = None
-
+    agent_id: Optional[str] = None
+    
 class SessionResponse(BaseModel):
     """Response model for session data."""
     session: ChatSession
