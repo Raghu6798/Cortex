@@ -61,7 +61,7 @@ async def execute_api_call(input_params: Dict[str, Any]):
 
     Example:
         {
-            "api_url": "https://api.example.com/v1/models",
+            "api_url": "https://........",
             "api_method": "GET",
             "api_headers": {"Authorization": "Bearer abc123"}
         }
@@ -266,7 +266,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
         )
         logger.info(f"Response type: {type(response_raw)}")
         logger.info(f"Response content: {response_raw}")
-        
+       
         # Extract the final AI message content after tool execution
         ai_message = None
         if isinstance(response_raw, dict) and "messages" in response_raw:
@@ -346,7 +346,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
             logger.error(f"Failed to store metrics: {str(e)}")
             # Don't fail the request if metrics storage fails
         
-        # Return only the AI message content to frontend
+        # Return only the final AI message content to frontend
         return CortexResponseFormat(response=ai_message)
         
     except Exception as e:
