@@ -1,5 +1,6 @@
 import os
 import sys
+import urllib.parse
 from uuid import uuid4
 import asyncio
 import aiohttp
@@ -266,37 +267,45 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
         logger.info(f"Response type: {type(response_raw)}")
         logger.info(f"Response content: {response_raw}")
         
-        # Extract the AI message content for frontend display
+        # Extract the final AI message content after tool execution
         ai_message = None
         if isinstance(response_raw, dict) and "messages" in response_raw:
             logger.info(f"Processing {len(response_raw['messages'])} messages")
+            
+            # Find the LAST AI message (after tool execution)
+            ai_messages = []
             for i, message in enumerate(response_raw["messages"]):
                 logger.info(f"Message {i}: type={message.type}, content_length={len(str(message.content)) if hasattr(message, 'content') else 0}")
                 if message.type == "ai" or message.type == "AIMessage":
-                    ai_message = message.content
-                    logger.info(f"Found AI message: {ai_message[:100]}...")
-                    break
-        
-        if not ai_message:
-            # Try to get the last message if no AI message found
-            if isinstance(response_raw, dict) and "messages" in response_raw and response_raw["messages"]:
-                last_message = response_raw["messages"][-1]
-                if hasattr(last_message, 'content') and last_message.content:
-                    ai_message = last_message.content
+                    ai_messages.append(message)
+            
+            # Get the last AI message (final response after tool execution)
+            if ai_messages:
+                final_ai_message = ai_messages[-1]
+                ai_message = final_ai_message.content
+                logger.info(f"Found final AI message: {ai_message[:100]}...")
+            else:
+                # Fallback: get the last message if no AI message found
+                if response_raw["messages"]:
+                    last_message = response_raw["messages"][-1]
+                    if hasattr(last_message, 'content') and last_message.content:
+                        ai_message = last_message.content
+                    else:
+                        raise HTTPException(status_code=500, detail="No AI response generated")
                 else:
                     raise HTTPException(status_code=500, detail="No AI response generated")
-            else:
-                raise HTTPException(status_code=500, detail="No AI response generated")
+        else:
+            raise HTTPException(status_code=500, detail="No AI response generated")
         
         # Store the full response object in database for metrics tracking
         try:
-            # Extract metrics from the response
+            # Extract metrics from the final AI message
             if isinstance(response_raw, dict) and "messages" in response_raw:
                 ai_message_obj = None
-                for message in response_raw["messages"]:
-                    if message.type == "ai":
-                        ai_message_obj = message
-                        break
+                # Find the last AI message for metrics
+                ai_messages = [msg for msg in response_raw["messages"] if msg.type == "ai"]
+                if ai_messages:
+                    ai_message_obj = ai_messages[-1]  # Get the final AI message
                 
                 if ai_message_obj and hasattr(ai_message_obj, 'response_metadata') and ai_message_obj.response_metadata:
                     metadata = ai_message_obj.response_metadata
