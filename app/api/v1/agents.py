@@ -30,7 +30,7 @@ async def create_agent(agent_data: AgentCreate,token_payload: str = Depends(get_
             architecture=agent_data.architecture,
             framework=agent_data.framework,
             settings=agent_data.settings,
-            tools=agent_data.tools or []
+            tools=agent_data.tools
         )
         
         db.add(agent)

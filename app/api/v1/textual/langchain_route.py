@@ -185,6 +185,9 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     logger.info(f"request payload : {request}")
+    logger.info(f"Tools in request: {len(request.tools)} tools")
+    for i, tool in enumerate(request.tools):
+        logger.info(f"Tool {i}: {tool.name} - {tool.description}")
     provider_id = request.provider_id
     model_id = request.model_id
     
@@ -251,7 +254,43 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
             model=model_id,
             temperature=request.temperature
         )
-    tools = [execute_api_call]
+    # Create dynamic tools from request
+    tools = []
+    
+    # Add the general execute_api_call tool
+    tools.append(execute_api_call)
+    
+    # Create specific tools for each configured tool in the request
+    for tool_config in request.tools:
+        if tool_config.name and tool_config.description:
+            # Create a dynamic tool for this specific API using a factory function
+            def create_tool_factory(config):
+                @tool
+                async def dynamic_tool():
+                    """
+                    {config.description}
+                    
+                    This tool calls the {config.name} API endpoint.
+                    """
+                    return await execute_api_call({
+                        "api_url": config.api_url,
+                        "api_method": config.api_method,
+                        "api_headers": config.api_headers,
+                        "api_query_params": config.api_query_params,
+                        "api_path_params": config.api_path_params,
+                        "api_body": config.request_payload
+                    })
+                
+                # Set the tool name and description
+                dynamic_tool.name = config.name
+                dynamic_tool.description = config.description
+                return dynamic_tool
+            
+            tools.append(create_tool_factory(tool_config))
+    
+    logger.info(f"Total tools created: {len(tools)}")
+    for i, tool in enumerate(tools):
+        logger.info(f"Tool {i}: {getattr(tool, 'name', 'execute_api_call')} - {getattr(tool, 'description', 'General API call tool')}")
     
     # Check if model supports tools before creating agent
     try:
