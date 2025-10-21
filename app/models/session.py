@@ -32,6 +32,7 @@ class AgentConfig(BaseModel):
     system_prompt: str = "You are a helpful AI assistant."
     base_url: Optional[str] = None
     provider: Optional[str] = None
+    provider_id: Optional[str] = None
     max_tokens: Optional[int] = Field(default=512, ge=1)
     tools: Optional[List[Dict[str, Any]]] = Field(default=[], description="List of tools configured for the agent")
 
