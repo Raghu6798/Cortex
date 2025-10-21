@@ -252,12 +252,23 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
             temperature=request.temperature
         )
     tools = [execute_api_call]
-    agent = create_agent(
-        model=llm,
-        tools=tools,
-        prompt=request.system_prompt,
-        checkpointer=InMemorySaver(),
-    )
+    
+    # Check if model supports tools before creating agent
+    try:
+        agent = create_agent(
+            model=llm,
+            tools=tools,
+            prompt=request.system_prompt,
+            checkpointer=InMemorySaver(),
+        )
+    except Exception as agent_error:
+        if "'bool' object has no attribute 'get'" in str(agent_error) or "tool binding may fail" in str(agent_error).lower():
+            raise HTTPException(
+                status_code=400, 
+                detail=f"This model '{model_id}' doesn't support tool calling. Please use a different model that supports tools, or remove tools from your agent configuration."
+            )
+        else:
+            raise agent_error
     
     try:
         response_raw = await agent.ainvoke(
@@ -343,7 +354,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
                     logger.warning("No response metadata found for metrics tracking")
                     
         except Exception as e:
-            logger.error(f"Failed to store metrics: {str(e)}")
+            logger.error(f"This Model has no support for ")
             # Don't fail the request if metrics storage fails
         
         # Return only the final AI message content to frontend
@@ -351,7 +362,14 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema,current_user: di
         
     except Exception as e:
         logger.error(f"Error during agent invocation: {str(e)}")
-        if "invalid_api_key" in str(e).lower() or "authentication" in str(e).lower():
+        
+        # Check if it's a tool calling issue
+        if "'bool' object has no attribute 'get'" in str(e) or "tool binding may fail" in str(e).lower():
+            raise HTTPException(
+                status_code=400, 
+                detail=f"This model '{model_id}' doesn't support tool calling. Please use a different model that supports tools, or remove tools from your agent configuration."
+            )
+        elif "invalid_api_key" in str(e).lower() or "authentication" in str(e).lower():
             raise HTTPException(status_code=401, detail=f"Invalid API key for {provider_id}. Please check your API key in the agent settings. Error: {str(e)}")
         elif "rate_limit" in str(e).lower():
             raise HTTPException(status_code=429, detail="Rate limit exceeded. Please try again later.")
