@@ -59,6 +59,13 @@ async def create_session(
     if not user_id:
         raise HTTPException(status_code=403, detail="User ID not found in token.")
     
+    print(f"--- SESSION API DEBUG ---")
+    print(f"Request received: {request}")
+    print(f"Agent config in request: {request.agent_config}")
+    if request.agent_config:
+        print(f"Tools in agent config: {getattr(request.agent_config, 'tools', 'NO TOOLS FIELD')}")
+    print("-------------------------")
+    
     session = session_service.create_session(
         db=db,
         user_id=user_id,

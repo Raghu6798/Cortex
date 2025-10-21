@@ -22,6 +22,11 @@ class SessionService:
 
         # Use provided agent config or default
         config_to_store = agent_config if agent_config else AgentConfig(api_key="", model_name="gpt-4o-mini")
+        print(f"--- SESSION CREATION DEBUG ---")
+        print(f"Agent config received: {agent_config}")
+        print(f"Config to store: {config_to_store}")
+        print(f"Tools in config: {getattr(config_to_store, 'tools', 'NO TOOLS FIELD')}")
+        print("------------------------------")
         current_utc_time = datetime.now(timezone.utc)
         db_session = ChatSessionDB(
             id=session_id,

@@ -33,6 +33,7 @@ class AgentConfig(BaseModel):
     base_url: Optional[str] = None
     provider: Optional[str] = None
     max_tokens: Optional[int] = Field(default=512, ge=1)
+    tools: Optional[List[Dict[str, Any]]] = Field(default=[], description="List of tools configured for the agent")
 
 class ChatSession(BaseModel):
     """Complete chat session with agent configuration."""
