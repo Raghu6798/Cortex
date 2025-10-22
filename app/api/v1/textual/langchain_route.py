@@ -32,7 +32,7 @@ from app.integrations.llm_router import llm_router
 from app.db.database import get_db
 from app.db.models import ChatSessionDB, ChatMetricsDB
 
-@tool
+
 async def execute_api_call(input_params: Dict[str, Any]):
     """
     Executes an HTTP API call (GET, POST, PUT, DELETE, etc.) with the specified parameters.
