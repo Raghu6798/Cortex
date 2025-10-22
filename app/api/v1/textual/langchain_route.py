@@ -19,7 +19,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from langchain_sambanova import ChatSambaNovaCloud
 
-from langchain_core.tools import tool, FunctionTool
+from langchain_core.tools import tool,StructuredTool
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 from fastapi import APIRouter, Depends, HTTPException
@@ -216,23 +216,19 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
     else:
         llm = ChatOpenAI(api_key=api_key, model=model_id, temperature=request.temperature)
 
-    # =================== THIS IS THE FIX ===================
-    # Dynamically create executable LangChain tools from the incoming schemas.
-    executable_tools: List[FunctionTool] = []
+    executable_tools: List[StructuredTool] = []
     for tool_schema in request.tools:
-        # Use our helper to create a unique function for this tool
         tool_function = create_tool_function(tool_schema)
-        
-        # Create the LangChain FunctionTool object
-        dynamic_tool = FunctionTool(
-            name=tool_schema.name,
-            description=tool_schema.description,
+        logger.info(f"Created tool function for {tool_schema.name}")
+        dynamic_tool = StructuredTool.from_function(
             func=tool_function,
+            name=tool_schema.name,
+            description=tool_schema.description or "No description provided."
         )
         executable_tools.append(dynamic_tool)
+        logger.info(f"Created structured tool for {executable_tools}")
     
-    logger.info(f"Successfully created {len(executable_tools)} executable LangChain tools.")
-    # ======================================================
+    logger.info(f"Successfully created {len(executable_tools)} structured tools for the agent.")
 
     try:
         # Pass the list of *executable* tools to the agent
