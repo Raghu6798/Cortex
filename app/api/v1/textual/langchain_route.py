@@ -161,18 +161,16 @@ async def execute_api_call(input_params: Dict[str, Any]):
 
 router = APIRouter(prefix="/api/v1", tags=["textual"])
 
-# Helper function to prevent Python's closure issue in loops
 def create_tool_function(schema: ToolConfigSchema) -> Callable:
     """Creates a unique function for a tool schema to be used by FunctionTool."""
     async def tool_func(input_params: Dict[str, Any] = None) -> Dict[str, Any]:
-        # Combines static params from schema with dynamic ones from LLM
         combined_params = {
             "api_url": schema.api_url,
             "api_method": schema.api_method,
             "api_headers": schema.api_headers,
             "api_query_params": schema.api_query_params,
             "api_path_params": schema.api_path_params,
-            "api_body": schema.request_payload, # Map request_payload to api_body
+            "api_body": schema.request_payload, 
             **(input_params or {})
         }
         logger.info(f"Executing tool '{schema.name}' with params: {combined_params}")
@@ -191,7 +189,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
 
     logger.info(f"Request payload received with {len(request.tools)} tool schemas.")
 
-    # --- LLM Initialization (this part of your code is correct) ---
+
     provider_id = request.provider_id
     model_id = request.model_id
     provider = await llm_router.get_provider(provider_id)
@@ -221,9 +219,10 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
         tool_function = create_tool_function(tool_schema)
         logger.info(f"Created tool function for {tool_schema.name}")
         dynamic_tool = StructuredTool.from_function(
-            func=tool_function,
+            func=None,
             name=tool_schema.name,
-            description=tool_schema.description or "No description provided."
+            description=tool_schema.description or "No description provided.",
+            coroutine=tool_function
         )
         executable_tools.append(dynamic_tool)
         logger.info(f"Created structured tool for {executable_tools}")
