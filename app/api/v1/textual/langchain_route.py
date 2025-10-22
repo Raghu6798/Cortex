@@ -15,7 +15,7 @@ from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 from langchain_cerebras import ChatCerebras
 from langchain_mistralai import ChatMistralAI
-from langchain_google_genai import ChatGoogleGenerai
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from langchain_sambanova import ChatSambaNovaCloud
 
@@ -205,7 +205,14 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
         llm = ChatGroq(api_key=api_key, model_name=model_id, temperature=request.temperature)
     elif provider_id == "mistral":
         llm = ChatMistralAI(api_key=api_key, model=model_id, temperature=request.temperature)
-    # ... add other providers here
+    elif provider_id == "google":
+        llm = ChatGoogleGenerativeAI(api_key=api_key, model=model_id, temperature=request.temperature)
+    elif provider_id == "nvidia":
+        llm = ChatNVIDIA(api_key=api_key, model=model_id, temperature=request.temperature)
+    elif provider_id == "cerebras":
+        llm = ChatCerebras(api_key=api_key, model=model_id, temperature=request.temperature)
+    elif provider_id == "sambanova":
+        llm = ChatSambaNovaCloud(api_key=api_key, model=model_id, temperature=request.temperature)
     else:
         llm = ChatOpenAI(api_key=api_key, model=model_id, temperature=request.temperature)
 
