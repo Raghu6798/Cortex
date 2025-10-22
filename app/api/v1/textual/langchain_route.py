@@ -233,7 +233,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
     try:
         # Pass the list of *executable* tools to the agent
         agent = create_agent(
-            llm=llm,
+            model=llm,
             tools=executable_tools, # <-- Use the corrected list of FunctionTool objects
             prompt=request.system_prompt,
             checkpointer=InMemorySaver(),
