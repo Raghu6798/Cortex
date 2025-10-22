@@ -29,6 +29,8 @@ async def get_user_sessions(
         raise HTTPException(status_code=403, detail="User ID not found in token.")
     
     sessions = session_service.get_user_sessions(db=db, user_id=user_id)
+    for session in sessions:
+        print(f"DEBUG BACKEND: Sending session '{session.id}' with agent_config tools: {session.agent_config.tools}")
     return SessionsListResponse(sessions=sessions, total=len(sessions))
 
 @router.get("/{session_id}", response_model=ChatSession)
