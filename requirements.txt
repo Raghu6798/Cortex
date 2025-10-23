@@ -24,6 +24,7 @@ langgraph
 mistralai
 google-genai
 google-adk
+agno==2.2.0
 # Cerebras Cloud SDK
 cerebras-cloud-sdk
 
