@@ -36,6 +36,3 @@ logger.add(
     compression="zip",  # Compress old logs
     enqueue=True,  # Thread/process safe
 )
-
-# Example usage
-logger.info("Logger initialized successfully.")

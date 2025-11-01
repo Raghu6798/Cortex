@@ -97,6 +97,8 @@ def create_tool_function(schema: ToolConfigSchema):
             json_data=final_json_data,
         )
         
+        if not result:
+            return json.dumps({"error": "No response from API or empty result"})
         return result
     
     tool_func.__name__ = schema.name

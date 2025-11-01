@@ -30,7 +30,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("Application shutting down...")
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan, redirect_slashes=False)
 
 # --- Middleware ---
 app.add_middleware(

@@ -7,7 +7,7 @@ from uuid import uuid4
 from datetime import datetime, timezone 
 
 from app.models.session import ChatSession, AgentFramework, AgentConfig, Message
-from app.db.models import ChatSessionDB, MessageDB
+from app.db.models import ChatSessionDB, MessageDB, AgentDB
 
 class SessionService:
     """Service for managing chat sessions with a PostgreSQL database."""
@@ -20,8 +20,46 @@ class SessionService:
         if not title:
             title = f"New {framework.value.replace('_', ' ').title()} Chat"
 
-        # Use provided agent config or default
-        config_to_store = agent_config if agent_config else AgentConfig(api_key="", model_name="gpt-4o-mini")
+        # If agent_id is provided, load agent config from database (prioritize agent's saved config)
+        if agent_id:
+            agent = db.query(AgentDB).filter(
+                AgentDB.AgentId == agent_id,
+                AgentDB.user_id == user_id,
+                AgentDB.is_active == True
+            ).first()
+            
+            if agent and agent.settings:
+                # Convert agent settings to AgentConfig
+                settings = agent.settings
+                config_to_store = AgentConfig(
+                    api_key=settings.get("apiKey", ""),
+                    model_name=settings.get("modelName", "gpt-4o-mini"),
+                    temperature=settings.get("temperature", 0.7),
+                    top_p=settings.get("top_p", 0.9),
+                    top_k=settings.get("top_k"),
+                    system_prompt=settings.get("systemPrompt", "You are a helpful AI assistant."),
+                    base_url=settings.get("baseUrl"),
+                    provider=settings.get("provider"),
+                    provider_id=settings.get("providerId"),  # Map providerId from settings
+                    max_tokens=settings.get("max_tokens", 512),
+                    tools=agent.tools or []
+                )
+                # Override with provided agent_config for specific fields (but preserve provider_id from agent)
+                if agent_config:
+                    if agent_config.api_key:
+                        config_to_store.api_key = agent_config.api_key
+                    if agent_config.model_name:
+                        config_to_store.model_name = agent_config.model_name
+                    if agent_config.system_prompt:
+                        config_to_store.system_prompt = agent_config.system_prompt
+                    # Note: provider_id is always taken from agent's saved config, not from incoming agent_config
+                    # This ensures the agent's configured provider is always used
+            else:
+                # Agent not found or no settings, use provided config or default
+                config_to_store = agent_config if agent_config else AgentConfig(api_key="", model_name="gpt-4o-mini")
+        else:
+            # No agent_id, use provided agent config or default
+            config_to_store = agent_config if agent_config else AgentConfig(api_key="", model_name="gpt-4o-mini")
         print(f"--- SESSION CREATION DEBUG ---")
         print(f"Agent config received: {agent_config}")
         print(f"Config to store: {config_to_store}")
