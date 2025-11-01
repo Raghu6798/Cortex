@@ -33,14 +33,14 @@ async def get_all_providers(db: Session = Depends(get_db)):
                 "supports_streaming": provider.supports_streaming,
                 "supports_tools": provider.supports_tools,
                 "supports_embeddings": provider.supports_embeddings,
-                "max_tokens": provider.max_tokens if provider.max_tokens is not None else 4096,
+                "max_tokens": provider.max_tokens,
                 "models": [
                     {
                         "id": model.id,
                         "model_id": model.model_id,
                         "display_name": model.display_name,
                         "description": model.description,
-                        "context_length": model.context_length if model.context_length is not None else 4096
+                        "context_length": model.context_length
                     }
                     for model in models
                 ]

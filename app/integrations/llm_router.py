@@ -282,7 +282,7 @@ class LLMProviderRouter:
                     supports_streaming=provider.provider_info.supports_streaming,
                     supports_tools=provider.provider_info.supports_tools,
                     supports_embeddings=provider.provider_info.supports_embeddings,
-                    max_tokens=provider.provider_info.max_tokens if provider.provider_info.max_tokens is not None else 4096
+                    max_tokens=provider.provider_info.max_tokens
                 )
                 db.add(provider_db)
                 db.flush()  # Get the ID
