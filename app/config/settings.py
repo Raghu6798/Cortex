@@ -45,6 +45,9 @@ class Settings(BaseSettings):
     GROQ_API_KEY:str
     CEREBRAS_API_KEY:str
     MISTRAL_API_KEY:str
+    LIVEKIT_API_KEY:str
+    LIVEKIT_API_SECRET:str
+    LIVEKIT_URL:str
     CLERK_SECRET_KEY:str
     ENCRYPTION_KEY:str
     SUPABASE_DB_URI:PostgresDsn
@@ -86,4 +89,7 @@ settings = Settings()
 agent_settings = AgentSettings()
 if __name__ == "__main__":
     print(settings.CEREBRAS_API_KEY)
+    print(settings.LIVEKIT_API_KEY)
+    print(settings.LIVEKIT_API_SECRET)
+    print(settings.LIVEKIT_URL)
     print(settings.SUPABASE_DB_URI)

@@ -16,6 +16,8 @@ class ToolConfigSchema(BaseModel):
     api_headers: Dict[str, str] = {}
     api_query_params: Dict[str, str] = {}
     api_path_params: Dict[str, str] = {}
+    dynamic_boolean: bool = False
+    dynamic_variables: Dict[str, str] = {}
     request_payload: str = ""
 
 class CortexInvokeRequestSchema(AgentSettings):
@@ -23,6 +25,7 @@ class CortexInvokeRequestSchema(AgentSettings):
     tools: List[ToolConfigSchema] = []
     provider_id: Optional[str] = "openai"  # Provider ID from dropdown
     model_id: Optional[str] = None  # Model ID from dropdown
+    agent_type: Optional[str] = "general"  # Agent type: general, coding, data_analysis, etc.
 
 class CortexResponseFormat(BaseModel):
     response: str

@@ -3,6 +3,7 @@
 import os
 import sys
 import urllib.parse
+import json
 from uuid import uuid4
 import asyncio
 import aiohttp
@@ -21,6 +22,7 @@ from langchain_sambanova import ChatSambaNovaCloud
 
 from langchain_core.tools import tool,StructuredTool
 from langchain.agents import create_agent
+from langchain_core.messages import ToolMessage
 from langgraph.checkpoint.memory import InMemorySaver
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -32,6 +34,8 @@ from app.integrations.llm_router import llm_router
 from app.db.database import get_db
 from app.db.models import ChatSessionDB, ChatMetricsDB
 
+from app.utils.tool_call_injection import dynamic_tool_call_injection
+from app.utils.placeholder_args_sub import substitute_placeholders
 
 async def execute_api_call(input_params: Dict[str, Any]):
     """
@@ -162,20 +166,68 @@ async def execute_api_call(input_params: Dict[str, Any]):
 router = APIRouter(prefix="/api/v1", tags=["textual"])
 
 def create_tool_function(schema: ToolConfigSchema) -> Callable:
-    """Creates a unique function for a tool schema to be used by FunctionTool."""
+    """Creates a unique function for a tool schema to be used by FunctionTool.
+    
+    This function integrates placeholder substitution so that {{ }} placeholders in the
+    tool schema (api_url, api_headers, api_query_params, api_path_params, request_payload)
+    are replaced with values from the agent's tool call arguments during execution.
+    """
     async def tool_func(input_params: Dict[str, Any] = None) -> Dict[str, Any]:
+        # Extract dynamic values from agent's tool call arguments
+        dynamic_values = input_params or {}
+        
+        # Check if dynamic variable injection is enabled
+        use_dynamic_injection = getattr(schema, 'dynamic_boolean', False)
+        
+        if use_dynamic_injection:
+            substituted_url = substitute_placeholders(schema.api_url, dynamic_values)
+            substituted_headers = substitute_placeholders(schema.api_headers, dynamic_values)
+            substituted_query_params = substitute_placeholders(schema.api_query_params, dynamic_values)
+            substituted_path_params = substitute_placeholders(schema.api_path_params, dynamic_values)
+            substituted_body = None
+            if schema.request_payload:
+                try:
+                    parsed_payload = json.loads(schema.request_payload)
+                    substituted_body = substitute_placeholders(parsed_payload, dynamic_values)
+                except (json.JSONDecodeError, ValueError):
+                    substituted_body = substitute_placeholders(schema.request_payload, dynamic_values)
+        else:
+            substituted_url = schema.api_url
+            substituted_headers = schema.api_headers.copy() if schema.api_headers else {}
+            substituted_query_params = schema.api_query_params.copy() if schema.api_query_params else {}
+            substituted_path_params = schema.api_path_params.copy() if schema.api_path_params else {}
+            substituted_body = None
+            if schema.request_payload:
+                try:
+                    substituted_body = json.loads(schema.request_payload)
+                except (json.JSONDecodeError, ValueError):
+                    substituted_body = schema.request_payload
+
         combined_params = {
-            "api_url": schema.api_url,
+            "api_url": substituted_url,
             "api_method": schema.api_method,
-            "api_headers": schema.api_headers,
-            "api_query_params": schema.api_query_params,
-            "api_path_params": schema.api_path_params,
-            "api_body": schema.request_payload, 
-            **(input_params or {})
+            "api_headers": {**substituted_headers, **(dynamic_values.get("api_headers", {}) or {})},
+            "api_query_params": {**substituted_query_params, **(dynamic_values.get("api_query_params", {}) or {})},
+            "api_path_params": {**substituted_path_params, **(dynamic_values.get("api_path_params", {}) or {})},
         }
-        logger.info(f"Executing tool '{schema.name}' with params: {combined_params}")
+        
+        if substituted_body is not None:
+            combined_params["api_body"] = substituted_body
+    
+        excluded_keys = {"api_url", "api_method", "api_headers", "api_query_params", 
+                        "api_path_params", "api_body", "method", "url", "headers", "body"}
+        remaining_params = {k: v for k, v in dynamic_values.items() if k not in excluded_keys}
+        if remaining_params:
+            combined_params.update(remaining_params)
+        
+        logger.info(f"Executing tool '{schema.name}' with dynamic_injection={use_dynamic_injection}, params: {combined_params}")
+        logger.debug(f"Original schema values - URL: {schema.api_url}, Headers: {schema.api_headers}, "
+                    f"Query: {schema.api_query_params}, Path: {schema.api_path_params}, Body: {schema.request_payload}")
+        logger.debug(f"Dynamic values from agent: {dynamic_values}")
+        
         return await execute_api_call(input_params=combined_params)
     return tool_func
+
 
 @router.post("/ReActAgent/langchain", response_model=CortexResponseFormat, tags=["Chat"])
 async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> CortexResponseFormat:
@@ -218,13 +270,13 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
     for tool_schema in request.tools:
         tool_function = create_tool_function(tool_schema)
         logger.info(f"Created tool function for {tool_schema.name}")
-        dynamic_tool = StructuredTool.from_function(
+        tool = StructuredTool.from_function(
             func=None,
             name=tool_schema.name,
             description=tool_schema.description or "No description provided.",
             coroutine=tool_function
         )
-        executable_tools.append(dynamic_tool)
+        executable_tools.append(tool)
         logger.info(f"Created structured tool for {executable_tools}")
     
     logger.info(f"Successfully created {len(executable_tools)} structured tools for the agent.")
