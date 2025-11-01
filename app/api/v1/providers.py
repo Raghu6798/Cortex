@@ -33,7 +33,7 @@ async def get_all_providers(db: Session = Depends(get_db)):
                 "supports_streaming": provider.supports_streaming,
                 "supports_tools": provider.supports_tools,
                 "supports_embeddings": provider.supports_embeddings,
-                "max_tokens": provider.max_tokens,
+                "max_tokens": provider.max_tokens if provider.max_tokens else 4096,
                 "models": [
                     {
                         "id": model.id,
