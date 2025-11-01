@@ -28,28 +28,7 @@ class BaseLLMProvider(ABC):
         """Fetch available models from the provider"""
         pass
     
-    @abstractmethod
-    async def chat_completion(
-        self, 
-        messages: List[Dict[str, str]], 
-        model: str,
-        temperature: float = 0.7,
-        max_tokens: int = 1000,
-        stream: bool = False
-    ) -> Dict[str, Any]:
-        """Send chat completion request"""
-        pass
-    
-    @abstractmethod
-    async def stream_chat(
-        self, 
-        messages: List[Dict[str, str]], 
-        model: str,
-        temperature: float = 0.7,
-        max_tokens: int = 1000
-    ) -> AsyncIterator[Dict[str, Any]]:
-        """Stream chat completion"""
-        pass
+   
 
 class OpenAIProvider(BaseLLMProvider):
     async def get_models(self) -> List[ModelInfo]:
@@ -65,37 +44,26 @@ class OpenAIProvider(BaseLLMProvider):
                     )
                     for model in data.get("data", [])
                 ]
-    
-    async def chat_completion(self, messages: List[Dict[str, str]], model: str, **kwargs) -> Dict[str, Any]:
+
+class GoogleAIProvider(BaseLLMProvider):
+    async def get_models(self) -> List[ModelInfo]:
         async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                return await response.json()
+            headers = {"x-goog-api-key": self.api_key}
+            async with session.get(f"{self.base_url}/models", headers=headers) as response:
+                data = await response.json()
     
-    async def stream_chat(self, messages: List[Dict[str, str]], model: str, **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                "stream": True,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                async for line in response.content:
-                    if line:
-                        yield json.loads(line.decode('utf-8'))
+                models_list = data.get("models", [])
+                
+                return [
+                    ModelInfo(
+                        id=model.get("name", ""), 
+                        name=model.get("displayName") or model.get("name", ""),  
+                        description=model.get("description"), 
+                        context_length=model.get("inputTokenLimit") 
+                    )
+                    for model in models_list
+                    if model.get("name")  
+                ] 
 
 class GroqProvider(BaseLLMProvider):
     async def get_models(self) -> List[ModelInfo]:
@@ -111,37 +79,6 @@ class GroqProvider(BaseLLMProvider):
                     )
                     for model in data.get("data", [])
                 ]
-    
-    async def chat_completion(self, messages: List[Dict[str, str]], model: str, **kwargs) -> Dict[str, Any]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                return await response.json()
-    
-    async def stream_chat(self, messages: List[Dict[str, str]], model: str, **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                "stream": True,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                async for line in response.content:
-                    if line:
-                        yield json.loads(line.decode('utf-8'))
 
 class MistralProvider(BaseLLMProvider):
     async def get_models(self) -> List[ModelInfo]:
@@ -159,36 +96,6 @@ class MistralProvider(BaseLLMProvider):
                     for model in data.get("data", [])
                 ]
     
-    async def chat_completion(self, messages: List[Dict[str, str]], model: str, **kwargs) -> Dict[str, Any]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                return await response.json()
-    
-    async def stream_chat(self, messages: List[Dict[str, str]], model: str, **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                "stream": True,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                async for line in response.content:
-                    if line:
-                        yield json.loads(line.decode('utf-8'))
 
 class CerebrasProvider(BaseLLMProvider):
     async def get_models(self) -> List[ModelInfo]:
@@ -203,40 +110,9 @@ class CerebrasProvider(BaseLLMProvider):
                     )
                     for model in data.get("data", [])
                 ]
-    
-    async def chat_completion(self, messages: List[Dict[str, str]], model: str, **kwargs) -> Dict[str, Any]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                return await response.json()
-    
-    async def stream_chat(self, messages: List[Dict[str, str]], model: str, **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                "stream": True,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                async for line in response.content:
-                    if line:
-                        yield json.loads(line.decode('utf-8'))
+
 
 class NvidiaNimProvider(BaseLLMProvider):
-
     async def get_models(self) -> List[ModelInfo]:
         response = requests.get(f"{self.base_url}/models")
         data = response.json()
@@ -245,37 +121,7 @@ class NvidiaNimProvider(BaseLLMProvider):
             name=model["id"])
             for model in data.get("data", [])
         ]
-    
-    async def chat_completion(self, messages: List[Dict[str, str]], model: str, **kwargs) -> Dict[str, Any]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                return await response.json()
-    
-    async def stream_chat(self, messages: List[Dict[str, str]], model: str, **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                "stream": True,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                async for line in response.content:
-                    if line:
-                        yield json.loads(line.decode('utf-8'))
+
 
 class SamanovaProvider(BaseLLMProvider):
     async def get_models(self) -> List[ModelInfo]:
@@ -289,37 +135,8 @@ class SamanovaProvider(BaseLLMProvider):
                     for model in data.get("data", [])
                 ]
 
-    async def chat_completion(self, messages: List[Dict[str, str]], model: str, **kwargs) -> Dict[str, Any]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                return await response.json()
+
     
-    
-    async def stream_chat(self, messages: List[Dict[str, str]], model: str, **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        async with aiohttp.ClientSession() as session:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": model,
-                "messages": messages,
-                "stream": True,
-                **kwargs
-            }
-            async with session.post(f"{self.base_url}/chat/completions", json=payload, headers=headers) as response:
-                async for line in response.content:
-                    if line:
-                        yield json.loads(line.decode('utf-8'))
 
 class LLMProviderRouter:
     """Main router for managing LLM providers and models"""
@@ -358,7 +175,19 @@ class LLMProviderRouter:
             supports_embeddings=False
         )
         self.providers["groq"] = GroqProvider(groq_info, settings.GROQ_API_KEY)
-        
+        google_info = ProviderInfo(
+            id="google",
+            name="google",
+            display_name="Google",
+            base_url="https://generativelanguage.googleapis.com/v1beta",
+            logo_url="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-color.png",
+            description="Google's Gemini models",
+            requires_api_key=True,
+            supports_streaming=True,
+            supports_tools=True,
+            supports_embeddings=True
+        )
+        self.providers["google"] = GoogleAIProvider(google_info,settings.GOOGLE_API_KEY)
         # Mistral
         mistral_info = ProviderInfo(
             id="mistral",
@@ -428,27 +257,12 @@ class LLMProviderRouter:
     async def get_models_for_provider(self, provider_id: str) -> List[ModelInfo]:
         """Get models for a specific provider"""
         provider = await self.get_provider(provider_id)
+        print(provider)
         if provider:
             return await provider.get_models()
         return []
     
-    async def chat_completion(self, provider_id: str, model: str, messages: List[Dict[str, str]],**kwargs) -> Dict[str, Any]:
-        """Send chat completion request"""
-        provider = await self.get_provider(provider_id)
-        if not provider:
-            raise ValueError(f"Provider {provider_id} not found")
-        
-        return await provider.chat_completion(messages, model, **kwargs)
-    
-    async def stream_chat(self, provider_id: str, model: str, messages: List[Dict[str, str]], **kwargs) -> AsyncIterator[Dict[str, Any]]:
-        """Stream chat completion"""
-        provider = await self.get_provider(provider_id)
-        if not provider:
-            raise ValueError(f"Provider {provider_id} not found")
-        
-        async for chunk in provider.stream_chat(messages, model, **kwargs):
-            yield chunk
-    
+  
     async def sync_providers_to_db(self, db: Session):
         """Sync providers and models to database"""
         for provider_id, provider in self.providers.items():
@@ -478,6 +292,7 @@ class LLMProviderRouter:
             # Sync models
             try:
                 models = await provider.get_models()
+                  
                 for model_info in models:
                     existing_model = db.query(LLMModelDB).filter(
                         and_(
@@ -501,17 +316,33 @@ class LLMProviderRouter:
         
         db.commit()
 
-# Global router instance
-llm_router = LLMProviderRouter()
+
 if __name__ == "__main__":
+    import os
+    from app.db.database import SessionLocal
+    from app.config.settings import settings
+    
+    # Verify database connection string is set
+    if not settings.SUPABASE_DB_URI:
+        print("❌ ERROR: SUPABASE_DB_URI is not set in environment variables.")
+        print("Please set SUPABASE_DB_URI in your .env file.")
+        print("Format: postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-1-us-east-1.pooler.supabase.com:5432/postgres")
+        exit(1)
+    
+    print(f"📊 Connecting to database: {str(settings.SUPABASE_DB_URI).split('@')[1] if '@' in str(settings.SUPABASE_DB_URI) else '***'}")
+    
     llm_router = LLMProviderRouter()
-    mistral_models = asyncio.run(llm_router.get_models_for_provider("mistral"))
-    print(mistral_models[0])
-    groq_models = asyncio.run(llm_router.get_models_for_provider("groq"))
-    print(groq_models[0])
-    nvidia_nim_models = asyncio.run(llm_router.get_models_for_provider("nvidia"))
-    print(nvidia_nim_models[0])
-    sambanova_models = asyncio.run(llm_router.get_models_for_provider("sambanova"))
-    print(sambanova_models[0])
-    cerebras_models = asyncio.run(llm_router.get_models_for_provider("cerebras"))
-    print(cerebras_models[0])
+    db = SessionLocal()
+    try:
+        print("🔄 Starting provider and model sync...")
+        asyncio.run(llm_router.sync_providers_to_db(db))
+        print("✅ Successfully synced providers and models to database!")
+    except Exception as e:
+        print(f"❌ Error syncing to database: {e}")
+        print("\nTroubleshooting:")
+        print("1. Check that SUPABASE_DB_URI is correctly set in your .env file")
+        print("2. Verify your Supabase credentials are correct")
+        print("3. Ensure your Supabase project is active and accessible")
+        raise
+    finally:
+        db.close()

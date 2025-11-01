@@ -7,6 +7,7 @@ import json
 import re
 from uuid import uuid4
 import asyncio
+import re
 import aiohttp
 import httpx
 from pydantic import BaseModel, Field, SecretStr
@@ -302,6 +303,7 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
     elif provider_id == "mistral":
         llm = ChatMistralAI(api_key=api_key, model=model_id, temperature=request.temperature)
     elif provider_id == "google":
+        model_id = re.sub(r'models/', '', model_id)
         llm = ChatGoogleGenerativeAI(api_key=api_key, model=model_id, temperature=request.temperature)
     elif provider_id == "nvidia":
         llm = ChatNVIDIA(api_key=api_key, model=model_id, temperature=request.temperature)
