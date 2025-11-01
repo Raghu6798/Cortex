@@ -34,7 +34,6 @@ from app.integrations.llm_router import llm_router
 from app.db.database import get_db
 from app.db.models import ChatSessionDB, ChatMetricsDB
 
-from app.utils.tool_call_injection import dynamic_tool_call_injection
 from app.utils.placeholder_args_sub import substitute_placeholders
 
 async def execute_api_call(input_params: Dict[str, Any]):
