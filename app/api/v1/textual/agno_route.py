@@ -15,6 +15,7 @@ from agno.agent import Agent
 from agno.db.postgres import PostgresDb
 from agno.models.openai import OpenAIChat
 from agno.run.agent import RunOutput, RunEvent
+from agno.tools.e2b import E2BTools
 
 from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
 from app.config.settings import settings
@@ -23,8 +24,6 @@ from app.integrations.llm_router import llm_router
 from app.db.database import get_db
 from app.db.models import ChatSessionDB
 from app.utils.logger import logger
-
-
 
 async def execute_api_call(input_params: Dict[str, Any]):
     """

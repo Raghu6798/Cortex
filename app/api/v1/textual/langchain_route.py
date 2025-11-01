@@ -4,6 +4,7 @@ import os
 import sys
 import urllib.parse
 import json
+import re
 from uuid import uuid4
 import asyncio
 import aiohttp
@@ -178,7 +179,10 @@ def create_tool_function(schema: ToolConfigSchema) -> Callable:
         # Check if dynamic variable injection is enabled
         use_dynamic_injection = getattr(schema, 'dynamic_boolean', False)
         
+        logger.debug(f"Tool '{schema.name}' called with input_params: {dynamic_values}, dynamic_injection={use_dynamic_injection}")
+        
         if use_dynamic_injection:
+            # Apply placeholder substitution to all schema fields
             substituted_url = substitute_placeholders(schema.api_url, dynamic_values)
             substituted_headers = substitute_placeholders(schema.api_headers, dynamic_values)
             substituted_query_params = substitute_placeholders(schema.api_query_params, dynamic_values)
@@ -190,6 +194,23 @@ def create_tool_function(schema: ToolConfigSchema) -> Callable:
                     substituted_body = substitute_placeholders(parsed_payload, dynamic_values)
                 except (json.JSONDecodeError, ValueError):
                     substituted_body = substitute_placeholders(schema.request_payload, dynamic_values)
+            
+            # Filter out any placeholders that weren't substituted (still contain {{}})
+            # This prevents sending malformed requests with unresolved placeholders
+            def remove_unresolved_placeholders(params_dict: Dict[str, Any]) -> Dict[str, Any]:
+                """Remove any values that still contain {{placeholder}} patterns."""
+                cleaned = {}
+                for k, v in params_dict.items():
+                    if isinstance(v, str) and '{{' in v and '}}' in v:
+                        logger.warning(f"Skipping unresolved placeholder in {k}: {v}")
+                        continue
+                    cleaned[k] = v
+                return cleaned
+            
+            substituted_query_params = remove_unresolved_placeholders(substituted_query_params)
+            substituted_path_params = remove_unresolved_placeholders(substituted_path_params)
+            substituted_headers = remove_unresolved_placeholders(substituted_headers)
+            
         else:
             substituted_url = schema.api_url
             substituted_headers = schema.api_headers.copy() if schema.api_headers else {}
@@ -202,27 +223,53 @@ def create_tool_function(schema: ToolConfigSchema) -> Callable:
                 except (json.JSONDecodeError, ValueError):
                     substituted_body = schema.request_payload
 
+        # Build combined params, prioritizing substituted values
+        # Only merge agent-provided api_headers/query_params/path_params if they don't conflict
         combined_params = {
             "api_url": substituted_url,
             "api_method": schema.api_method,
-            "api_headers": {**substituted_headers, **(dynamic_values.get("api_headers", {}) or {})},
-            "api_query_params": {**substituted_query_params, **(dynamic_values.get("api_query_params", {}) or {})},
-            "api_path_params": {**substituted_path_params, **(dynamic_values.get("api_path_params", {}) or {})},
         }
+        
+        # Merge headers: substituted first, then agent-provided (agent can override)
+        final_headers = substituted_headers.copy() if substituted_headers else {}
+        agent_headers = dynamic_values.get("api_headers", {}) or {}
+        final_headers.update(agent_headers)
+        if final_headers:
+            combined_params["api_headers"] = final_headers
+        
+        # Merge query params: substituted first, then agent-provided direct params
+        final_query_params = substituted_query_params.copy() if substituted_query_params else {}
+        # Allow agent to provide additional query params directly
+        agent_query_params = dynamic_values.get("api_query_params", {}) or {}
+        final_query_params.update(agent_query_params)
+        
+        # Also check for direct parameters that might be query params (e.g., lat, lon)
+        excluded_keys = {"api_url", "api_method", "api_headers", "api_query_params", 
+                        "api_path_params", "api_body", "method", "url", "headers", "body", "location"}
+        # Add any remaining dynamic_values that might be query parameters
+        for key, value in dynamic_values.items():
+            if key not in excluded_keys and key not in final_query_params:
+                # If there's a placeholder in schema that matches this key, use the value
+                if isinstance(value, (str, int, float)):
+                    final_query_params[key] = str(value)
+        
+        if final_query_params:
+            combined_params["api_query_params"] = final_query_params
+        
+        # Merge path params
+        final_path_params = substituted_path_params.copy() if substituted_path_params else {}
+        agent_path_params = dynamic_values.get("api_path_params", {}) or {}
+        final_path_params.update(agent_path_params)
+        if final_path_params:
+            combined_params["api_path_params"] = final_path_params
         
         if substituted_body is not None:
             combined_params["api_body"] = substituted_body
-    
-        excluded_keys = {"api_url", "api_method", "api_headers", "api_query_params", 
-                        "api_path_params", "api_body", "method", "url", "headers", "body"}
-        remaining_params = {k: v for k, v in dynamic_values.items() if k not in excluded_keys}
-        if remaining_params:
-            combined_params.update(remaining_params)
         
-        logger.info(f"Executing tool '{schema.name}' with dynamic_injection={use_dynamic_injection}, params: {combined_params}")
-        logger.debug(f"Original schema values - URL: {schema.api_url}, Headers: {schema.api_headers}, "
-                    f"Query: {schema.api_query_params}, Path: {schema.api_path_params}, Body: {schema.request_payload}")
+        logger.info(f"Executing tool '{schema.name}' with dynamic_injection={use_dynamic_injection}")
+        logger.debug(f"Original schema - URL: {schema.api_url}, Query: {schema.api_query_params}")
         logger.debug(f"Dynamic values from agent: {dynamic_values}")
+        logger.debug(f"Final combined params - Query: {combined_params.get('api_query_params')}, Headers: {combined_params.get('api_headers')}")
         
         return await execute_api_call(input_params=combined_params)
     return tool_func
@@ -269,10 +316,52 @@ async def invoke_react_agent(request: CortexInvokeRequestSchema, current_user: d
     for tool_schema in request.tools:
         tool_function = create_tool_function(tool_schema)
         logger.info(f"Created tool function for {tool_schema.name}")
+        
+        # Enhance description with dynamic parameter information if enabled
+        description = tool_schema.description or "No description provided."
+        if getattr(tool_schema, 'dynamic_boolean', False):
+            # Extract placeholder variables from schema
+            all_placeholders = set()
+            
+            # Check query params for placeholders
+            if tool_schema.api_query_params:
+                for v in tool_schema.api_query_params.values():
+                    if isinstance(v, str) and '{{' in v and '}}' in v:
+                        placeholders = re.findall(r'\{\{(\w+)\}\}', v)
+                        all_placeholders.update(placeholders)
+            
+            # Check path params
+            if tool_schema.api_path_params:
+                for v in tool_schema.api_path_params.values():
+                    if isinstance(v, str) and '{{' in v and '}}' in v:
+                        placeholders = re.findall(r'\{\{(\w+)\}\}', v)
+                        all_placeholders.update(placeholders)
+            
+            # Check headers
+            if tool_schema.api_headers:
+                for v in tool_schema.api_headers.values():
+                    if isinstance(v, str) and '{{' in v and '}}' in v:
+                        placeholders = re.findall(r'\{\{(\w+)\}\}', v)
+                        all_placeholders.update(placeholders)
+            
+            # Check URL
+            if tool_schema.api_url and '{{' in tool_schema.api_url:
+                placeholders = re.findall(r'\{\{(\w+)\}\}', tool_schema.api_url)
+                all_placeholders.update(placeholders)
+            
+            # Check request payload
+            if tool_schema.request_payload:
+                placeholders = re.findall(r'\{\{(\w+)\}\}', tool_schema.request_payload)
+                all_placeholders.update(placeholders)
+            
+            if all_placeholders:
+                required_params = ", ".join(sorted(all_placeholders))
+                description += f"\n\nRequired parameters when calling this tool: {required_params}"
+        
         tool = StructuredTool.from_function(
             func=None,
             name=tool_schema.name,
-            description=tool_schema.description or "No description provided.",
+            description=description,
             coroutine=tool_function
         )
         executable_tools.append(tool)
