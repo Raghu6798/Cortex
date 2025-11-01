@@ -317,32 +317,4 @@ class LLMProviderRouter:
         db.commit()
 
 
-if __name__ == "__main__":
-    import os
-    from app.db.database import SessionLocal
-    from app.config.settings import settings
-    
-    # Verify database connection string is set
-    if not settings.SUPABASE_DB_URI:
-        print("❌ ERROR: SUPABASE_DB_URI is not set in environment variables.")
-        print("Please set SUPABASE_DB_URI in your .env file.")
-        print("Format: postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-1-us-east-1.pooler.supabase.com:5432/postgres")
-        exit(1)
-    
-    print(f"📊 Connecting to database: {str(settings.SUPABASE_DB_URI).split('@')[1] if '@' in str(settings.SUPABASE_DB_URI) else '***'}")
-    
-    llm_router = LLMProviderRouter()
-    db = SessionLocal()
-    try:
-        print("🔄 Starting provider and model sync...")
-        asyncio.run(llm_router.sync_providers_to_db(db))
-        print("✅ Successfully synced providers and models to database!")
-    except Exception as e:
-        print(f"❌ Error syncing to database: {e}")
-        print("\nTroubleshooting:")
-        print("1. Check that SUPABASE_DB_URI is correctly set in your .env file")
-        print("2. Verify your Supabase credentials are correct")
-        print("3. Ensure your Supabase project is active and accessible")
-        raise
-    finally:
-        db.close()
+llm_router = LLMProviderRouter()
