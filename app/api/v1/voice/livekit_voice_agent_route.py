@@ -3,7 +3,7 @@ from livekit import agents
 from livekit.agents import AgentSession, Agent, RoomInputOptions
 from livekit.plugins import noise_cancellation, silero
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
-
+from livekit.agents import function_tool, Agent, RunContext
 # from app.config.settings import settings
 from dotenv import load_dotenv
 
@@ -21,6 +21,20 @@ class Assistant(Agent):
             Your responses are concise, to the point, and without any complex formatting or punctuation including emojis, asterisks, or other symbols.
             You are curious, friendly, and have a sense of humor.""",
         )
+
+    @function_tool()
+    async def get_weather(
+        self,
+        context: RunContext,
+        location: str,
+    ) -> dict[str, Any]:
+        """Look up weather information for a given location.
+        
+        Args:
+            location: The location to look up weather information for.
+        """
+
+        return {"weather": "sunny", "temperature_f": 70}
 
 
 async def entrypoint(ctx: agents.JobContext):

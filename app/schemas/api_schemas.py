@@ -22,6 +22,7 @@ class ToolConfigSchema(BaseModel):
 
 class CortexInvokeRequestSchema(AgentSettings):
     message: str
+    base_url: Optional[str] = None
     tools: List[ToolConfigSchema] = []
     provider_id: Optional[str] = "openai"  # Provider ID from dropdown
     model_id: Optional[str] = None  # Model ID from dropdown
