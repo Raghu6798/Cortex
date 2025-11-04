@@ -1598,3 +1598,9 @@ fastapi.exceptions.HTTPException: 401: Not authenticated: TokenVerificationError
 2025-11-05 01:01:52.991 | INFO     | __main__:execute_api_call:166 - Final URL: https://integrate.api.nvidia.com/v1/models
 2025-11-05 01:01:52.991 | DEBUG    | __main__:execute_api_call:196 - [function_handler] Executing API call: GET https://integrate.api.nvidia.com/v1/models
 2025-11-05 01:01:53.045 | SUCCESS  | __main__:execute_api_call:216 - [function_handler] API call successful. Status: 200
+2025-11-05 01:42:11.279 | INFO     | __main__:create_llm:75 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 01:44:09.487 | INFO     | __main__:create_llm:73 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 01:46:04.674 | INFO     | __main__:<module>:90 - Creating LLM with the factory...
+2025-11-05 01:46:04.674 | INFO     | __main__:create_llm:38 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 01:46:04.674 | SUCCESS  | __main__:<module>:99 - LLM created successfully.
+2025-11-05 01:46:04.674 | INFO     | __main__:<module>:112 - Sending request to the LLM using .chat()...

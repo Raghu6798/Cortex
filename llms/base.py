@@ -1,7 +1,23 @@
-import requests
-from typing import List, Any, Optional, Dict, Sequence, Union, Type, Callable
-import json
-from pydantic import BaseModel, SecretStr, Field
+import sys
+import os
+from loguru import logger
+from dotenv import load_dotenv
+from typing import Optional, Dict, Any
+
+from llama_index.core.llms.llm import LLM
+from llama_index.llms.openai import OpenAI
+from llama_index.llms.groq import Groq
+
+from llama_index.core.base.llms.types import ChatMessage, MessageRole
+
+load_dotenv()
+
+os.makedirs("log", exist_ok=True)
+logger.remove()
+log_format = ("<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>")
+logger.add(sys.stderr, level="INFO", format=log_format, colorize=True, backtrace=True, diagnose=True)
+logger.add("log/app.log", level="DEBUG", format=log_format, rotation="10 MB", retention="10 days", compression="zip", enqueue=True)
+
 
 class LlamaIndexLLMFactory:
     """A factory class to create LlamaIndex LLM instances based on provider."""
@@ -18,22 +34,11 @@ class LlamaIndexLLMFactory:
     ) -> LLM:
         """
         Creates and returns a LlamaIndex LLM instance configured for the specified provider.
-
-        Args:
-            provider_id: The identifier for the LLM provider (e.g., "groq", "nvidia", "openai").
-            model_id: The specific model to use.
-            api_key: The API key for the provider.
-            base_url: The base URL for the API endpoint (crucial for non-OpenAI providers).
-            temperature: The sampling temperature.
-            max_tokens: The maximum number of tokens to generate.
-
-        Returns:
-            An instance of a LlamaIndex LLM (e.g., Groq, OpenAI).
         """
         logger.info(f"Creating LlamaIndex LLM for provider: '{provider_id}' with model: '{model_id}'")
 
+        # Your factory logic here is excellent and does not need to change.
         if provider_id == "groq":
-            # Groq has a dedicated, optimized class
             return Groq(
                 model=model_id,
                 api_key=api_key,
@@ -43,8 +48,6 @@ class LlamaIndexLLMFactory:
             )
         
         elif provider_id in ["nvidia", "openai", "mistral", "cerebras", "sambanova"]:
-            # For NVIDIA and other OpenAI-compatible APIs, we use the generic OpenAI class
-            # and point it to the correct base_url. This is the key to compatibility.
             if not base_url:
                 raise ValueError(f"The '{provider_id}' provider requires a 'base_url'.")
             
@@ -57,11 +60,9 @@ class LlamaIndexLLMFactory:
                 **kwargs
             )
         else:
-            # Default fallback for any other OpenAI-compatible provider
-            logger.warning(f"Provider '{provider_id}' not explicitly handled. "
-                           f"Falling back to generic OpenAI-compatible client. Ensure 'base_url' is correct.")
+            logger.warning(f"Provider '{provider_id}' not explicitly handled. Falling back to generic OpenAI client.")
             if not base_url:
-                raise ValueError(f"The generic fallback for provider '{provider_id}' requires a 'base_url'.")
+                raise ValueError(f"A 'base_url' is required for the generic fallback.")
             
             return OpenAI(
                 model=model_id,
@@ -72,18 +73,46 @@ class LlamaIndexLLMFactory:
                 **kwargs
             )
 
-@tool
 def get_weather(city: str) -> str:
     """Get the weather of a city"""
-    return f"The weather of {city} is 晴天"
+    return f"The weather of {city} is sunny"
 
 if __name__ == "__main__":
+    # --- Configuration ---
     provider_id="cerebras"
     model_id="qwen-3-235b-a22b-instruct-2507"
-    api_key=settings.CEREBRAS_API_KEY
+    api_key=os.getenv("CEREBRAS_API_KEY")
     base_url="https://api.cerebras.ai/v1"
     temperature=0.7
     max_tokens=1000
-    llm = LlamaIndexLLMFactory.create_llm(provider_id, model_id, api_key, base_url, temperature, max_tokens)
-    response = llm.invoke("What is the weather of Beijing?")
-    print(response)
+
+    # 1. Create the LLM using your factory (this part was already correct)
+    logger.info("Creating LLM with the factory...")
+    llm = LlamaIndexLLMFactory.create_llm(
+        provider_id, 
+        model_id, 
+        api_key, 
+        base_url, 
+        temperature, 
+        max_tokens
+    )
+    logger.success("LLM created successfully.")
+
+    # 2. Prepare the messages in the correct LlamaIndex format
+    messages = [
+        ChatMessage(
+            role=MessageRole.SYSTEM, content="You are a helpful assistant."
+        ),
+        ChatMessage(
+            role=MessageRole.USER, content="What is the weather in Beijing?"
+        ),
+    ]
+    
+    # 3. Call the correct method: .chat() instead of .invoke()
+    logger.info("Sending request to the LLM using .chat()...")
+    response = llm.chat(messages)
+    
+    # 4. Print the response content
+    print("\n--- LLM Response ---")
+    print(response.message.content)
+    print("--------------------\n")

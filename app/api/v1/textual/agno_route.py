@@ -30,9 +30,7 @@ from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFor
 from app.integrations.llm_router import llm_router
 
 router = APIRouter(prefix="/api/v1/agno", tags=["Agno Multi-Agent"])
-
-
-uter        
+        
 @tool(stop_after_tool_call=True)
 async def execute_api_call(
     api_url: str,
