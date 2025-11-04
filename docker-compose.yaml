@@ -13,6 +13,14 @@ services:
       - "5442:5432"                 # <-- Change the host port
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    container_name: redis_db
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
 
 volumes:
   postgres_data:

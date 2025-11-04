@@ -53,6 +53,11 @@ class Settings(BaseSettings):
     SUPABASE_DB_URI:PostgresDsn
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
+    
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
+    REDIS_DB: int = 0
+    REDIS_PASSWORD: Optional[str] = None
 
     @property
     def DATABASE_URL(self) -> PostgresDsn:

@@ -19,7 +19,7 @@ import asyncio
 
 from app.utils.placeholder_args_sub import substitute_placeholders,remove_unresolved_placeholders
 from app.utils.logger import logger
-from app.config.config import settings
+from app.config.settings import settings
 from app.auth.clerk_auth import get_current_user
 from app.db.database import get_db
 from app.db.models import ChatSessionDB, ChatMetricsDB
