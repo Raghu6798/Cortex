@@ -42,6 +42,7 @@ dependencies = [
     "llama-index-llms-openai>=0.6.3",
     "loguru>=0.7.3",
     "mistralai>=1.9.11",
+    "openai>=1.109.1",
     "passlib[bcrypt]>=1.7.4",
     "psycopg2>=2.9.10",
     "psycopg2-binary>=2.9.10",

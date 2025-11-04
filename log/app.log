@@ -1604,3 +1604,89 @@ fastapi.exceptions.HTTPException: 401: Not authenticated: TokenVerificationError
 2025-11-05 01:46:04.674 | INFO     | __main__:create_llm:38 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
 2025-11-05 01:46:04.674 | SUCCESS  | __main__:<module>:99 - LLM created successfully.
 2025-11-05 01:46:04.674 | INFO     | __main__:<module>:112 - Sending request to the LLM using .chat()...
+2025-11-05 01:54:42.004 | INFO     | __main__:<module>:116 - Creating LLM with the factory...
+2025-11-05 01:54:42.004 | INFO     | __main__:create_llm:65 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 01:55:10.089 | INFO     | __main__:<module>:137 - Creating LLM with the factory...
+2025-11-05 01:55:10.089 | INFO     | __main__:create_llm:81 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 01:55:10.090 | SUCCESS  | __main__:<module>:147 - LLM created successfully.
+2025-11-05 01:55:10.090 | INFO     | __main__:<module>:156 - Sending request to the LLM using .chat()...
+2025-11-05 01:56:10.826 | INFO     | __main__:<module>:121 - Creating LLM with the factory...
+2025-11-05 01:56:10.827 | INFO     | __main__:create_llm:70 - Creating LlamaIndex LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 01:56:10.827 | SUCCESS  | __main__:<module>:131 - LLM created successfully.
+2025-11-05 01:56:10.827 | INFO     | __main__:<module>:139 - Sending request to the LLM using .chat()...
+2025-11-05 01:57:00.204 | INFO     | __main__:<module>:121 - Creating LLM with the factory...
+2025-11-05 01:57:00.205 | INFO     | __main__:create_llm:70 - Creating LlamaIndex LLM for provider: 'google' with model: 'gemini-2.5-flash'
+2025-11-05 01:57:00.205 | SUCCESS  | __main__:<module>:131 - LLM created successfully.
+2025-11-05 01:57:00.205 | INFO     | __main__:<module>:139 - Sending request to the LLM using .chat()...
+2025-11-05 01:57:54.835 | INFO     | __main__:<module>:119 - Creating LLM with the factory...
+2025-11-05 01:57:54.836 | INFO     | __main__:create_llm:70 - Creating LlamaIndex LLM for provider: 'mistral' with model: 'mistral-small-latest'
+2025-11-05 01:57:54.836 | SUCCESS  | __main__:<module>:129 - LLM created successfully.
+2025-11-05 01:57:54.836 | INFO     | __main__:<module>:137 - Sending request to the LLM using .chat()...
+2025-11-05 01:58:50.383 | INFO     | __main__:<module>:119 - Creating LLM with the factory...
+2025-11-05 01:58:50.383 | INFO     | __main__:create_llm:70 - Creating LlamaIndex LLM for provider: 'nvidia' with model: 'meta/llama-3.3-70b-instruct'
+2025-11-05 01:58:50.383 | SUCCESS  | __main__:<module>:129 - LLM created successfully.
+2025-11-05 01:58:50.383 | INFO     | __main__:<module>:137 - Sending request to the LLM using .chat()...
+2025-11-05 02:10:22.009 | INFO     | __main__:<module>:124 - Creating LLM with the factory...
+2025-11-05 02:10:22.009 | INFO     | __main__:create_llm:70 - Creating LlamaIndex LLM for provider: 'novita' with model: 'minimax/minimax-m2'
+2025-11-05 02:10:22.009 | SUCCESS  | __main__:<module>:134 - LLM created successfully.
+2025-11-05 02:10:22.009 | INFO     | __main__:<module>:142 - Sending request to the LLM using .chat()...
+2025-11-05 02:12:14.204 | INFO     | __main__:<module>:117 - Creating LLM with the factory...
+2025-11-05 02:12:14.207 | INFO     | __main__:create_llm:70 - Creating LlamaIndex LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:12:14.207 | SUCCESS  | __main__:<module>:127 - LLM created successfully.
+2025-11-05 02:12:14.208 | INFO     | __main__:<module>:135 - Sending request to the LLM using .chat()...
+2025-11-05 02:30:58.404 | INFO     | __main__:create_llm:292 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:31:38.367 | INFO     | __main__:create_llm:292 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:32:09.263 | INFO     | __main__:create_llm:292 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:32:39.475 | INFO     | __main__:create_llm:292 - Creating generic LangChain LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 02:33:52.956 | INFO     | __main__:create_llm:292 - Creating generic LangChain LLM for provider: 'google' with model: 'gemini-2.5-flash'
+2025-11-05 02:34:40.982 | INFO     | __main__:create_llm:292 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:36:12.182 | INFO     | __main__:create_llm:293 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:40:22.039 | INFO     | __main__:create_llm:310 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:40:54.153 | INFO     | __main__:create_llm:309 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:42:26.881 | INFO     | __main__:create_llm:309 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:43:24.701 | INFO     | __main__:create_llm:309 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:43:42.225 | INFO     | __main__:create_llm:309 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 02:43:54.051 | ERROR    | __main__:_generate:109 - API call failed: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions
+2025-11-05 03:16:43.747 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 03:18:29.659 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'groq' with model: 'llama-3.1-8b-instant'
+2025-11-05 03:18:41.561 | ERROR    | __main__:_generate:161 - API call failed: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions
+2025-11-05 03:19:05.079 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'cerebras' with model: 'qwen-3-235b-a22b-instruct-2507'
+2025-11-05 03:19:06.043 | ERROR    | __main__:_generate:161 - API call failed: 429 Client Error: Too Many Requests for url: https://api.cerebras.ai/v1/chat/completions
+2025-11-05 03:19:28.557 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'google' with model: 'gemini-2.5-flash'
+2025-11-05 03:19:50.868 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'google' with model: 'gemini-2.5-flash'
+2025-11-05 03:20:33.494 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'meta/llama-3.1-8b-instant'
+2025-11-05 03:20:34.173 | ERROR    | __main__:_generate:161 - API call failed: 404 Client Error: Not Found for url: https://integrate.api.nvidia.com/v1/chat/completions
+2025-11-05 03:22:03.921 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'meta/llama-3.1-8b-instant'
+2025-11-05 03:22:04.582 | ERROR    | __main__:_generate:161 - API call failed: 404 Client Error: Not Found for url: https://integrate.api.nvidia.com/v1//chat/completions
+2025-11-05 03:22:28.105 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'meta/llama-3.1-8b-instant'
+2025-11-05 03:22:28.757 | ERROR    | __main__:_generate:161 - API call failed: 404 Client Error: Not Found for url: https://integrate.api.nvidia.com/v1/chat/completions
+2025-11-05 03:24:16.519 | INFO     | __main__:create_llm:368 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'qwen/qwen3-next-80b-a3b-thinking'
+2025-11-05 03:30:48.694 | INFO     | __main__:create_llm:368 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:30:55.268 | ERROR    | __main__:_generate:168 - API call failed: 404 Client Error: NOT FOUND for url: https://api.sambanova.ai/v1/chat/completions/chat/completions
+2025-11-05 03:32:18.702 | INFO     | __main__:create_llm:367 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:32:18.719 | ERROR    | __main__:_generate:167 - API call failed: HTTPSConnectionPool(host='api.sambanova.ai', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000252449C3560>: Failed to resolve 'api.sambanova.ai' ([Errno 11001] getaddrinfo failed)"))
+2025-11-05 03:36:38.458 | INFO     | __main__:create_llm:367 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:36:47.240 | ERROR    | __main__:_generate:167 - API call failed: 404 Client Error: NOT FOUND for url: https://api.sambanova.ai/v1/chat/completions/chat/completions
+2025-11-05 03:40:10.026 | INFO     | __main__:create_llm:368 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:40:10.036 | INFO     | __main__:_generate:154 - The base_url being hit is https://api.sambanova.ai/v1/chat/completions
+2025-11-05 03:40:18.497 | ERROR    | __main__:_generate:168 - API call failed: 404 Client Error: NOT FOUND for url: https://api.sambanova.ai/v1/chat/completions/chat/completions
+2025-11-05 03:40:42.883 | INFO     | __main__:create_llm:368 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:40:42.883 | INFO     | __main__:_generate:154 - The base_url being hit is https://api.sambanova.ai/v1/chat/completions , payload : {'model': 'DeepSeek-R1-0528', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 0a0db8d8-23ae-41f1-b076-e0da5753e747', 'Content-Type': 'application/json'}
+2025-11-05 03:40:47.213 | ERROR    | __main__:_generate:168 - API call failed: 404 Client Error: NOT FOUND for url: https://api.sambanova.ai/v1/chat/completions/chat/completions
+2025-11-05 03:42:38.913 | INFO     | __main__:create_llm:369 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:42:38.918 | INFO     | __main__:_generate:154 - The base_url being hit is https://api.sambanova.ai/v1/chat/completions , payload : {'model': 'DeepSeek-R1-0528', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 0a0db8d8-23ae-41f1-b076-e0da5753e747', 'Content-Type': 'application/json'}
+2025-11-05 03:42:42.156 | INFO     | __main__:_generate:154 - The base_url being hit is https://api.sambanova.ai/v1/chat/completions , payload : {'model': 'DeepSeek-R1-0528', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}, {'role': 'assistant', 'content': '', 'tool_calls': [{'id': 'call_8f0d8f95c5094583a0', 'type': 'function', 'function': {'name': 'get_weather', 'arguments': '{"city": "Tokyo"}'}}]}, {'role': 'tool', 'content': 'The weather of Tokyo is sunny', 'tool_call_id': 'call_8f0d8f95c5094583a0'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 0a0db8d8-23ae-41f1-b076-e0da5753e747', 'Content-Type': 'application/json'}
+2025-11-05 03:43:53.259 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:43:59.746 | ERROR    | __main__:_generate:161 - API call failed: 404 Client Error: NOT FOUND for url: https://api.sambanova.ai/v1/chat/completions/chat/completions
+2025-11-05 03:44:24.684 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:45:34.157 | INFO     | __main__:create_llm:361 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'meta/llama-3.1-8b-instant'
+2025-11-05 03:45:34.851 | ERROR    | __main__:_generate:161 - API call failed: 404 Client Error: Not Found for url: https://integrate.api.nvidia.com/v1/chat/completions
+2025-11-05 03:47:11.885 | INFO     | __main__:create_llm:362 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'meta/llama-3.1-8b-instant'
+2025-11-05 03:47:11.898 | INFO     | __main__:_generate:153 - The base_url being hit is https://integrate.api.nvidia.com/v1 , payload : {'model': 'meta/llama-3.1-8b-instant', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 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', 'Content-Type': 'application/json'}
+2025-11-05 03:47:12.571 | ERROR    | __main__:_generate:162 - API call failed: 404 Client Error: Not Found for url: https://integrate.api.nvidia.com/v1/chat/completions
+2025-11-05 03:47:51.520 | INFO     | __main__:create_llm:362 - Creating generic LangChain LLM for provider: 'sambanova' with model: 'DeepSeek-R1-0528'
+2025-11-05 03:47:51.532 | INFO     | __main__:_generate:153 - The base_url being hit is https://api.sambanova.ai/v1 , payload : {'model': 'DeepSeek-R1-0528', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 0a0db8d8-23ae-41f1-b076-e0da5753e747', 'Content-Type': 'application/json'}
+2025-11-05 03:47:55.310 | INFO     | __main__:_generate:153 - The base_url being hit is https://api.sambanova.ai/v1 , payload : {'model': 'DeepSeek-R1-0528', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}, {'role': 'assistant', 'content': '', 'tool_calls': [{'id': 'call_8a17716aebf94992b4', 'type': 'function', 'function': {'name': 'get_weather', 'arguments': '{"city": "Tokyo"}'}}]}, {'role': 'tool', 'content': 'The weather of Tokyo is sunny', 'tool_call_id': 'call_8a17716aebf94992b4'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 0a0db8d8-23ae-41f1-b076-e0da5753e747', 'Content-Type': 'application/json'}
+2025-11-05 03:49:02.054 | INFO     | __main__:create_llm:362 - Creating generic LangChain LLM for provider: 'nvidia' with model: 'meta/llama-3.1-8b-instant'
+2025-11-05 03:49:02.062 | INFO     | __main__:_generate:153 - The base_url being hit is https://integrate.api.nvidia.com/v1 , payload : {'model': 'meta/llama-3.1-8b-instant', 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that can get the weather of a city.'}, {'role': 'user', 'content': 'What is the weather in Tokyo?'}], 'temperature': 0.7, 'tools': [{'type': 'function', 'function': {'name': 'get_weather', 'description': 'Get the weather of a city', 'parameters': {'properties': {'city': {'type': 'string'}}, 'required': ['city'], 'type': 'object'}}}], 'max_tokens': 1000} and {'Authorization': 'Bearer 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', 'Content-Type': 'application/json'}
+2025-11-05 03:49:02.722 | ERROR    | __main__:_generate:162 - API call failed: 404 Client Error: Not Found for url: https://integrate.api.nvidia.com/v1/chat/completions
