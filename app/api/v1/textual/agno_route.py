@@ -9,6 +9,9 @@ import requests
 
 from typing import Any, Callable, Dict, Optional
 
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+
 from agno.tools import tool
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
@@ -17,13 +20,19 @@ from dotenv import load_dotenv
 import sys
 import asyncio
 
-from app.utils.placeholder_args_sub import substitute_placeholders,remove_unresolved_placeholders
+from app.utils.placeholder_args_sub import substitute_placeholders, remove_unresolved_placeholders
 from app.utils.logger import logger
 from app.config.settings import settings
 from app.auth.clerk_auth import get_current_user
 from app.db.database import get_db
 from app.db.models import ChatSessionDB, ChatMetricsDB
+from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
+from app.integrations.llm_router import llm_router
 
+router = APIRouter(prefix="/api/v1/agno", tags=["Agno Multi-Agent"])
+
+
+uter        
 @tool(stop_after_tool_call=True)
 async def execute_api_call(
     api_url: str,
@@ -181,7 +190,7 @@ correct_role_map = {
     "tool": "tool", "model": "assistant",
 }
 
-@router.post("/invoke", response_model=CortexResponseFormat, tags=["Chat"])
+@router.post("/ReActAgent/agno", response_model=CortexResponseFormat, tags=["Chat"])
 async def invoke_agno_agent(
     request: CortexInvokeRequestSchema,
     current_user: dict = Depends(get_current_user),
@@ -208,45 +217,47 @@ async def invoke_agno_agent(
         raise HTTPException(status_code=400, detail="API key is required.")
         
     llm = OpenAIChat(
-    provider=provider,
-    id=model_id,
-    base_url=base_url,
-    api_key=api_key,
-    role_map=correct_role_map
-)
+        provider=provider,
+        id=model_id,
+        base_url=base_url,
+        api_key=api_key,
+        role_map=correct_role_map
+    )
+    
     if request.tools:
         tools = [execute_api_call(**tool) for tool in request.tools]
     else:
         tools = []
 
     tool_agent = Agent(
-    model=llm,
-    tools=[execute_api_call],
-    markdown=True
-)
+        model=llm,
+        tools=[execute_api_call],
+        markdown=True
+    )
 
     summarizer_agent = Agent(
-    model=llm,
-    tools=[], 
-    markdown=True
-)  
+        model=llm,
+        tools=[], 
+        markdown=True
+    )
     
     tool_run_response = await tool_agent.arun(request.message)
 
     if tool_run_response.tools and tool_run_response.tools[0].result:
         api_result = tool_run_response.tools[0].result
         
-        print("\n--- Intermediate: Tool call was successful. Raw data received. ---")
+        logger.info("Tool call was successful. Raw data received.")
         
         summarizer_prompt = (
             f"Here is the data that was fetched:\n\n"
             f"```json\n{json.dumps(api_result, indent=2)}\n```\n\n"
-            f"Now, please answer my original question: '{original_prompt}'"
+            f"Now, please answer my original question: '{request.message}'"
         )
         
-        print("\n--- Step 2: Running Summarizer Agent to generate final response ---")
+        logger.info("Running Summarizer Agent to generate final response")
         final_response = await summarizer_agent.arun(summarizer_prompt)
-        return final_response.content
+        return CortexResponseFormat(response=final_response.content)
     else:
-        logger.error("Agent failed invocation ")
+        logger.error("Agent failed invocation")
+        raise HTTPException(status_code=500, detail="Agent execution failed or no tool was called")
        
