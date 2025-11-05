@@ -25,14 +25,3 @@ logger.add(
     backtrace=True,
     diagnose=True,
 )
-
-# File sink (persistent logs)
-logger.add(
-    "log/app.log",
-    level="DEBUG",  # Save detailed logs
-    format=log_format,
-    rotation="10 MB",  # Rotate after 10 MB
-    retention="10 days",  # Keep logs for 10 days
-    compression="zip",  # Compress old logs
-    enqueue=True,  # Thread/process safe
-)

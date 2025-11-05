@@ -204,13 +204,13 @@ class ChatOpenAI(BaseChatModel):
                 message_dicts.append({"role": "user", "content": m.content})
             elif isinstance(m, AIMessage):
                 msg = {"role": "assistant", "content": m.content or ""}
-                # Pass tool_calls if they exist
+
                 if m.tool_calls:
-                    # The format for the request is slightly different from the AIMessage attribute
+                
                     msg["tool_calls"] = [
                         {
                             "id": tc["id"],
-                            "type": "function", # OpenAI API expects 'function' here
+                            "type": "function", 
                             "function": {"name": tc["name"], "arguments": json.dumps(tc["args"])},
                         }
                         for tc in m.tool_calls
@@ -375,12 +375,18 @@ def get_weather(city: str) -> str:
     """Get the weather of a city"""
     return f"The weather of {city} is sunny"
 
+@tool
+def get_news(topic: str) -> str:
+    """Get the news of a topic"""
+    return f"The news of {topic} is that the stock market is up 100 points"
+
+
 if __name__ == "__main__":
-    # --- Configuration ---
-    provider_id="nvidia"
-    model_id="meta/llama-3.1-8b-instant"
-    api_key=os.getenv("NVIDIANIM_API_KEY")
-    base_url="https://integrate.api.nvidia.com/v1"
+   
+    provider_id="groq"
+    model_id="llama-3.3-70b-versatile"
+    api_key=os.getenv("GROQ_API_KEY")
+    base_url="https://api.groq.com/openai/v1"
     
     temperature=0.7
     max_tokens=1000
@@ -423,18 +429,16 @@ if __name__ == "__main__":
     
     agent = create_agent(
         model=llm,
-        tools=[get_weather],
+        tools=[get_weather, get_news],
         prompt="You are a helpful assistant that can get the weather of a city."
     )
     
-    # Use the correct input format for LangGraph agents
     config = {"recursion_limit": 50}
     response = agent.invoke(
-        {"messages": [HumanMessage(content="What is the weather in Tokyo?")]},
+        {"messages": [HumanMessage(content="What is the weather in Tokyo , use the get_weather tool to get the weather of the city and use the get_news tool to get the news of the topic")]},
         config
     )
     
-    # Extract the final message from the response
     if response.get("messages"):
         final_message = response["messages"][-1]
         if hasattr(final_message, "content"):
