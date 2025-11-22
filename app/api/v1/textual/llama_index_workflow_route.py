@@ -198,7 +198,7 @@ names_to_functions = {"execute_api_call": execute_api_call}
 
 router = APIRouter(prefix="/api/v1", tags=["textual"])
 
-print("--- Setting up LlamaIndex ReActAgent with a custom API tool ---")
+
 
 @router.post("/ReActAgent/llama_index",response_model=CortexResponseFormat,tags=["Chat"])
 async def invoke_llama_index(request: CortexInvokeRequestSchema,current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> CortexResponseFormat:

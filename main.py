@@ -26,7 +26,6 @@ from app.utils.logger import logger
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Application starting up...")
-    # The application now assumes the database schema is already up-to-date.
     yield
     logger.info("Application shutting down...")
 
@@ -37,7 +36,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://cortexagents.netlify.app",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "https://cortex-two-orpin.vercel.app"
     ], 
     allow_credentials=True,
     allow_methods=["*"],

@@ -164,3 +164,59 @@ class UserSecretDB(Base):
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+class SandboxDB(Base):
+    __tablename__ = "sandboxes"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, nullable=False, index=True)
+    agent_id = Column(String, ForeignKey("agents.AgentId"), nullable=True, index=True)
+    
+    e2b_sandbox_id = Column(String, nullable=False, unique=True, index=True)
+    template_id = Column(String, nullable=False)
+    state = Column(String, nullable=False, default='running', index=True)  # e.g., 'running', 'paused', 'killed'
+    
+    metadata = Column(JSON, nullable=True)
+    timeout_seconds = Column(Integer, nullable=False)
+    
+    started_at = Column(DateTime(timezone=True), nullable=False)
+    expires_at = Column(DateTime(timezone=True), nullable=False)
+    
+    is_active = Column(Boolean, default=True) # For soft deletes
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    # Relationships
+    agent = relationship("AgentDB", back_populates="sandboxes")
+    metrics = relationship("SandboxMetricDB", back_populates="sandbox", cascade="all, delete-orphan")
+    events = relationship("SandboxEventDB", back_populates="sandbox", cascade="all, delete-orphan")
+
+class SandboxMetricDB(Base):
+    __tablename__ = "sandbox_metrics"
+    __table_args__ = {'extend_existing': True}
+    
+    id = Column(String, primary_key=True, index=True)
+    sandbox_id = Column(String, ForeignKey("sandboxes.id"), nullable=False, index=True)
+    
+    timestamp = Column(DateTime(timezone=True), nullable=False, index=True)
+    cpu_used_pct = Column(Float, nullable=False)
+    mem_used_bytes = Column(BigInteger, nullable=False)
+    mem_total_bytes = Column(BigInteger, nullable=False)
+    disk_used_bytes = Column(BigInteger, nullable=False)
+    disk_total_bytes = Column(BigInteger, nullable=False)
+
+    sandbox = relationship("SandboxDB", back_populates="metrics")
+
+class SandboxEventDB(Base):
+    __tablename__ = "sandbox_events"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String, primary_key=True, index=True)
+    sandbox_id = Column(String, ForeignKey("sandboxes.id"), nullable=False, index=True)
+    
+    timestamp = Column(DateTime(timezone=True), nullable=False, index=True)
+    event_type = Column(String, nullable=False) # e.g., 'sandbox.lifecycle.created', 'sandbox.lifecycle.killed'
+    event_data = Column(JSON, nullable=True)
+
+    sandbox = relationship("SandboxDB", back_populates="events")

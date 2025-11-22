@@ -5,9 +5,19 @@ from sqlalchemy import pool
 
 from alembic import context
 
+# Import settings to get database URL from environment
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app.config.settings import settings
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+# Override sqlalchemy.url with the connection string from settings
+config.set_main_option("sqlalchemy.url", str(settings.POSTGRES_CONNECTION_STRING))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

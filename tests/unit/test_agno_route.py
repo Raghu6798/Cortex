@@ -109,13 +109,12 @@ def create_tool_function(schema: ToolConfigSchema):
 async def test_dynamic_tool_injection_weather():
     """Test dynamic placeholder injection with CustomApiTools end-to-end."""
     print("🚀 Starting test_dynamic_tool_injection_weather...")
-    
     try:
-        nvidia_key = os.getenv("NVIDIANIM_API_KEY")
+        cerebras_key = os.getenv("CEREBRAS_API_KEY")
         weather_key = os.getenv("WEATHER_API_KEY")
         
-        if not nvidia_key:
-            print("❌ ERROR: NVIDIANIM_API_KEY not set")
+        if not cerebras_key:
+            print("❌ ERROR: CEREBRAS_API_KEY not set")
             return
         if not weather_key:
             print("❌ ERROR: WEATHER_API_KEY not set")
@@ -125,7 +124,7 @@ async def test_dynamic_tool_injection_weather():
         
         schema = ToolConfigSchema(
             name="get_weather",
-            description="Fetches weather using OpenWeather API. Requires lat and lon as parameters.",
+            description="Fetches weather using OpenWeather API. Requires lat and lon as parameters. Use latitude 17.3850 and longitude 78.4867 for Hyderabad, India.",
             api_url="https://api.openweathermap.org/data/2.5/weather",
             api_method="GET",
             api_headers={"Content-Type": "application/json"},
@@ -137,6 +136,7 @@ async def test_dynamic_tool_injection_weather():
                 "lang": "en"
             },
             dynamic_boolean=True,
+            dynamic_variables={},
             request_payload=""
         )
         
@@ -149,9 +149,9 @@ async def test_dynamic_tool_injection_weather():
         # Create LLM
         print("🔄 Creating LLM...")
         llm = OpenAIChat(
-            id="meta/llama-3.1-8b-instruct",
-            base_url="https://integrate.api.nvidia.com/v1",
-            api_key=nvidia_key
+            id="qwen-3-32b",
+            base_url="https://api.cerebras.ai/v1",
+            api_key=cerebras_key
         )
         print("✅ LLM created")
         
@@ -163,11 +163,9 @@ async def test_dynamic_tool_injection_weather():
         )
         print("✅ Agent created")
         
-        # Run the agent
-        print("🔄 Running agent with input: 'Get weather for Hyderabad, India. Use latitude 17.3850 and longitude 78.4867.'")
         print("⏳ This may take a while...")
         run_output: RunOutput = await agent.arun(
-            input="Get weather for Hyderabad, India. Use latitude 17.3850 and longitude 78.4867."
+            input="Get weather for Hyderabad, India"
         )
         print("✅ Agent run completed")
         

@@ -12,6 +12,7 @@ class AgentFramework(str, Enum):
     LLAMA_INDEX = "llama_index"
     PYDANTIC_AI = "pydantic_ai"
     LANGGRAPH = "langgraph"
+    AGNO = "agno"
     ADK = "adk"
 
 class Message(BaseModel):

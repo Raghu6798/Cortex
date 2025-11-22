@@ -28,8 +28,10 @@ from app.db.database import get_db
 from app.db.models import ChatSessionDB, ChatMetricsDB
 from app.schemas.api_schemas import CortexInvokeRequestSchema, CortexResponseFormat
 from app.integrations.llm_router import llm_router
+from app.services.session_service import session_service
+from app.models.session import AgentFramework, AgentConfig
 
-router = APIRouter(prefix="/api/v1/agno", tags=["Agno Multi-Agent"])
+router = APIRouter(prefix="/api/v1", tags=["Agno Multi-Agent"])
         
 @tool(stop_after_tool_call=True)
 async def execute_api_call(
@@ -200,8 +202,23 @@ async def invoke_agno_agent(
 
     session = database_session.query(ChatSessionDB).filter(ChatSessionDB.user_id == user_id).first()
     if not session:
-        raise HTTPException(status_code=404, detail="Session not found")
-    session_id = session.id
+        # Auto-create a session if none exists
+        logger.info(f"No session found for user {user_id}, creating a new session")
+        agent_config = AgentConfig(
+            api_key=request.api_key.get_secret_value() if request.api_key else "",
+            model_name=request.model_id or "gpt-4o-mini"
+        )
+        created_session = session_service.create_session(
+            db=database_session,
+            user_id=user_id,
+            framework=AgentFramework.AGNO,
+            title="New Agno Chat",
+            agent_config=agent_config
+        )
+        session_id = created_session.id
+        logger.info(f"Created new session {session_id} for user {user_id}")
+    else:
+        session_id = session.id
 
     provider_id = request.provider_id
     model_id = request.model_id
@@ -221,12 +238,9 @@ async def invoke_agno_agent(
         api_key=api_key,
         role_map=correct_role_map
     )
-    
-    if request.tools:
-        tools = [execute_api_call(**tool) for tool in request.tools]
-    else:
-        tools = []
 
+    # execute_api_call is a single tool that can handle various API calls
+    # The agent will use it based on the user's message and tool schema
     tool_agent = Agent(
         model=llm,
         tools=[execute_api_call],
@@ -240,10 +254,31 @@ async def invoke_agno_agent(
     )
     
     tool_run_response = await tool_agent.arun(request.message)
+    
+    # Log the response structure for debugging
+    logger.info(f"Tool run response type: {type(tool_run_response)}")
+    logger.info(f"Tool run response: {tool_run_response}")
+    if hasattr(tool_run_response, 'tools'):
+        logger.info(f"Tools attribute exists: {tool_run_response.tools}")
+        if tool_run_response.tools:
+            logger.info(f"Number of tools: {len(tool_run_response.tools)}")
+            logger.info(f"First tool: {tool_run_response.tools[0] if tool_run_response.tools else None}")
+    if hasattr(tool_run_response, 'content'):
+        logger.info(f"Response content: {tool_run_response.content}")
 
-    if tool_run_response.tools and tool_run_response.tools[0].result:
-        api_result = tool_run_response.tools[0].result
-        
+    # Check if we have tool results
+    has_tool_result = False
+    api_result = None
+    
+    if hasattr(tool_run_response, 'tools') and tool_run_response.tools:
+        for tool in tool_run_response.tools:
+            if hasattr(tool, 'result') and tool.result:
+                api_result = tool.result
+                has_tool_result = True
+                logger.info(f"Found tool result: {api_result}")
+                break
+    
+    if has_tool_result and api_result:
         logger.info("Tool call was successful. Raw data received.")
         
         summarizer_prompt = (
@@ -256,6 +291,11 @@ async def invoke_agno_agent(
         final_response = await summarizer_agent.arun(summarizer_prompt)
         return CortexResponseFormat(response=final_response.content)
     else:
-        logger.error("Agent failed invocation")
-        raise HTTPException(status_code=500, detail="Agent execution failed or no tool was called")
+        # If no tool was called, return the agent's direct response
+        if hasattr(tool_run_response, 'content') and tool_run_response.content:
+            logger.info("No tool was called, returning agent's direct response")
+            return CortexResponseFormat(response=tool_run_response.content)
+        else:
+            logger.error(f"Agent failed invocation. Response: {tool_run_response}")
+            raise HTTPException(status_code=500, detail="Agent execution failed or no tool was called")
        

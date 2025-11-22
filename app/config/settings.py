@@ -53,19 +53,13 @@ class Settings(BaseSettings):
     SUPABASE_DB_URI:PostgresDsn
     SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
-    
+    E2B_API_KEY:str
+    POSTGRES_CONNECTION_STRING:str
     REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
     REDIS_DB: int = 0
     REDIS_PASSWORD: Optional[str] = None
-
-    @property
-    def DATABASE_URL(self) -> PostgresDsn:
-        return (
-            f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
-            f"@{self.POSTGRES_SERVER}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
-        )
-
+    
 
 class AgentSettings(BaseSettings):
     """

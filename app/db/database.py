@@ -5,7 +5,7 @@ from app.config.settings import settings
 
 # Create the SQLAlchemy engine
 engine = create_engine(
-    str(settings.SUPABASE_DB_URI),
+    str(settings.POSTGRES_CONNECTION_STRING),
     pool_pre_ping=True,
     echo=True
 )
