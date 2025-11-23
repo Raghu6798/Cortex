@@ -30,7 +30,7 @@ cerebras-cloud-sdk
 pytest-asyncio
 
 # LlamaIndex
-llama-index
+llama-index==0.14.8
 llama-index-llms-openai
 llama-index-llms-groq
 pytest 
@@ -51,7 +51,6 @@ pydantic
 python-dotenv
 
 # Database
-psycopg2
 psycopg2-binary
 sqlalchemy
 alembic

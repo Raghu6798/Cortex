@@ -44,7 +44,7 @@ class SandboxResponse(BaseModel):
     e2b_sandbox_id: str
     template_id: str
     state: str
-    metadata: Optional[Dict[str, str]]
+    metadata: Optional[Dict[str, str]] = Field(None, alias="meta_info")
     started_at: datetime
     expires_at: datetime
     timeout_seconds: int
@@ -56,3 +56,4 @@ class SandboxResponse(BaseModel):
 
     class Config:
         from_attributes = True
+        populate_by_name = True

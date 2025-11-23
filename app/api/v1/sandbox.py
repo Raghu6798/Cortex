@@ -57,7 +57,7 @@ async def create_sandbox(
             e2b_sandbox_id=e2b_instance.sandbox_id,
             template_id=e2b_instance.template_id,
             state='running',
-            metadata=e2b_instance.metadata,
+            meta_info=e2b_instance.metadata,
             timeout_seconds=sandbox_data.timeout_seconds,
             started_at=start_time,
             expires_at=expire_time

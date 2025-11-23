@@ -1,5 +1,5 @@
 # app/db/models.py
-from sqlalchemy import Column, String, DateTime, ForeignKey, Float, JSON, Boolean, Text, Integer
+from sqlalchemy import Column, String, DateTime, ForeignKey, Float, JSON, Boolean, Text, Integer, BigInteger
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func 
 
@@ -141,6 +141,9 @@ class AgentDB(Base):
     
     # Relationship to chat sessions
     sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
+    
+    # Relationship to sandboxes
+    sandboxes = relationship("SandboxDB", back_populates="agent", cascade="all, delete-orphan")
 
 class UserSecretDB(Base):
     __tablename__ = "user_secrets"
@@ -177,7 +180,7 @@ class SandboxDB(Base):
     template_id = Column(String, nullable=False)
     state = Column(String, nullable=False, default='running', index=True)  # e.g., 'running', 'paused', 'killed'
     
-    metadata = Column(JSON, nullable=True)
+    meta_info = Column(JSON, nullable=True)
     timeout_seconds = Column(Integer, nullable=False)
     
     started_at = Column(DateTime(timezone=True), nullable=False)
