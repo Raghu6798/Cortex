@@ -86,10 +86,3 @@ class AgentSettings(BaseSettings):
 
 settings = Settings()
 agent_settings = AgentSettings()
-if __name__ == "__main__":
-    print(settings.CEREBRAS_API_KEY)
-    print(settings.LIVEKIT_API_KEY)
-    print(settings.LIVEKIT_API_SECRET)
-    print(settings.LIVEKIT_URL)
-    print(settings.GOOGLE_API_KEY)
-    print(settings.SUPABASE_DB_URI)
