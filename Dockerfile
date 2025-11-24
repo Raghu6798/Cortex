@@ -30,11 +30,11 @@ RUN useradd -m -u 1000 appuser && \
 
 USER appuser
 
-EXPOSE 8000
+EXPOSE 80
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD wget -qO- http://localhost:8000/health || exit 1
+    CMD wget -qO- http://localhost:80/health || exit 1
 
 # Production server
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
