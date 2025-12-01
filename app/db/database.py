@@ -10,6 +10,7 @@ engine = create_engine(
     echo=True
 )
 
+
 # Create a session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

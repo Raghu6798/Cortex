@@ -1,11 +1,100 @@
 # app/db/models.py
-from sqlalchemy import Column, String, DateTime, ForeignKey, Float, JSON, Boolean, Text, Integer, BigInteger
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String, DateTime, ForeignKey, Float, JSON, Boolean, Text, Integer, BigInteger,Table
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 from sqlalchemy.sql import func 
+from typing import List, Optional
 
 from app.db.database import Base
 from app.utils.encryption import encrypt_value, decrypt_value
 
+agent_tool_association = Table(
+    'agent_tool_association',
+    Base.metadata,
+    Column('agent_id', String, ForeignKey('agents.AgentId'), primary_key=True),
+    Column('tool_id', String, ForeignKey('configured_tools.id'), primary_key=True)
+)
+
+
+class ConfiguredToolDB(Base):
+    __tablename__ = "configured_tools"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, nullable=False, index=True) 
+    name = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    
+    tool_type = Column(String, nullable=False)
+    
+
+    config_data = Column(JSON, nullable=False) 
+    
+
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+
+    agents: Mapped[List["AgentDB"]] = relationship(
+        secondary=agent_tool_association,
+        back_populates="configured_tools"
+    )
+
+
+class AgentDB(Base):
+    __tablename__ = "agents"
+    __table_args__ = {'extend_existing': True}
+
+    AgentId = Column(String, primary_key=True, index=True)
+    user_id = Column(String, nullable=False, index=True)
+    name = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    
+    architecture = Column(String, nullable=False) 
+    framework = Column(String, nullable=False)     
+    settings = Column(JSON, nullable=False)        
+
+    configured_tools: Mapped[List["ConfiguredToolDB"]] = relationship(
+        secondary=agent_tool_association,
+        back_populates="agents"
+    )
+    
+ 
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    
+    # Relationship to chat sessions
+    sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
+    
+    # Relationship to sandboxes
+    sandboxes = relationship("SandboxDB", back_populates="agent", cascade="all, delete-orphan")
+
+
+
+class KnowledgeBaseDB(Base):
+    __tablename__ = "knowledge_bases"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, nullable=False, index=True)
+    name = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    
+    vector_db = Column(String, nullable=False) 
+    connection_config = Column(JSON, nullable=False) 
+    chunk_size = Column(Integer, default=512)
+    chunk_overlap = Column(Integer, default=50)
+    embedding_model = Column(String, nullable=False)
+    use_ocr = Column(Boolean, default=False)
+    
+    status = Column(String, default="Draft") 
+    document_count = Column(Integer, default=0)
+    chunk_count = Column(Integer, default=0)
+    
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    
 class ChatSessionDB(Base):
     __tablename__ = "chat_sessions"
     __table_args__ = {'extend_existing': True}
@@ -118,32 +207,6 @@ class ChatMetricsDB(Base):
     
     # Relationship to session
     session = relationship("ChatSessionDB")
-
-class AgentDB(Base):
-    __tablename__ = "agents"
-    __table_args__ = {'extend_existing': True}
-
-    AgentId = Column(String, primary_key=True, index=True)
-    user_id = Column(String, nullable=False, index=True)
-    name = Column(String, nullable=False)
-    description = Column(Text, nullable=True)
-    
-    # Agent configuration stored as JSON
-    architecture = Column(String, nullable=False)  # 'mono' or 'multi'
-    framework = Column(String, nullable=False)      # 'langchain', 'crewai', etc.
-    settings = Column(JSON, nullable=False)         # LLM configuration
-    tools = Column(JSON, nullable=True)             # Tool configurations
-    
-    # Metadata
-    is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
-    
-    # Relationship to chat sessions
-    sessions = relationship("ChatSessionDB", back_populates="agent", cascade="all, delete-orphan")
-    
-    # Relationship to sandboxes
-    sandboxes = relationship("SandboxDB", back_populates="agent", cascade="all, delete-orphan")
 
 class UserSecretDB(Base):
     __tablename__ = "user_secrets"

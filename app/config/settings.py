@@ -59,6 +59,12 @@ class Settings(BaseSettings):
     REDIS_PORT: int = 6379
     REDIS_DB: int = 0
     REDIS_PASSWORD: Optional[str] = None
+
+    MINIO_ENDPOINT: str = "localhost:9000"  # Docker service name or external host
+    MINIO_ACCESS_KEY: str = "minioadmin"
+    MINIO_SECRET_KEY: str = "minioadmin"
+    MINIO_SECURE: bool = False
+    MINIO_BUCKET: str = "cortex-uploads"
     
 
 class AgentSettings(BaseSettings):
