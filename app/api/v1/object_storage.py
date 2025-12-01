@@ -1,6 +1,6 @@
 # app/api/v1/object_storage.py
 
-from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, status
+from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, status,Query
 from fastapi.responses import RedirectResponse
 from typing import Dict, Any, List
 
@@ -13,6 +13,7 @@ router = APIRouter(prefix="/api/v1/object-storage", tags=["Object Storage"])
 @router.post("/upload", status_code=status.HTTP_201_CREATED)
 async def upload_file(
     file: UploadFile = File(..., description="The file to upload (e.g., .pdf, .docx, .png)."),
+    use_s3: bool = Query(False, description="Set to true to upload to AWS S3, false for MinIO"),
     token_payload: dict = Depends(get_current_user),
 ) -> Dict[str, Any]:
     """
@@ -27,7 +28,7 @@ async def upload_file(
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Failed to get user ID: {str(e)}")
     try:
         # Delegate core logic to the FileService
-        return await file_service.upload_file(user_id=user_id, file=file)
+        return await file_service.upload_file(user_id=user_id, file=file, use_s3=use_s3)
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to upload file: {str(e)}")
 

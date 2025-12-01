@@ -33,9 +33,13 @@ pytest-asyncio
 llama-index==0.14.8
 llama-index-llms-openai
 llama-index-llms-groq
+llama-cloud-services
 pytest 
-
-
+docx2txt
+unstructured 
+openpyxl
+python-pptx
+python-docx
 agno
 litellm
 

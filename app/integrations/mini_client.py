@@ -15,9 +15,9 @@ class MinIOClient:
             try:
                 cls._instance = Minio(
                     endpoint,
-                    access_key=settings.MINIO_ACCESS_KEY,
-                    secret_key=settings.MINIO_SECRET_KEY,
-                    secure=settings.MINIO_SECURE,
+                    access_key=settings.MINIO_ROOT_USER,
+                    secret_key=settings.MINIO_ROOT_PASSWORD,
+                    secure=settings.MINIO_SECURE
                 )
                 
                 # Check/Create the required bucket on startup
@@ -36,3 +36,6 @@ class MinIOClient:
 
 
 minio_client = MinIOClient.get_client()
+if __name__ == "__main__":
+    minio_client = MinIOClient.get_client()
+    print(minio_client)
