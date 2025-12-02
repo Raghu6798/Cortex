@@ -70,7 +70,7 @@ class Settings(BaseSettings):
     MINIO_ENDPOINT: str = "s3.amazonaws.com"  
     MINIO_ACCESS_KEY: str = Field(..., description="The access key for the MinIO client.")
     MINIO_SECRET_KEY: str = Field(..., description="The secret key for the MinIO client.")
-    MINIO_BUCKET: str = "cortex-uploads"
+    MINIO_BUCKET: str = "cortex-production-storage"
     MINIO_SECURE:bool=False
 
 class AgentSettings(BaseSettings):
