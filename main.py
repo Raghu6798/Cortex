@@ -30,7 +30,6 @@ from app.utils.logger import logger
 async def lifespan(app: FastAPI):
     logger.info("Application starting up...")
     logger.info("Checking Object Storage connection...")
-    MinIOClient.ensure_bucket_exists()
     yield
     logger.info("Application shutting down...")
 
