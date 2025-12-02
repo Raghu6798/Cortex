@@ -16,6 +16,14 @@ migrate-up:
 migrate-down:
     uv run alembic downgrade -1
 
+# Start MinIO server
+minio-start:
+    podman run -p 9000:9000 -p 9001:9001 quay.io/minio/minio server /data --console-address ":9001"
+
+# Stop MinIO server
+minio-stop:
+    podman stop minio
+
 # Show migration history
 migrate-history:
     uv run alembic history

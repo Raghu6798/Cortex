@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.db.database import engine, Base
 from app.db import models
 from app.schemas.api_schemas import HealthStatus
+from app.integrations.mini_client import MinIOClient
 
 # routers
 from app.api.v1.secrets import router as secrets_router
@@ -28,6 +29,8 @@ from app.utils.logger import logger
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Application starting up...")
+    logger.info("Checking Object Storage connection...")
+    MinIOClient.ensure_bucket_exists()
     yield
     logger.info("Application shutting down...")
 
