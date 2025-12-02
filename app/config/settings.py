@@ -67,9 +67,9 @@ class Settings(BaseSettings):
     AWS_REGION: str = "us-east-1"
     AWS_S3_BUCKET: str = Field("cortex-production-storage", description="S3 Bucket Name")
 
-    MINIO_ENDPOINT: str = "localhost:9000"  # Docker service name or external host
-    MINIO_ROOT_USER: str = Field(..., description="The access key for the MinIO client.")
-    MINIO_ROOT_PASSWORD: str = Field(..., description="The secret key for the MinIO client.")
+    MINIO_ENDPOINT: str = "s3.amazonaws.com"  
+    MINIO_ACCESS_KEY: str = Field(..., description="The access key for the MinIO client.")
+    MINIO_SECRET_KEY: str = Field(..., description="The secret key for the MinIO client.")
     MINIO_BUCKET: str = "cortex-uploads"
     MINIO_SECURE:bool=False
 
