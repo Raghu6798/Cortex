@@ -54,6 +54,8 @@ fastmcp
 pydantic
 python-dotenv
 
+boto3
+
 # Database
 psycopg2-binary
 sqlalchemy
