@@ -25,7 +25,6 @@ async def parse_document(
     if not user_id:
         raise HTTPException(status_code=403, detail="Unauthorized")
 
-    # Security Check: Ensure request matches user
     if not request.object_name.startswith(f"{user_id}/"):
          raise HTTPException(status_code=403, detail="Access denied to this object")
 
