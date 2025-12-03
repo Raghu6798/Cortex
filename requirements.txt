@@ -49,7 +49,7 @@ livekit-plugins-noise-cancellation
 
 # MCP and Code Interpreter
 fastmcp
-msoffcrypto
+msoffcrypto-tool
 # Data handling
 pydantic
 python-dotenv
