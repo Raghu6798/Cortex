@@ -9,7 +9,6 @@ from app.services.file_service import FileService, file_service
 
 router = APIRouter(prefix="/api/v1/object-storage", tags=["Object Storage"])
 
-# --- 1. UPLOAD ENDPOINT (Multipart Upload) ---
 @router.post("/upload", status_code=status.HTTP_201_CREATED)
 async def upload_file(
     file: UploadFile = File(..., description="The file to upload (e.g., .pdf, .docx, .png)."),
@@ -32,7 +31,6 @@ async def upload_file(
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to upload file: {str(e)}")
 
-# --- 2. LIST ENDPOINT ---
 @router.get("/list", response_model=List[Dict[str, Any]])
 async def list_files(
     token_payload: dict = Depends(get_current_user),
@@ -60,7 +58,6 @@ async def list_files(
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to list files: {str(e)}")
 
 
-# --- 3. DOWNLOAD ENDPOINT (Redirect to Presigned URL) ---
 @router.get("/download")
 async def download_file(
     object_name: str,
@@ -102,7 +99,7 @@ async def download_file(
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to create download link: {str(e)}")
 
 
-# --- 4. DELETE ENDPOINT ---
+
 @router.delete("/delete")
 async def delete_file(
     object_name: str,

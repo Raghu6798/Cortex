@@ -40,7 +40,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://cortexagents.netlify.app",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "https://cortex-two-orpin.vercel.app"
     ], 
     allow_credentials=True,
     allow_methods=["*"],
