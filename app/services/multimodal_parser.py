@@ -48,15 +48,15 @@ class ParsingService:
 
         try:
             if ext == ".pdf":
-                return await self._process_pdf(file_url)
+                return await self._process_pdf(file_url,pdf_path)
             elif ext in [".docx", ".doc"]:
-                return await self._process_docx(file_url)
+                return await self._process_docx(file_url,docx_path)
             elif ext in [".xlsx", ".xls", ".csv"]:
-                return await self._process_xlsx(file_url)
+                return await self._process_xlsx(file_url,xlsx_path)
             elif ext in [".pptx", ".ppt"]:
-                return await self._process_pptx(file_url)
+                return await self._process_pptx(file_url,pptx_path)
             elif ext in [".png", ".jpg", ".jpeg", ".webp"]:
-                return await self._process_image(file_url)
+                return await self._process_image(file_url,image_path)
             else:
                 return "Unsupported file format for parsing."
         except Exception as e:
@@ -75,9 +75,12 @@ class ParsingService:
         
         return temp_path
 
-    async def _process_pdf(self, url: str) -> str:
+    async def _process_pdf(self, url: str,pdf_path: str) -> str:
+        if pdf_path:
+            temp_path = pdf_path
+        else:
+            temp_path = await self._download_to_temp(url, ".pdf")
         logger.info("Processing PDF with LlamaParse")
-        temp_path = await self._download_to_temp(url, ".pdf")
         try:
             def blocking_parse():
                 return llama_parser.load_data(temp_path)
@@ -87,9 +90,12 @@ class ParsingService:
         finally:
             if os.path.exists(temp_path): os.remove(temp_path)
 
-    async def _process_docx(self, url: str) -> str:
+    async def _process_docx(self, url: str,docx_path: str) -> str:
+        if docx_path:
+            temp_path = docx_path
+        else:
+            temp_path = await self._download_to_temp(url, ".docx")
         logger.info("Processing DOCX")
-        temp_path = await self._download_to_temp(url, ".docx")
         try:
             return await asyncio.to_thread(
                 lambda: "\n\n".join(doc.page_content for doc in Docx2txtLoader(temp_path).load())
@@ -97,9 +103,12 @@ class ParsingService:
         finally:
             if os.path.exists(temp_path): os.remove(temp_path)
 
-    async def _process_xlsx(self, url: str) -> str:
+    async def _process_xlsx(self, url: str,xlsx_path: str) -> str:
+        if xlsx_path:
+            temp_path = xlsx_path
+        else:
+            temp_path = await self._download_to_temp(url, ".xlsx")
         logger.info("Processing XLSX")
-        temp_path = await self._download_to_temp(url, ".xlsx")
         try:
             return await asyncio.to_thread(
                 lambda: "\n\n".join(doc.page_content for doc in UnstructuredExcelLoader(temp_path, mode="elements").load())
@@ -107,9 +116,12 @@ class ParsingService:
         finally:
             if os.path.exists(temp_path): os.remove(temp_path)
 
-    async def _process_image(self, url: str) -> str:
+    async def _process_image(self, url: str,image_path: str) -> str:
+        if image_path:
+            temp_path = image_path
+        else:
+            temp_path = await self._download_to_temp(url, ".png")
         logger.info("Processing Image with Gemini")
-        temp_path = await self._download_to_temp(url, ".png")
         try:
             with open(temp_path, "rb") as f: 
                 image_data = base64.b64encode(f.read()).decode("utf-8")
@@ -125,7 +137,11 @@ class ParsingService:
         finally:
             if os.path.exists(temp_path): os.remove(temp_path)
 
-    async def _process_pptx(self, url: str) -> str:
+    async def _process_pptx(self, url: str,pptx_path: str) -> str:
+        if pptx_path:
+            temp_path = pptx_path
+        else:
+            temp_path = await self._download_to_temp(url, ".pptx")
         logger.info("Processing PPTX (Text + Slide Images)")
         with tempfile.TemporaryDirectory() as temp_dir:
             pptx_path = Path(temp_dir) / "input.pptx"
