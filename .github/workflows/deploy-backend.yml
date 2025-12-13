@@ -12,9 +12,6 @@ jobs:
   deploy:
     name: Build and Deploy to Lambda
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
 
     steps:
       - name: Checkout code
