@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     GROQ_API_KEY:str
     MISTRAL_API_KEY:str
     CEREBRAS_API_KEY:str
-    SAMANOVANA_API_KEY:str
+    SAMBANOVA_API_KEY:str
     NVIDIA_API_KEY:str
     CLERK_SECRET_KEY:str
     ENCRYPTION_KEY:str
