@@ -42,6 +42,12 @@ class Settings(BaseSettings):
         env_file_encoding='utf-8',
         extra='ignore' 
     )
+    GROQ_API_KEY:str
+    OPENAI_API_KEY:str
+    MISTRAL_API_KEY:str
+    CEREBRAS_API_KEY:str
+    SAMANOVANA_API_KEY:str
+    NVIDIA_API_KEY:str
     CLERK_SECRET_KEY:str
     ENCRYPTION_KEY:str
     GOOGLE_API_KEY:str
