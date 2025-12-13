@@ -42,36 +42,15 @@ class Settings(BaseSettings):
         env_file_encoding='utf-8',
         extra='ignore' 
     )
-    GROQ_API_KEY:str
-    CEREBRAS_API_KEY:str
-    MISTRAL_API_KEY:str
-    LIVEKIT_API_KEY:str
-    LIVEKIT_API_SECRET:str
-    LIVEKIT_URL:str
     CLERK_SECRET_KEY:str
     ENCRYPTION_KEY:str
-    SUPABASE_DB_URI:PostgresDsn
-    SAMBANOVA_API_KEY:str
     GOOGLE_API_KEY:str
     E2B_API_KEY:str
     POSTGRES_CONNECTION_STRING:str
-    REDIS_HOST: str = "localhost"
-    REDIS_PORT: int = 6379
-    REDIS_DB: int = 0
-    REDIS_PASSWORD: Optional[str] = None
+    
 
     LLAMACLOUD_API_KEY:str
 
-    AWS_ACCESS_KEY: str
-    AWS_SECRET_KEY: str
-    AWS_REGION: str = "us-east-1"
-    AWS_S3_BUCKET: str = Field("cortex-production-storage", description="S3 Bucket Name")
-
-    MINIO_ENDPOINT: str = "s3.amazonaws.com"  
-    MINIO_ACCESS_KEY: str = Field(..., description="The access key for the MinIO client.")
-    MINIO_SECRET_KEY: str = Field(..., description="The secret key for the MinIO client.")
-    MINIO_BUCKET: str = "cortex-production-storage"
-    MINIO_SECURE:bool=False
 
 class AgentSettings(BaseSettings):
     """

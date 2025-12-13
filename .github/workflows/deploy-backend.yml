@@ -32,7 +32,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          ECR_REPOSITORY: agent-runtime-backend
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build Docker image
@@ -47,9 +47,9 @@ jobs:
 
       - name: Update Lambda Function Code
         env:
-          LAMBDA_FUNCTION_NAME: ${{ secrets.LAMBDA_FUNCTION_NAME }}
+          LAMBDA_FUNCTION_NAME: Cortex-Agents
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          ECR_REPOSITORY: agent-runtime-backend
         run: |
           aws lambda update-function-code \
             --function-name $LAMBDA_FUNCTION_NAME \

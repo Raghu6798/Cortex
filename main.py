@@ -70,8 +70,3 @@ app.include_router(agents_router)
 app.include_router(llama_index_workflow_router)
 app.include_router(adk_agent_router)
 app.include_router(agno_router)
-app.include_router(object_storage_router)
-app.include_router(ocr_router)
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
