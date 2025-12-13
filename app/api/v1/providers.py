@@ -8,12 +8,14 @@ from app.db.models import LLMProviderDB, LLMModelDB
 from app.integrations.llm_router import llm_router
 from app.auth.clerk_auth import get_current_user
 from app.schemas.provider_schemas import ProviderResponse, ModelResponse
+from app.utils.logger import logger
 
 router = APIRouter(prefix="/api/v1/providers", tags=["providers"])
 
-@router.get("/", response_model=List[ProviderResponse])
+@router.get("", response_model=List[ProviderResponse])
 async def get_all_providers(db: Session = Depends(get_db)):
     """Get all available LLM providers with their models"""
+    logger.info("Accessing get_all_providers endpoint")
     try:
         providers = db.query(LLMProviderDB).all()
         result = []
