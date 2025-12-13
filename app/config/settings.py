@@ -43,7 +43,6 @@ class Settings(BaseSettings):
         extra='ignore' 
     )
     GROQ_API_KEY:str
-    OPENAI_API_KEY:str
     MISTRAL_API_KEY:str
     CEREBRAS_API_KEY:str
     SAMANOVANA_API_KEY:str
