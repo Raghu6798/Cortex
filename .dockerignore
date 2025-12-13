@@ -1,76 +1,21 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
+__pycache__
+*.pyc
+*.pyo
+*.pyd
 .Python
-*.egg-info/
-dist/
-build/
-.eggs/
-*.egg
-
-# Virtual environments
-venv/
 env/
-ENV/
-.venv/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.nox/
-
-# Logs
-*.log
-log/
-logs/
-
-# Environment variables
+venv/
 .env
-.env.local
-.env.*.local
-
-# Git
-.git/
+.venv
+.git
 .gitignore
-
-# Docker
-Dockerfile
 .dockerignore
-docker-compose.yaml
-
-# Documentation
-docs/
-*.md
+Dockerfile
 README.md
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Database
-*.db
-*.sqlite
-
-# Alembic versions (keep migrations, but ignore if large)
-# alembic/versions/*.py
-
-# Frontend (if backend is in monorepo)
-Frontend/
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-
+tests/
+docs/
+alembic/
+scripts/
+justfile
+uv.lock
+pyproject.toml

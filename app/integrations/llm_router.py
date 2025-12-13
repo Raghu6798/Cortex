@@ -285,11 +285,10 @@ class LLMProviderRouter:
                     max_tokens=provider.provider_info.max_tokens
                 )
                 db.add(provider_db)
-                db.flush()  # Get the ID
+                db.flush()  
             else:
                 provider_db = existing_provider
-            
-            # Sync models
+
             try:
                 models = await provider.get_models()
                   

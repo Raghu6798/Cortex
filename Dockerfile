@@ -1,40 +1,13 @@
-FROM python:3.12-slim
+FROM public.ecr.aws/lambda/python:3.12
 
-# Environment variables
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PATH="/home/appuser/.local/bin:$PATH"
+# Copy requirements.txt
+COPY requirements.txt ${LAMBDA_TASK_ROOT}
 
-WORKDIR /app
+# Install the specified packages
+RUN pip install -r requirements.txt
 
-# Install required system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Copy function code
+COPY . ${LAMBDA_TASK_ROOT}
 
-# Copy only requirements first for caching
-COPY requirements.txt .
-
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
-
-# Copy source code
-COPY . .
-
-# Create non-root user
-RUN useradd -m -u 1000 appuser && \
-    chown -R appuser:appuser /app
-
-USER appuser
-
-EXPOSE 80
-
-# Healthcheck
-HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD wget -qO- http://localhost:80/health || exit 1
-
-# Production server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+# Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
+CMD [ "main.handler" ]

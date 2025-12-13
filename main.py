@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
+from mangum import Mangum
 from app.db.database import engine, Base
 from app.db import models
 from app.schemas.api_schemas import HealthStatus
@@ -48,6 +49,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+handler = Mangum(app) 
 # --- Health Check Endpoints ---
 @app.get("/", response_model=HealthStatus, tags=["Health"])
 async def greet():

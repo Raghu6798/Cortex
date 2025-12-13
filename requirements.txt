@@ -54,7 +54,9 @@ msoffcrypto-tool
 pydantic
 python-dotenv
 
+# aws
 boto3
+mangum 
 
 # Database
 psycopg2-binary
