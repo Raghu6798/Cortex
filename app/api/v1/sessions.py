@@ -18,7 +18,7 @@ from app.auth.clerk_auth import get_current_user
 
 router = APIRouter(prefix="/api/v1/sessions", tags=["Sessions"])
 
-@router.get("/", response_model=SessionsListResponse)
+@router.get("", response_model=SessionsListResponse)
 async def get_user_sessions(
     db: Session = Depends(get_db),
     token_payload: dict = Depends(get_current_user)
@@ -50,7 +50,7 @@ async def get_session(
     
     return session
 
-@router.post("/", response_model=ChatSession)
+@router.post("", response_model=ChatSession)
 async def create_session(
     request: SessionCreateRequest,
     db: Session = Depends(get_db),

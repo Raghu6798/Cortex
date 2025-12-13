@@ -14,7 +14,7 @@ from app.utils.logger import logger
 
 router = APIRouter(prefix="/api/v1/sandboxes", tags=["Sandboxes"])
 
-@router.post("/", response_model=SandboxResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=SandboxResponse, status_code=status.HTTP_201_CREATED)
 async def create_sandbox(
     sandbox_data: SandboxCreate,
     db: Session = Depends(get_db),
@@ -74,7 +74,7 @@ async def create_sandbox(
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Could not create sandbox: {str(e)}")
 
 
-@router.get("/", response_model=List[SandboxResponse])
+@router.get("", response_model=List[SandboxResponse])
 async def list_sandboxes(
     agent_id: Optional[str] = None,
     state: Optional[str] = None, # 'running', 'paused', 'killed'

@@ -16,7 +16,7 @@ clerk_auth_guard = ClerkHTTPBearer(config=clerk_config, add_state=True)
 
 router = APIRouter(prefix="/frameworks", tags=["frameworks"])
 
-@router.get("/")
+@router.get("")
 async def get_available_frameworks(
     credentials: HTTPAuthorizationCredentials = Depends(clerk_auth_guard)
 ) -> Dict[str, Any]:

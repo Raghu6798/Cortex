@@ -12,7 +12,7 @@ from app.utils.logger import logger
 
 router = APIRouter(prefix="/api/v1/secrets", tags=["Secrets Management"])
 
-@router.post("/", response_model=SecretResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=SecretResponse, status_code=status.HTTP_201_CREATED)
 def create_secret(
     secret_data: SecretCreate, 
     db: Session = Depends(get_db), 
@@ -60,7 +60,7 @@ def create_secret(
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Could not create secret.")
 
 
-@router.get("/", response_model=List[SecretResponse])
+@router.get("", response_model=List[SecretResponse])
 def list_secrets(
     db: Session = Depends(get_db), 
     current_user: dict = Depends(get_current_user)
