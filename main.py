@@ -10,7 +10,6 @@ from mangum import Mangum
 from app.db.database import engine, Base
 from app.db import models
 from app.schemas.api_schemas import HealthStatus
-from app.integrations.mini_client import MinIOClient
 
 # routers
 from app.api.v1.secrets import router as secrets_router
