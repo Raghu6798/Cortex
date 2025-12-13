@@ -22,16 +22,11 @@ from app.api.v1.textual.adk_route import router as adk_agent_router
 from app.api.v1.providers import router as providers_router
 from app.api.v1.textual.agno_route import router as agno_router
 
+
 from app.utils.logger import logger 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    logger.info("Application starting up...")
-    logger.info("Checking Object Storage connection...")
-    yield
-    logger.info("Application shutting down...")
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI("Cortex Agent Runtime")
 
 # --- Middleware ---
 app.add_middleware(
