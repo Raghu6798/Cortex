@@ -26,7 +26,7 @@ from app.api.v1.textual.agno_route import router as agno_router
 from app.utils.logger import logger 
 
 
-app = FastAPI("Cortex Agent Runtime")
+app = FastAPI()
 
 # --- Middleware ---
 app.add_middleware(
