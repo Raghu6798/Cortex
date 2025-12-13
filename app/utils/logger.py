@@ -2,13 +2,8 @@ import sys
 import os
 from loguru import logger
 
-# Create 'log' directory if it doesn't exist
-os.makedirs("log", exist_ok=True)
-
-# Remove default handler
 logger.remove()
 
-# Define custom log format
 log_format = (
     "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
     "<level>{level: <8}</level> | "
