@@ -56,7 +56,6 @@ class AgentSettings(BaseSettings):
     """
     A Pydantic settings model to hold the configuration for an AI agent.
     """
-    # --- Model Configuration ---
     model_name: str = Field("meta-llama/llama-4-maverick-17b-128e-instruct", description="The name of the model to use.")
     api_key: Optional[SecretStr] = Field(None, description="The API key for the selected LLM provider.")
     base_url: Optional[str] = Field(None, description="The base URL for the API endpoint.")
