@@ -21,8 +21,6 @@ from app.api.v1.textual.llama_index_workflow_route import router as llama_index_
 from app.api.v1.textual.adk_route import router as adk_agent_router 
 from app.api.v1.providers import router as providers_router
 from app.api.v1.textual.agno_route import router as agno_router
-from app.api.v1.object_storage import router as object_storage_router
-from app.api.v1.ocr import router as ocr_router
 
 from app.utils.logger import logger 
 
